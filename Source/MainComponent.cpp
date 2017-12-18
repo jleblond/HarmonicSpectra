@@ -18,11 +18,14 @@ struct Partial
 
 
 class MainContentComponent   : public AudioAppComponent,
-                               public Slider::Listener
+                               public Slider::Listener,
+                                public ComboBox::Listener
 {
 public:
     MainContentComponent()
-    :   mNbPartials(1),
+    :   mNbPartials(1), //default nb at intialization
+        mMaxNbPartials(64),
+        mWaveTypeNb(2),
         currentSampleRate (0.0),
         mCurrentLevel (0.1)
 
@@ -33,8 +36,15 @@ public:
         frequencySlider.addListener (this);
         
         addAndMakeVisible (numberPartialsSlider);
-        numberPartialsSlider.setRange (1, 10);
+        numberPartialsSlider.setRange (1, mMaxNbPartials, 1);
         numberPartialsSlider.addListener(this);
+        
+        addAndMakeVisible(waveformCombobox);
+        waveformCombobox.addItem("Sawtooth", 1);
+        waveformCombobox.addItem("Square", 2);
+        waveformCombobox.addItem("Triangle", 3);
+        waveformCombobox.setSelectedId(1);
+        waveformCombobox.addListener(this);
         
         setSize (600, 200);
         setAudioChannels (0, 1);
@@ -47,8 +57,18 @@ public:
     
     void resized() override
     {
-        frequencySlider.setBounds (10, 10, getWidth() - 20, 20);
-        numberPartialsSlider.setBounds (10, 50, getWidth() - 20, 20);
+        waveformCombobox.setBounds (10, 10, 120, 30);
+        frequencySlider.setBounds (10, 50, getWidth() - 20, 20);
+        numberPartialsSlider.setBounds (10, 100, getWidth() - 20, 20);
+    }
+    
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override
+    {
+        if(comboBoxThatHasChanged == &waveformCombobox)
+        {
+            mWaveTypeNb = waveformCombobox.getSelectedId();
+            fillVecWaveform(vecPartials, currentFundFrequency, mCurrentLevel, mNbPartials);
+        }
     }
     
     void sliderDragEnded  (Slider* slider) override
@@ -56,14 +76,14 @@ public:
         if (slider == &frequencySlider)
         {
             currentFundFrequency = frequencySlider.getValue();
-            updateVecAllPartials(currentFundFrequency, mCurrentLevel, mNbPartials);
+            fillVecWaveform(vecPartials, currentFundFrequency, mCurrentLevel, mNbPartials);
             
         }
         
         if (slider == &numberPartialsSlider)
         {
             mNbPartials = static_cast<int> (numberPartialsSlider.getValue());
-            updateVecAllPartials(currentFundFrequency, mCurrentLevel, mNbPartials);
+            fillVecWaveform(vecPartials, currentFundFrequency, mCurrentLevel, mNbPartials);
         }
         
     }
@@ -77,19 +97,93 @@ public:
         }
     }
     
-    void updateVecAllPartials(double fundFreq, double level, int nbPartials)
+    
+    void fillVecWaveform (std::vector<Partial>& vec, double fundFreq, double level, int nbPartials)
     {
-        vecAllPartials.clear();
+        switch(mWaveTypeNb)
+        {
+            case 2:
+                fillVecSquareWave (vec, fundFreq, level, nbPartials);
+                break;
+            case 3:
+                fillVecTriWave (vec, fundFreq, level, nbPartials);
+                break;
+            default: //including '1'
+                fillVecSawWave (vec, fundFreq, level, nbPartials);
+        
+        };
+        
+    }
+    
+    void fillVecSawWave (std::vector<Partial>& vec, double fundFreq, double level, int nbPartials)
+    {
+        vec.clear();
         
         for(int i=1; i<=nbPartials ;i++)
         {
             double partialFreq = i*fundFreq;
-            vecAllPartials.push_back( Partial( partialFreq, level/i, getAngleDelta(partialFreq)  ) );
-
+            double partialLevel = level/i;
+            vec.push_back( Partial( partialFreq, partialLevel, getAngleDelta(partialFreq)  ) );
         }
         
+    }
+    
+    
+    void fillVecSquareWave (std::vector<Partial>& vec, double fundFreq, double level, int nbPartials)
+    {
+        vec.clear();
+        
+        for(int i=1; i<=nbPartials ;i++)
+        {
+            double partialFreq = i*fundFreq;
+            double partialLevel = 0;
+            
+            if(i % 2 != 0)
+            {
+                partialLevel = level/i;
+            }
+            else
+            {
+                partialLevel = 0;
+            }
+            
+            
+            vec.push_back( Partial( partialFreq, partialLevel, getAngleDelta(partialFreq)  ) );
+        }
         
     }
+    
+    void fillVecTriWave (std::vector<Partial>& vec, double fundFreq, double level, int nbPartials)
+    {
+        vec.clear();
+        bool neg = false;
+        
+        for(int i=1; i<=nbPartials ;i++)
+        {
+            double partialFreq = i*fundFreq;
+            double partialLevel = 0;
+            
+            
+            if(i % 2 != 0)
+            {
+                partialLevel = level/(i*i);
+                
+                if(neg)
+                    partialLevel = 0 - partialLevel;
+                
+                neg = !neg;
+            }
+            else
+            {
+                partialLevel = 0;
+            }
+            
+            vec.push_back( Partial( partialFreq, partialLevel, getAngleDelta(partialFreq)  ) );
+            
+        }
+        
+    }
+    
     
     double getAngleDelta (double freq)
     {
@@ -102,7 +196,7 @@ public:
     {
         currentSampleRate = sampleRate;
         
-        updateVecAllPartials(currentFundFrequency, mCurrentLevel, mNbPartials);
+        fillVecWaveform(vecPartials, currentFundFrequency, mCurrentLevel, mNbPartials);
         
     }
     
@@ -122,13 +216,13 @@ public:
             
             float currentSample = 0;
             
-            if(vecAllPartials.size() >= 1)
+            if(vecPartials.size() >= 1)
             {
                 for(int i=0; i<mNbPartials;i++)
                 {
-                    float partialSample = (float) std::sin (vecAllPartials[i].angle );
-                    vecAllPartials[i].angle = vecAllPartials[i].angle + vecAllPartials[i].angleDelta;
-                    currentSample += partialSample * vecAllPartials[i].amplitude;
+                    float partialSample = (float) std::sin (vecPartials[i].angle );
+                    vecPartials[i].angle = vecPartials[i].angle + vecPartials[i].angleDelta;
+                    currentSample += partialSample * vecPartials[i].amplitude;
 
                 }
             }
@@ -145,11 +239,12 @@ public:
 private:
     Slider frequencySlider;
     Slider numberPartialsSlider;
-    int mNbPartials;
+    ComboBox waveformCombobox;
+    int mNbPartials, mMaxNbPartials, mWaveTypeNb;
     double mCurrentLevel, currentFundFrequency, currentSampleRate;
     
-    std::vector<Partial> vecAllPartials;
-    
+    std::vector<Partial> vecPartials;
+ 
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
