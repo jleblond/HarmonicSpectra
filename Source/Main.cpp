@@ -9,15 +9,16 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "app/maincomponent.h"
 
 Component* createMainContentComponent();
 
 //==============================================================================
-class tutorial_sine_synthApplication  : public JUCEApplication
+class InnerEar_HarmonicSpectra_Application  : public JUCEApplication
 {
 public:
     //==============================================================================
-    tutorial_sine_synthApplication() {}
+    InnerEar_HarmonicSpectra_Application() {}
 
     const String getApplicationName() override       { return ProjectInfo::projectName; }
     const String getApplicationVersion() override    { return ProjectInfo::versionString; }
@@ -99,4 +100,4 @@ private:
 
 //==============================================================================
 // This macro generates the main() routine that launches the app.
-START_JUCE_APPLICATION (tutorial_sine_synthApplication)
+START_JUCE_APPLICATION (InnerEar_HarmonicSpectra_Application)

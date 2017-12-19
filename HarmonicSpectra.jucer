@@ -5,10 +5,17 @@
               jucerVersion="5.1.2" displaySplashScreen="1" reportAppUsage="1"
               splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="afUgqg" name="Harmonic Spectra">
-    <GROUP id="{FAC3FC1F-70C0-E112-65F4-866DB383CDE8}" name="Source">
-      <FILE id="QvVizd" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
-      <FILE id="QwOAny" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    <FILE id="vhBgkL" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    <GROUP id="{835E826D-D428-4BFC-8FB2-D29F8AD694BC}" name="app">
+      <FILE id="u4DFvv" name="maincomponent.h" compile="0" resource="0" file="Source/app/maincomponent.h"/>
+    </GROUP>
+    <GROUP id="{59938F7F-CF97-AF8C-536A-0D7BF0C34F11}" name="audio">
+      <FILE id="D9mnnA" name="synthesis.cpp" compile="1" resource="0" file="Source/audio/synthesis.cpp"/>
+      <FILE id="WlesYp" name="synthesis.h" compile="0" resource="0" file="Source/audio/synthesis.h"/>
+    </GROUP>
+    <GROUP id="{80EC68CA-2F15-EFE9-6FAA-1BC20E1623E9}" name="util">
+      <FILE id="yCSoYW" name="utility.cpp" compile="1" resource="0" file="Source/util/utility.cpp"/>
+      <FILE id="eJtetu" name="utility.h" compile="0" resource="0" file="Source/util/utility.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
