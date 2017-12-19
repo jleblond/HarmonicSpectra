@@ -2,6 +2,8 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include <assert.h>
+
 
 struct Partial
 {
@@ -25,7 +27,7 @@ public:
     MainContentComponent()
     :   mNbPartials(1), //default nb at intialization
         mMaxNbPartials(64),
-        mWaveTypeNb(2),
+        mWaveTypeNb(1),
         currentSampleRate (0.0),
         mCurrentLevel (0.1)
 
@@ -90,11 +92,6 @@ public:
     
     void sliderValueChanged (Slider* slider) override
     {
-        if (slider == &frequencySlider)
-        {
-//            if (currentSampleRate > 0.0)
-//                updateAngleDelta();
-        }
     }
     
     
@@ -139,15 +136,8 @@ public:
             double partialLevel = 0;
             
             if(i % 2 != 0)
-            {
                 partialLevel = level/i;
-            }
-            else
-            {
-                partialLevel = 0;
-            }
-            
-            
+        
             vec.push_back( Partial( partialFreq, partialLevel, getAngleDelta(partialFreq)  ) );
         }
         
@@ -163,19 +153,14 @@ public:
             double partialFreq = i*fundFreq;
             double partialLevel = 0;
             
-            
             if(i % 2 != 0)
             {
                 partialLevel = level/(i*i);
                 
                 if(neg)
-                    partialLevel = 0 - partialLevel;
+                    partialLevel = -partialLevel;
                 
                 neg = !neg;
-            }
-            else
-            {
-                partialLevel = 0;
             }
             
             vec.push_back( Partial( partialFreq, partialLevel, getAngleDelta(partialFreq)  ) );
@@ -187,6 +172,7 @@ public:
     
     double getAngleDelta (double freq)
     {
+        assert ( currentSampleRate > 0.0);
         const double cyclesPerSample = freq / currentSampleRate;
         return cyclesPerSample * 2.0 * double_Pi;    //angleDelta
     }
@@ -210,9 +196,6 @@ public:
         
         for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
         {
-//            const float currentSample = (float) std::sin (currentAngle);
-//            currentAngle += angleDelta;
-//            buffer[sample] = currentSample * level;
             
             float currentSample = 0;
             
@@ -221,7 +204,7 @@ public:
                 for(int i=0; i<mNbPartials;i++)
                 {
                     float partialSample = (float) std::sin (vecPartials[i].angle );
-                    vecPartials[i].angle = vecPartials[i].angle + vecPartials[i].angleDelta;
+                    vecPartials[i].angle += vecPartials[i].angleDelta;
                     currentSample += partialSample * vecPartials[i].amplitude;
 
                 }
@@ -237,12 +220,11 @@ public:
     
     
 private:
-    Slider frequencySlider;
-    Slider numberPartialsSlider;
+    Slider frequencySlider, numberPartialsSlider;
     ComboBox waveformCombobox;
+    
     int mNbPartials, mMaxNbPartials, mWaveTypeNb;
     double mCurrentLevel, currentFundFrequency, currentSampleRate;
-    
     std::vector<Partial> vecPartials;
  
     
