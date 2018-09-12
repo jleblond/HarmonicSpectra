@@ -17,8 +17,8 @@
 
 struct Partial
 {
-    Partial(double freq, double ampl, double angDelta, double ang = 0)
-    : frequency(freq), amplitude(ampl), angleDelta(angDelta), angle(ang)
+    Partial (double freq, double ampl, double angDelta, double ang = 0)
+    : frequency (freq), amplitude (ampl), angleDelta (angDelta), angle (ang)
     { }
     
     double frequency;
@@ -35,10 +35,10 @@ class Synthesis
 public:
     static Synthesis& Instance();
     
-    void setSampleRate(double sampleRate);
+    void setSampleRate (double sampleRate);
     const double getSampleRate() const;
     
-    void setCurrentLevel(double currLevel);
+    void setCurrentLevel (double currLevel);
     const double getCurrentLevel() const;
     
     void setCurrentFundFrequency (double currFundFrequency);
@@ -70,5 +70,7 @@ private:
     int mWaveType, mNbPartials;
     
     std::vector<Partial> mVecPartials;
+    
+    void normalizePartialsAmp(std::vector<Partial>& vec);
     
 };

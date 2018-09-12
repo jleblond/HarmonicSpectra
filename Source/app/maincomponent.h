@@ -13,29 +13,32 @@
 #include "../util/utility.h"
 #include "../audio/synthesis.h"
 
-class MainContentComponent   : public AudioAppComponent,
-public Slider::Listener,
-public ComboBox::Listener
+
+class MainContentComponent   :  public AudioAppComponent,
+                                public Slider::Listener,
+                                public ComboBox::Listener
 {
 public:
     MainContentComponent()
-    :   mMaxNbPartials(64)
+    :   mMaxNbPartials (128)
     {
         addAndMakeVisible (mFrequencySlider);
         mFrequencySlider.setRange (20.0, 20000.0);
-        mFrequencySlider.setSkewFactorFromMidPoint (500.0); // [4]
+        mFrequencySlider.setSkewFactorFromMidPoint (500.0);
         mFrequencySlider.addListener (this);
         
         addAndMakeVisible (mNumberPartialsSlider);
         mNumberPartialsSlider.setRange (1, mMaxNbPartials, 1);
-        mNumberPartialsSlider.addListener(this);
+        mNumberPartialsSlider.addListener (this);
         
-        addAndMakeVisible(mWaveformCombobox);
-        mWaveformCombobox.addItem("Sawtooth", 1);
-        mWaveformCombobox.addItem("Square", 2);
-        mWaveformCombobox.addItem("Triangle", 3);
-        mWaveformCombobox.setSelectedId(1);
-        mWaveformCombobox.addListener(this);
+        addAndMakeVisible (mWaveformCombobox);
+        mWaveformCombobox.addItem ("Sine", 1);
+        mWaveformCombobox.addItem ("Square", 2);
+        mWaveformCombobox.addItem ("Triangle", 3);
+        mWaveformCombobox.addItem ("Sawtooth", 4);
+        mWaveformCombobox.addItem ("Steeper Saw", 5);
+        mWaveformCombobox.setSelectedId (1);
+        mWaveformCombobox.addListener (this);
         
         setSize (600, 200);
         setAudioChannels (0, 1);
@@ -55,21 +58,21 @@ public:
     
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override
     {
-        if(comboBoxThatHasChanged == &mWaveformCombobox)
+        if (comboBoxThatHasChanged == &mWaveformCombobox)
         {
             int waveType = mWaveformCombobox.getSelectedId();
-            Synthesis::Instance().setWaveType(waveType);
+            Synthesis::Instance().setWaveType (waveType);
             
             Synthesis::Instance().fillVecPartials();
         }
     }
     
-    void sliderDragEnded  (Slider* slider) override
+    void sliderDragEnded (Slider* slider) override
     {
         if (slider == &mFrequencySlider)
         {
             int currentFundFrequency = mFrequencySlider.getValue();
-            Synthesis::Instance().setCurrentFundFrequency(currentFundFrequency);
+            Synthesis::Instance().setCurrentFundFrequency (currentFundFrequency);
             
             Synthesis::Instance().fillVecPartials();
             
@@ -77,8 +80,8 @@ public:
         
         if (slider == &mNumberPartialsSlider)
         {
-            int nbPartials = static_cast<int> (mNumberPartialsSlider.getValue());
-            Synthesis::Instance().setNbPartials(nbPartials);
+            int nbPartials = static_cast<int> ( mNumberPartialsSlider.getValue() );
+            Synthesis::Instance().setNbPartials (nbPartials);
             
             Synthesis::Instance().fillVecPartials();
         }
@@ -92,7 +95,7 @@ public:
     
     void prepareToPlay (int /*samplesPerBlockExpected*/, double sampleRate) override
     {
-        Synthesis::Instance().setSampleRate(sampleRate);
+        Synthesis::Instance().setSampleRate (sampleRate);
         
         Synthesis::Instance().fillVecPartials();
         
