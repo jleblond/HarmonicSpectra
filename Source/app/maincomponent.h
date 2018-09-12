@@ -33,10 +33,20 @@ public:
         
         addAndMakeVisible (mWaveformCombobox);
         mWaveformCombobox.addItem ("Sine", 1);
+        mWaveformCombobox.addSeparator();
+        mWaveformCombobox.addSectionHeading ("ODD Partials");
         mWaveformCombobox.addItem ("Square", 2);
-        mWaveformCombobox.addItem ("Triangle", 3);
-        mWaveformCombobox.addItem ("Sawtooth", 4);
-        mWaveformCombobox.addItem ("Steeper Saw", 5);
+        mWaveformCombobox.addItem ("Square Triangled", 3);
+        mWaveformCombobox.addItem ("Square-Tri or Tri-Square", 4);
+        mWaveformCombobox.addItem ("Triangle Squared", 5);
+        mWaveformCombobox.addItem ("Triangle", 6);
+        mWaveformCombobox.addSeparator();
+        mWaveformCombobox.addSectionHeading ("ALL Partials");
+        mWaveformCombobox.addItem ("Sawtooth", 7);
+        mWaveformCombobox.addItem ("Steeper Saw", 8);
+        mWaveformCombobox.addItem ("Very Steep Saw", 9);
+        mWaveformCombobox.addItem ("Almost-Exponential Saw", 10);
+        mWaveformCombobox.addItem ("Exponential Saw", 11);
         mWaveformCombobox.setSelectedId (1);
         mWaveformCombobox.addListener (this);
         

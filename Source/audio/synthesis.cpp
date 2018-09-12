@@ -146,6 +146,8 @@ void Synthesis::fillVecPartials ()
             double partialFreq = i*mCurrentFundFrequency;
             double partialLevel = 0;
             
+
+            
             switch (mWaveType)
             {
                     //SQUARE
@@ -155,8 +157,26 @@ void Synthesis::fillVecPartials ()
                     
                     break;
                     
-                    //TRI
                 case 3:
+                    if (i % 2 != 0)
+                        partialLevel = mCurrentLevel/pow (i, 1.25);
+                    
+                    break;
+                    
+                case 4:
+                    if (i % 2 != 0)
+                        partialLevel = mCurrentLevel/pow (i, 1.50);
+                    
+                    break;
+                    
+                case 5:
+                    if (i % 2 != 0)
+                        partialLevel = mCurrentLevel/pow (i, 1.75);
+                    
+                    break;
+                    
+                    //TRI
+                case 6:
                     if (i % 2 != 0)
                     {
                         partialLevel = mCurrentLevel/(i*i);
@@ -169,13 +189,25 @@ void Synthesis::fillVecPartials ()
                     break;
                     
                     //SAW
-                case 4:
+                case 7:
                     partialLevel = mCurrentLevel/(i);
                     break;
                     
                     // STEEPER SAW
-                case 5:
-                    partialLevel = mCurrentLevel/pow (i, 1.2);  // 6 divided by 5 = 1.2
+                case 8:
+                    partialLevel = mCurrentLevel/pow (i, 1.25);
+                    break;
+                    
+                case 9:
+                    partialLevel = mCurrentLevel/pow (i, 1.5);
+                    break;
+                    
+                case 10:
+                    partialLevel = mCurrentLevel/pow (i, 1.75);
+                    break;
+                
+                case 11:
+                    partialLevel = mCurrentLevel/pow (i, 2.0);
                     break;
                     
             }; //switch
