@@ -67,8 +67,10 @@ endif
 
 OBJECTS_APP := \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
-  $(JUCE_OBJDIR)/synthesis_9946479c.o \
-  $(JUCE_OBJDIR)/utility_1d6c4148.o \
+  $(JUCE_OBJDIR)/SynthesisEngine_cea5316.o \
+  $(JUCE_OBJDIR)/ExerciseBuilder_bb89fefc.o \
+  $(JUCE_OBJDIR)/ReportBuilder_9688b320.o \
+  $(JUCE_OBJDIR)/Utility_80d5e928.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
   $(JUCE_OBJDIR)/include_juce_audio_devices_63111d02.o \
   $(JUCE_OBJDIR)/include_juce_audio_formats_15f82001.o \
@@ -100,14 +102,24 @@ $(JUCE_OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	@echo "Compiling Main.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/synthesis_9946479c.o: ../../Source/audio/synthesis.cpp
+$(JUCE_OBJDIR)/SynthesisEngine_cea5316.o: ../../Source/core/audio/SynthesisEngine.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling synthesis.cpp"
+	@echo "Compiling SynthesisEngine.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/utility_1d6c4148.o: ../../Source/util/utility.cpp
+$(JUCE_OBJDIR)/ExerciseBuilder_bb89fefc.o: ../../Source/core/ExerciseBuilder.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling utility.cpp"
+	@echo "Compiling ExerciseBuilder.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/ReportBuilder_9688b320.o: ../../Source/core/ReportBuilder.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling ReportBuilder.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Utility_80d5e928.o: ../../Source/util/Utility.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Utility.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o: ../../JuceLibraryCode/include_juce_audio_basics.cpp

@@ -8,7 +8,7 @@
   ==============================================================================
 */
 
-#include "utility.h"
+#include "Utility.h"
 
 namespace utility
 {

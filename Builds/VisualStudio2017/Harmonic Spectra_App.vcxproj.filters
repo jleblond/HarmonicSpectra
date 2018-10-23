@@ -2,11 +2,14 @@
 
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Harmonic Spectra\app">
-      <UniqueIdentifier>{59A4C735-821E-C665-E7AD-71AEF9710F8D}</UniqueIdentifier>
+    <Filter Include="Harmonic Spectra\core\audio">
+      <UniqueIdentifier>{85C66D9F-604A-F425-2CC7-1B5C45F60885}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Harmonic Spectra\audio">
-      <UniqueIdentifier>{DE6E5F78-CE9F-CF03-50A3-12DFB08DD6F7}</UniqueIdentifier>
+    <Filter Include="Harmonic Spectra\core">
+      <UniqueIdentifier>{EFA2AB4C-FC36-7EDA-9331-D7AC7A7ECC09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Harmonic Spectra\gui">
+      <UniqueIdentifier>{F221ABF5-EA0E-FA6B-F5DD-C80818FB0326}</UniqueIdentifier>
     </Filter>
     <Filter Include="Harmonic Spectra\util">
       <UniqueIdentifier>{D10A85B1-6501-5602-87A4-561A4365F99E}</UniqueIdentifier>
@@ -379,10 +382,16 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Harmonic Spectra</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\audio\synthesis.cpp">
-      <Filter>Harmonic Spectra\audio</Filter>
+    <ClCompile Include="..\..\Source\core\audio\SynthesisEngine.cpp">
+      <Filter>Harmonic Spectra\core\audio</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\util\utility.cpp">
+    <ClCompile Include="..\..\Source\core\ExerciseBuilder.cpp">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\core\ReportBuilder.cpp">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\util\Utility.cpp">
       <Filter>Harmonic Spectra\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
@@ -2145,13 +2154,58 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\app\maincomponent.h">
-      <Filter>Harmonic Spectra\app</Filter>
+    <ClInclude Include="..\..\Source\core\audio\SynthesisEngine.h">
+      <Filter>Harmonic Spectra\core\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\audio\synthesis.h">
-      <Filter>Harmonic Spectra\audio</Filter>
+    <ClInclude Include="..\..\Source\core\MainComponent.h">
+      <Filter>Harmonic Spectra\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\util\utility.h">
+    <ClInclude Include="..\..\Source\core\User.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\Session.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\Exercise.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\ExerciseBuilder.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\StatsSheet.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\Comment.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\Report.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\ReportBuilder.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\MainApplication.h">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\HeaderView.h">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\QuestionsView.h">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\MainWindow.h">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\VolumeView.h">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\StatsView.h">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\util\Utility.h">
       <Filter>Harmonic Spectra\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">

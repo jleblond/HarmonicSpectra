@@ -146,8 +146,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
-    <ClCompile Include="..\..\Source\audio\synthesis.cpp"/>
-    <ClCompile Include="..\..\Source\util\utility.cpp"/>
+    <ClCompile Include="..\..\Source\core\audio\SynthesisEngine.cpp"/>
+    <ClCompile Include="..\..\Source\core\ExerciseBuilder.cpp"/>
+    <ClCompile Include="..\..\Source\core\ReportBuilder.cpp"/>
+    <ClCompile Include="..\..\Source\util\Utility.cpp"/>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1757,9 +1759,24 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\app\maincomponent.h"/>
-    <ClInclude Include="..\..\Source\audio\synthesis.h"/>
-    <ClInclude Include="..\..\Source\util\utility.h"/>
+    <ClInclude Include="..\..\Source\core\audio\SynthesisEngine.h"/>
+    <ClInclude Include="..\..\Source\core\MainComponent.h"/>
+    <ClInclude Include="..\..\Source\core\User.h"/>
+    <ClInclude Include="..\..\Source\core\Session.h"/>
+    <ClInclude Include="..\..\Source\core\Exercise.h"/>
+    <ClInclude Include="..\..\Source\core\ExerciseBuilder.h"/>
+    <ClInclude Include="..\..\Source\core\StatsSheet.h"/>
+    <ClInclude Include="..\..\Source\core\Comment.h"/>
+    <ClInclude Include="..\..\Source\core\Report.h"/>
+    <ClInclude Include="..\..\Source\core\ReportBuilder.h"/>
+    <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
+    <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>
+    <ClInclude Include="..\..\Source\gui\HeaderView.h"/>
+    <ClInclude Include="..\..\Source\gui\QuestionsView.h"/>
+    <ClInclude Include="..\..\Source\gui\MainWindow.h"/>
+    <ClInclude Include="..\..\Source\gui\VolumeView.h"/>
+    <ClInclude Include="..\..\Source\gui\StatsView.h"/>
+    <ClInclude Include="..\..\Source\util\Utility.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>
