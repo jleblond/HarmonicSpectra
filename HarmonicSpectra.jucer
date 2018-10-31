@@ -6,16 +6,47 @@
               splashScreenColour="Dark" cppLanguageStandard="11">
   <MAINGROUP id="afUgqg" name="Harmonic Spectra">
     <FILE id="vhBgkL" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-    <GROUP id="{835E826D-D428-4BFC-8FB2-D29F8AD694BC}" name="app">
-      <FILE id="u4DFvv" name="maincomponent.h" compile="0" resource="0" file="Source/app/maincomponent.h"/>
+    <GROUP id="{C025B8A0-7621-C485-CA70-BC03D60D70FA}" name="core">
+      <GROUP id="{3EE168FC-1A2A-6193-9F38-453780809CEE}" name="audio">
+        <FILE id="KM9rfI" name="SynthesisEngine.h" compile="0" resource="0"
+              file="Source/core/audio/SynthesisEngine.h"/>
+        <FILE id="XDztiC" name="SynthesisEngine.cpp" compile="1" resource="0"
+              file="Source/core/audio/SynthesisEngine.cpp"/>
+      </GROUP>
+      <FILE id="bkrX3P" name="MainComponent.h" compile="0" resource="0" file="Source/core/MainComponent.h"/>
+      <FILE id="L7ikBJ" name="User.h" compile="0" resource="0" file="Source/core/User.h"/>
+      <FILE id="qlB7zO" name="Session.h" compile="0" resource="0" file="Source/core/Session.h"/>
+      <FILE id="S5Ys1F" name="Exercise.h" compile="0" resource="0" file="Source/core/Exercise.h"/>
+      <FILE id="AAVomQ" name="ExerciseBuilder.h" compile="0" resource="0"
+            file="Source/core/ExerciseBuilder.h"/>
+      <FILE id="APLofj" name="ExerciseBuilder.cpp" compile="1" resource="0"
+            file="Source/core/ExerciseBuilder.cpp"/>
+      <FILE id="WCxncW" name="StatsSheet.h" compile="0" resource="0" file="Source/core/StatsSheet.h"/>
+      <FILE id="XLz2e2" name="Comment.h" compile="0" resource="0" file="Source/core/Comment.h"/>
+      <FILE id="V7Hz4K" name="Report.h" compile="0" resource="0" file="Source/core/Report.h"/>
+      <FILE id="HrsmfT" name="ReportBuilder.h" compile="0" resource="0" file="Source/core/ReportBuilder.h"/>
+      <FILE id="mhYUw1" name="ReportBuilder.cpp" compile="1" resource="0"
+            file="Source/core/ReportBuilder.cpp"/>
     </GROUP>
-    <GROUP id="{59938F7F-CF97-AF8C-536A-0D7BF0C34F11}" name="audio">
-      <FILE id="D9mnnA" name="synthesis.cpp" compile="1" resource="0" file="Source/audio/synthesis.cpp"/>
-      <FILE id="WlesYp" name="synthesis.h" compile="0" resource="0" file="Source/audio/synthesis.h"/>
+    <GROUP id="{E8254A5C-7149-F172-F8EC-CEFD48AC03B2}" name="gui">
+      <GROUP id="{656E2D66-5E62-6228-EEBF-A3E90555CA6F}" name="img">
+        <FILE id="nRhQUZ" name="logo.png" compile="0" resource="1" file="Source/gui/img/logo.png"/>
+      </GROUP>
+      <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"
+            file="Source/gui/MainApplication.h"/>
+      <FILE id="duwANs" name="UserConfigView.h" compile="0" resource="0"
+            file="Source/gui/UserConfigView.h"/>
+      <FILE id="cjUuPq" name="ExerciseConfigView.h" compile="0" resource="0"
+            file="Source/gui/ExerciseConfigView.h"/>
+      <FILE id="SSfgJm" name="HeaderView.h" compile="0" resource="0" file="Source/gui/HeaderView.h"/>
+      <FILE id="eb8Snm" name="QuestionsView.h" compile="0" resource="0" file="Source/gui/QuestionsView.h"/>
+      <FILE id="WLvkwk" name="MainWindow.h" compile="0" resource="0" file="Source/gui/MainWindow.h"/>
+      <FILE id="rdpbXC" name="VolumeView.h" compile="0" resource="0" file="Source/gui/VolumeView.h"/>
+      <FILE id="ng1Scn" name="StatsView.h" compile="0" resource="0" file="Source/gui/StatsView.h"/>
     </GROUP>
     <GROUP id="{80EC68CA-2F15-EFE9-6FAA-1BC20E1623E9}" name="util">
-      <FILE id="yCSoYW" name="utility.cpp" compile="1" resource="0" file="Source/util/utility.cpp"/>
-      <FILE id="eJtetu" name="utility.h" compile="0" resource="0" file="Source/util/utility.h"/>
+      <FILE id="eJtetu" name="Utility.h" compile="0" resource="0" file="Source/util/Utility.h"/>
+      <FILE id="yCSoYW" name="Utility.cpp" compile="1" resource="0" file="Source/util/Utility.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

@@ -10,8 +10,17 @@
 
 #pragma once
 
-struct Exercise
+
+class Exercise
 {
-   
+public:
+    
+protected:
+    int m_audibleRange = 100;
+    int m_partialOptionNb = 0;
+    
+    
+    int m_baseFreq = 200;
+    int m_nbAmplitudeRatios = 2;
     
 };
