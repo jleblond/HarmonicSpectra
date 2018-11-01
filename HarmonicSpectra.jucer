@@ -34,6 +34,8 @@
       </GROUP>
       <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"
             file="Source/gui/MainApplication.h"/>
+      <FILE id="FOTmVr" name="MainApplication.cpp" compile="1" resource="0"
+            file="Source/gui/MainApplication.cpp"/>
       <FILE id="duwANs" name="UserConfigView.h" compile="0" resource="0"
             file="Source/gui/UserConfigView.h"/>
       <FILE id="cjUuPq" name="ExerciseConfigView.h" compile="0" resource="0"

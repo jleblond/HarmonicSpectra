@@ -149,6 +149,7 @@
     <ClCompile Include="..\..\Source\core\audio\SynthesisEngine.cpp"/>
     <ClCompile Include="..\..\Source\core\ExerciseBuilder.cpp"/>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp"/>
+    <ClCompile Include="..\..\Source\gui\MainApplication.cpp"/>
     <ClCompile Include="..\..\Source\util\Utility.cpp"/>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>

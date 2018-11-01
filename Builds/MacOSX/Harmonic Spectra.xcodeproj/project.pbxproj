@@ -25,6 +25,7 @@
 		CEFC74738615FEEC7D3AA6DA = {isa = PBXBuildFile; fileRef = E89D804C3FFA09CA8AECD0FC; };
 		6961305B834A9B7E24B46228 = {isa = PBXBuildFile; fileRef = 5320ED48F63010122F5C0A7A; };
 		E3914982B8A13E2DE498B723 = {isa = PBXBuildFile; fileRef = C0EBC56D5FDC592DC3C42120; };
+		855441E5C0A88951415C9D66 = {isa = PBXBuildFile; fileRef = 64240E580A5D043A76AB163C; };
 		83AA840D5980B90F8259AD8F = {isa = PBXBuildFile; fileRef = B47676173C50A159E4145098; };
 		56061A5D130D7C43850D8F8B = {isa = PBXBuildFile; fileRef = 3BA9BBD3DA196A8C276DFE30; };
 		2C6768F059FA54F99FE890FE = {isa = PBXBuildFile; fileRef = 4B90D6616A4442080B852F02; };
@@ -71,6 +72,7 @@
 		537BBDB684B22E3FFBE82E0D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_video.mm"; path = "../../JuceLibraryCode/include_juce_video.mm"; sourceTree = "SOURCE_ROOT"; };
 		560967F3C9E78ABFA83FF8C4 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_audio_basics"; path = "../../modules/juce_audio_basics"; sourceTree = "SOURCE_ROOT"; };
 		57FD5CDA9D03E7346D3D6BE0 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		64240E580A5D043A76AB163C = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MainApplication.cpp; path = ../../Source/gui/MainApplication.cpp; sourceTree = "SOURCE_ROOT"; };
 		66BE8FAAE0BF77E78FDEF901 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = "SOURCE_ROOT"; };
 		6E77E53CA047AF8F6545EEF7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainWindow.h; path = ../../Source/gui/MainWindow.h; sourceTree = "SOURCE_ROOT"; };
 		701BCF7D49EB1EBEAA12BB57 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -135,6 +137,7 @@
 		D1AEE672260F924602A5725C = {isa = PBXGroup; children = (
 					D0BAC5B75A5E88BFF4311D89,
 					21730B32E03B82A2FF75265D,
+					64240E580A5D043A76AB163C,
 					0A1F75871D4C276041B9F0C9,
 					0E5127F2C3103A04CB32474C,
 					C17AE8E43C297AE9BF5953E9,
@@ -361,6 +364,7 @@
 					CEFC74738615FEEC7D3AA6DA,
 					6961305B834A9B7E24B46228,
 					E3914982B8A13E2DE498B723,
+					855441E5C0A88951415C9D66,
 					83AA840D5980B90F8259AD8F,
 					56061A5D130D7C43850D8F8B,
 					2C6768F059FA54F99FE890FE,

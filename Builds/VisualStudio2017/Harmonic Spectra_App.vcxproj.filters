@@ -394,6 +394,9 @@
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp">
       <Filter>Harmonic Spectra\core</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\gui\MainApplication.cpp">
+      <Filter>Harmonic Spectra\gui</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\util\Utility.cpp">
       <Filter>Harmonic Spectra\util</Filter>
     </ClCompile>
