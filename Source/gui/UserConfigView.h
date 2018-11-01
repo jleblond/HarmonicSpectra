@@ -41,23 +41,20 @@ public:
     
     void paint (Graphics& g) override
     {
-        
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-        
+        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+    
         g.setColour (Colours::grey);
         g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
         
-        //g.setColour (Colours::white);
         g.setFont (14.0f);
         g.drawText ("Start a new session", getLocalBounds(),
-                    Justification::centred, true);   // draw some placeholder text
+                    Justification::centred, true);
     }
     
     void resized() override
     {
         Rectangle<int> area (getLocalBounds());
         // m_TextField.setBounds(area.removeFromBottom(0.4*getHeight()));
-        
     }
     
     String getTextFieldValue()
