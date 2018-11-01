@@ -385,6 +385,9 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Harmonic Spectra</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\core\Config.cpp">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\core\audio\SynthesisEngine.cpp">
       <Filter>Harmonic Spectra\core\audio</Filter>
     </ClCompile>
@@ -2163,6 +2166,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\core\Config.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\core\audio\SynthesisEngine.h">
       <Filter>Harmonic Spectra\core\audio</Filter>
     </ClInclude>

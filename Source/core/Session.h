@@ -9,3 +9,9 @@
 */
 
 #pragma once
+
+
+class Session
+{
+    Session(){}
+};

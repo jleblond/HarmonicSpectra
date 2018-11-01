@@ -74,8 +74,8 @@ void MainApplication::buttonClicked(Button* button)
     if(button == &m_createUserButton)
     {
         String username = m_userConfigView.getTextFieldValue();
+        Config::user = std::make_shared<User>(username);
         
-            
         showUserConfig(false);
         showExerciseConfig(true);
     }
@@ -83,6 +83,15 @@ void MainApplication::buttonClicked(Button* button)
     {
         showExerciseConfig(false);
 
+    }
+    
+    if(button == &m_endSessionButton)
+    {
+        //hide curr windows
+        
+        //report generation options
+        
+        showUserConfig(true);
     }
 }
     

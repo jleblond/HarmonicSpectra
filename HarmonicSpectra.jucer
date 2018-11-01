@@ -7,6 +7,8 @@
   <MAINGROUP id="afUgqg" name="Harmonic Spectra">
     <FILE id="vhBgkL" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     <GROUP id="{C025B8A0-7621-C485-CA70-BC03D60D70FA}" name="core">
+      <FILE id="gs4ReB" name="Config.h" compile="0" resource="0" file="Source/core/Config.h"/>
+      <FILE id="LKhPGV" name="Config.cpp" compile="1" resource="0" file="Source/core/Config.cpp"/>
       <GROUP id="{3EE168FC-1A2A-6193-9F38-453780809CEE}" name="audio">
         <FILE id="KM9rfI" name="SynthesisEngine.h" compile="0" resource="0"
               file="Source/core/audio/SynthesisEngine.h"/>

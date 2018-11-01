@@ -9,6 +9,8 @@
 */
 
 #pragma once
+#include "../JuceLibraryCode/JuceHeader.h"
+
 #include "Session.h"
 
 class User
@@ -24,10 +26,15 @@ public:
     std::shared_ptr<Session>& getLastSession()
     {
         assert(m_vecSessions.size()>0);
-        return m_vecSession.back();
+        return m_vecSessions.back();
     }
     
-protected:
+    String getUsername()
+    {
+        return m_username;
+    }
+    
+private:
     String m_username = "";
     std::vector<std::shared_ptr<Session>> m_vecSessions;
     

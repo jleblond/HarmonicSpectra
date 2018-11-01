@@ -15,47 +15,94 @@
 //==============================================================================
 /*
 */
-class ExerciseConfigView    : public Component
+class ExerciseConfigView : public Component,
+public Button::Listener, public Slider::Listener, public ComboBox::Listener
 {
 public:
+    enum RadioButtonIds
+    {
+        PartialsButtons = 1001
+    };
+    
     ExerciseConfigView()
     {
-        // In your constructor, you should add any child components, and
-        // initialise any special settings that your component needs.
-
+        addAndMakeVisible(m_titleLabel);
+        
+        addAndMakeVisible (m_partialsLabel);
+        
+        addAndMakeVisible (m_allPartialsButton);
+        addAndMakeVisible (m_oddPartialsButton);
+        addAndMakeVisible (m_oddorallPartialsButton);
+//        m_allPartialsButton.onClick = [this] { updateToggleState (&m_allPartialsButton, "All"); };
+//        m_oddPartialsButton  .onClick = [this] { updateToggleState (&m_oddPartialsButton,   "Odd");   };
+//        m_oddorallPartialsButton .onClick = [this] { updateToggleState (&m_oddorallPartialsButton,  "Odd OR All");  };
+        
+        m_allPartialsButton.setRadioGroupId (PartialsButtons);
+        m_oddPartialsButton.setRadioGroupId (PartialsButtons);
+        m_oddorallPartialsButton.setRadioGroupId (PartialsButtons);
+        
+        m_allPartialsButton .setClickingTogglesState (true);
+        m_oddPartialsButton   .setClickingTogglesState (true);
+        m_oddorallPartialsButton  .setClickingTogglesState (true);
+        
+        m_allPartialsButton.triggerClick();
+        
     }
-
+    
     ~ExerciseConfigView()
     {
+        
     }
-
-    void paint (Graphics& g) override
+    
+    void paint(Graphics& g) override
     {
-        /* This demo code just fills the component's background and
-           draws some placeholder text to get you started.
-
-           You should replace everything in this method with your own
-           drawing code..
-        */
-
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-
-        g.setColour (Colours::grey);
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
-        g.setColour (Colours::white);
-        g.setFont (14.0f);
-        g.drawText ("ExerciseConfigView", getLocalBounds(),
-                    Justification::centred, true);   // draw some placeholder text
+      
     }
-
+    
     void resized() override
     {
-        // This method is where you should set the bounds of any child
-        // components that your component contains..
+        m_titleLabel.setBounds(0.45*getWidth(), 0.03*getHeight(), 0.6*getWidth(), 80);
+        
+        m_partialsLabel.setBounds(0.15*getWidth(), 0.23*getHeight(), 0.1*getWidth(), 0.07*getHeight());
+        m_allPartialsButton.setBounds(0.15*getWidth(), 0.3*getHeight(), 0.1*getWidth(), 0.07*getHeight());
+        m_oddPartialsButton.setBounds(0.25*getWidth(), 0.3*getHeight(), 0.1*getWidth(), 0.07*getHeight());
+        m_oddorallPartialsButton.setBounds(0.35*getWidth(), 0.3*getHeight(), 0.1*getWidth(), 0.07*getHeight());
+        
+    }
+    
+    void buttonClicked(Button* button) override
+    {
+    
+        
+    }
+    
+    void sliderValueChanged (Slider* slider) override
+    {
 
     }
-
+    
+    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override
+    {
+      
+    }
+    
+//    void updateToggleState (Button* button, String name)
+//    {
+//        auto state = button->getToggleState();
+//        String stateString    = state ? "ON" : "OFF";
+//        String selectedString = state ? " (selected)" : "";
+//
+//        Logger::outputDebugString (name + " Button changed to " + stateString);
+//        button->setButtonText (name + selectedString);
+//    }
+   
+    
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ExerciseConfigView)
+    Label m_titleLabel { {}, "EXERCISE PARAMETERS"};
+    
+    Label m_partialsLabel { {}, "Partials"};
+    TextButton m_allPartialsButton {"All"};
+    TextButton m_oddPartialsButton {"Odd"};
+    TextButton m_oddorallPartialsButton {"Odd OR All"};
 };
+

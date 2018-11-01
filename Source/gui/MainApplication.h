@@ -20,6 +20,8 @@
 #include "VolumeView.h"
 #include "StatsView.h"
 
+#include "../core/Config.h"
+
 const int HEIGHT = 700;
 const int WIDTH = 900;
 

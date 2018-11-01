@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
+    <ClCompile Include="..\..\Source\core\Config.cpp"/>
     <ClCompile Include="..\..\Source\core\audio\SynthesisEngine.cpp"/>
     <ClCompile Include="..\..\Source\core\ExerciseBuilder.cpp"/>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp"/>
@@ -1761,6 +1762,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\core\Config.h"/>
     <ClInclude Include="..\..\Source\core\audio\SynthesisEngine.h"/>
     <ClInclude Include="..\..\Source\core\MainComponent.h"/>
     <ClInclude Include="..\..\Source\core\User.h"/>
