@@ -12,7 +12,7 @@
 #include "core/MainComponent.h"
 #include "gui/MainApplication.h"
 
-//Component* createMainContentComponent();
+Component* createMainContentComponent();
 
 //==============================================================================
 class InnerEar_HarmonicSpectra_Application  : public JUCEApplication
@@ -69,7 +69,7 @@ public:
                                                     DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
-            setContentOwned (new MainApplication, true);
+            setContentOwned (createMainContentComponent(), true);
             setResizable (true, true);
 
             centreWithSize (getWidth(), getHeight());

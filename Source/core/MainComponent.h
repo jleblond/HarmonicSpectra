@@ -20,16 +20,21 @@ class MainContentComponent   :  public AudioAppComponent,
 {
 public:
     MainContentComponent()
-    :   m_maxNbPartials (128)
+    :   m_maxNbPartials (360)
     {
         addAndMakeVisible (m_freqSlider);
-        m_freqSlider.setRange (20.0, 20000.0);
+        m_freqSlider.setRange (50, 1600, 50);
         m_freqSlider.setSkewFactorFromMidPoint (500.0);
         m_freqSlider.addListener (this);
         
         addAndMakeVisible (m_nbPartialsSlider);
         m_nbPartialsSlider.setRange (1, m_maxNbPartials, 1);
         m_nbPartialsSlider.addListener (this);
+        
+        addAndMakeVisible (m_amplitudeSlider);
+        m_amplitudeSlider.setRange (1, 10, 1);
+        m_amplitudeSlider.setValue (10);
+        m_amplitudeSlider.addListener (this);
         
         addAndMakeVisible (m_waveformComboBox);
         m_waveformComboBox.addItem ("Sine", 1);
@@ -64,6 +69,7 @@ public:
         m_waveformComboBox.setBounds (10, 10, 120, 30);
         m_freqSlider.setBounds (10, 50, getWidth() - 20, 20);
         m_nbPartialsSlider.setBounds (10, 100, getWidth() - 20, 20);
+        m_amplitudeSlider.setBounds (10, 150, getWidth() - 20, 20);
     }
     
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override
@@ -94,6 +100,14 @@ public:
             SynthesisEngine::Instance().setNbPartials (nbPartials);
             
             SynthesisEngine::Instance().fillVecPartials();
+        }
+        
+        if (slider == &m_amplitudeSlider)
+        {
+            int sliderValue = m_amplitudeSlider.getValue();
+            
+            double amplitudeFactor = static_cast<double>(sliderValue)/10.0;
+            SynthesisEngine::Instance().setAmplitudeFactor(amplitudeFactor);
         }
         
     }
@@ -142,7 +156,7 @@ public:
     
     
 private:
-    Slider m_freqSlider, m_nbPartialsSlider;
+    Slider m_freqSlider, m_nbPartialsSlider, m_amplitudeSlider;
     ComboBox m_waveformComboBox;
     
     int m_maxNbPartials;

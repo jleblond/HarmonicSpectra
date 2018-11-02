@@ -77,6 +77,11 @@ void SynthesisEngine::setNbPartials (int nbPartials)
     m_nbPartials = nbPartials;
 }
 
+void SynthesisEngine::setAmplitudeFactor(double amplitudeFactor)
+{
+    m_amplitudeFactor = amplitudeFactor;
+}
+
 const int SynthesisEngine::getNbPartials() const
 {
     return m_nbPartials;
@@ -92,11 +97,12 @@ float SynthesisEngine::getCurrentBufferSample()
 {
     float currentSample = 0;
     
-    if(m_vecPartials.size()==1)  //sine wave case
+    
+    if(m_vecPartials.size()== 1)  //sine wave case
     {
         float partialSample = (float) std::sin (m_vecPartials[0].angle);
         m_vecPartials[0].angle += m_vecPartials[0].angleDelta;
-        currentSample += partialSample * m_vecPartials[0].amplitude;
+        currentSample += partialSample * m_vecPartials[0].amplitude * m_amplitudeFactor;
     }
     else if (m_vecPartials.size() > 1)
     {
@@ -104,7 +110,7 @@ float SynthesisEngine::getCurrentBufferSample()
         {
             float partialSample = (float) std::sin (m_vecPartials[i].angle);
             m_vecPartials[i].angle += m_vecPartials[i].angleDelta;
-            currentSample += partialSample * m_vecPartials[i].amplitude;
+            currentSample += partialSample * m_vecPartials[i].amplitude * m_amplitudeFactor;
         }
     }
     
@@ -178,11 +184,11 @@ void SynthesisEngine::fillVecPartials ()
                 case 6:
                     if (i % 2 != 0)
                     {
-                        partialLevel = m_currentLevel/(i*i);
+                        partialLevel = m_currentLevel/pow (i, 2.0);
                         
                         if(neg)
                             partialLevel = -partialLevel;
-                        
+
                         neg = !neg;
                     }
                     break;
@@ -220,9 +226,9 @@ void SynthesisEngine::fillVecPartials ()
     } //else
    
     normalizePartialsAmp(m_vecPartials);
-
         
 }
+
 
 void SynthesisEngine::normalizePartialsAmp(std::vector<Partial>& vec)
 {
@@ -235,14 +241,24 @@ void SynthesisEngine::normalizePartialsAmp(std::vector<Partial>& vec)
     
     if(sum > 1)
     {
+        std::cout<<sum<<std::endl;
         for(auto &partial : vec)
         {
             partial.amplitude *= (1/sum);
         }
     }
+    else if (sum > 0.9)  // 0.9 < sum < 1.0
+        //added specifically for TRI WAVE whose partials sum is about 0.91 but still clips
+    {
+        std::cout<<sum<<std::endl;
+        
+        for(auto &partial : vec)
+        {
+            partial.amplitude *= 0.7;
+        }
+    }
     
 }
-
 
     
 

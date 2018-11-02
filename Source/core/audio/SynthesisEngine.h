@@ -13,7 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include <assert.h>
 
-
+const double NORMALIZE_FACTOR = 0.75;
 
 struct Partial
 {
@@ -58,6 +58,7 @@ public:
     
     void fillVecPartials ();
     
+    void setAmplitudeFactor(double amplitudeFactor);
     
 private:
     SynthesisEngine();
@@ -69,8 +70,9 @@ private:
     double m_sampleRate, m_currentLevel, m_currentFundFrequency;
     int m_waveType, m_nbPartials;
     
+    double m_amplitudeFactor;
+    
     std::vector<Partial> m_vecPartials;
-    
+
     void normalizePartialsAmp(std::vector<Partial>& vec);
-    
 };
