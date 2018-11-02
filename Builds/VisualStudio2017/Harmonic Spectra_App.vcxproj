@@ -1773,6 +1773,7 @@
     <ClInclude Include="..\..\Source\core\Comment.h"/>
     <ClInclude Include="..\..\Source\core\Report.h"/>
     <ClInclude Include="..\..\Source\core\ReportBuilder.h"/>
+    <ClInclude Include="..\..\Source\core\Partials.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>

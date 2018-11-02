@@ -29,6 +29,7 @@
       <FILE id="HrsmfT" name="ReportBuilder.h" compile="0" resource="0" file="Source/core/ReportBuilder.h"/>
       <FILE id="mhYUw1" name="ReportBuilder.cpp" compile="1" resource="0"
             file="Source/core/ReportBuilder.cpp"/>
+      <FILE id="r6hhUn" name="Partials.h" compile="0" resource="0" file="Source/core/Partials.h"/>
     </GROUP>
     <GROUP id="{E8254A5C-7149-F172-F8EC-CEFD48AC03B2}" name="gui">
       <GROUP id="{656E2D66-5E62-6228-EEBF-A3E90555CA6F}" name="img">

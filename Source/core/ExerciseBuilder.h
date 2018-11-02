@@ -12,12 +12,12 @@
 #include <vector>
 
 #include "Exercise.h"
+#include "Partials.h"
 
 
 class ExerciseBuilder
 {
 private:
-    enum class Partials {odd, all, both};
     
     Partials m_partials = Partials::all;
     int m_audibleRange = 100;

@@ -12,13 +12,17 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+#include "../core/Partials.h"
 //==============================================================================
 /*
 */
-class ExerciseConfigView : public Component,
-public Button::Listener, public Slider::Listener, public ComboBox::Listener
+class ExerciseConfigView :  public Component,
+                            public Button::Listener,
+                            public Slider::Listener,
+                            public ComboBox::Listener
 {
 public:
+    
     enum RadioButtonIds
     {
         PartialsButtons = 1001,
@@ -146,7 +150,7 @@ public:
     {
         if(slider == &m_baseFreqSlider)
         {
-            String text = static_cast<String>(getIntBaseFreq())+" Hz";
+            String text = static_cast<String>(getBaseFreq())+" Hz";
             m_baseFreqTextLabel.setText(text, dontSendNotification);
         }
     }
@@ -166,7 +170,7 @@ public:
 //        button->setButtonText (name + selectedString);
 //    }
     
-    int getIntBaseFreq()
+    int getBaseFreq()
     {
         int baseFreq = 0;
         
@@ -196,8 +200,77 @@ public:
     }
    
     
+    Partials getPartials()
+    {
+        
+        if(m_oddPartialsButton.getToggleState() == true)
+        {
+            return Partials::odd;
+        }
+        
+        if(m_oddorallPartialsButton.getToggleState() == true)
+        {
+            return Partials::both;
+        }
+        
+        //else default
+        return Partials::all;
+    }
+    
+    
+    int getNbAmplitudeRatios()
+    {
+        if(m_3ampRatiosButton.getToggleState() == true)
+        {
+            return 3;
+        }
+        
+        if(m_5ampRatiosButton.getToggleState() == true)
+        {
+            return 5;
+        }
+        
+        //else default
+        return 2;
+    }
+    
+    std::vector<int> getAudibleRange()
+    {
+        std::vector<int> vecAudibleRanges;
+        vecAudibleRanges.clear();
+        
+        switch(m_audibleRangeComboBox.getSelectedId() )
+        {
+            case 2:
+                vecAudibleRanges.push_back(75);
+                break;
+            case 3:
+                vecAudibleRanges.push_back(50);
+                break;
+            case 4:
+                vecAudibleRanges.push_back(25);
+                break;
+            case 5:
+                vecAudibleRanges.push_back(10);
+                break;
+            case 6: //case 'identify all'
+                vecAudibleRanges.push_back(10);
+                vecAudibleRanges.push_back(25);
+                vecAudibleRanges.push_back(50);
+                vecAudibleRanges.push_back(75);
+                vecAudibleRanges.push_back(100);
+                break;
+            default: // case 1, as well
+                 vecAudibleRanges.push_back(100);
+        };
+    
+        
+        return vecAudibleRanges;
+    }
+    
 private:
-    Label m_titleLabel { {}, "EXERCISE PARAMETERS"};
+    
+    Label m_titleLabel { {}, "EXERCISE CONFIGURATION"};
     
     Label m_partialsLabel { {}, "Partials"};
     TextButton m_allPartialsButton {"All"};

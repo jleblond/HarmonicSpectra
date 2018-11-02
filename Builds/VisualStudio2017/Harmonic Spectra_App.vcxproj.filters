@@ -2199,6 +2199,9 @@
     <ClInclude Include="..\..\Source\core\ReportBuilder.h">
       <Filter>Harmonic Spectra\core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\core\Partials.h">
+      <Filter>Harmonic Spectra\core</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\gui\MainApplication.h">
       <Filter>Harmonic Spectra\gui</Filter>
     </ClInclude>

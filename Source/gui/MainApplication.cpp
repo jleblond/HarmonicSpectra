@@ -81,6 +81,7 @@ void MainApplication::buttonClicked(Button* button)
     }
     if(button == &m_startSessionButton)
     {
+        
         showExerciseConfig(false);
 
     }
