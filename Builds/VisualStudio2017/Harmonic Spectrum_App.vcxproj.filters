@@ -2226,6 +2226,9 @@
     <ClInclude Include="..\..\Source\gui\StatsView.h">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\gui\StatsBar.h">
+      <Filter>Harmonic Spectrum\gui</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\util\Utility.h">
       <Filter>Harmonic Spectrum\util</Filter>
     </ClInclude>

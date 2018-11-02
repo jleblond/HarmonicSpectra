@@ -15,17 +15,17 @@
 //==============================================================================
 /*
 */
-class ExerciseView    : public Component
+class QuestionsView    : public Component
 {
 public:
-    ExerciseView()
+    QuestionsView()
     {
         // In your constructor, you should add any child components, and
         // initialise any special settings that your component needs.
 
     }
 
-    ~ExerciseView()
+    ~QuestionsView()
     {
     }
 
@@ -45,7 +45,7 @@ public:
 
         g.setColour (Colours::white);
         g.setFont (14.0f);
-        g.drawText ("ExerciseView", getLocalBounds(),
+        g.drawText ("QuestionsView", getLocalBounds(),
                     Justification::centred, true);   // draw some placeholder text
     }
 
@@ -57,5 +57,5 @@ public:
     }
 
 private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ExerciseView)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (QuestionsView)
 };

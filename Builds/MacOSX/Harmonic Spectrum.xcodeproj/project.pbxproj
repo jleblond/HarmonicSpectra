@@ -79,6 +79,7 @@
 		66BE8FAAE0BF77E78FDEF901 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = "SOURCE_ROOT"; };
 		6E77E53CA047AF8F6545EEF7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainWindow.h; path = ../../Source/gui/MainWindow.h; sourceTree = "SOURCE_ROOT"; };
 		701BCF7D49EB1EBEAA12BB57 = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		7095C47FFAF70E8392F5F303 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatsBar.h; path = ../../Source/gui/StatsBar.h; sourceTree = "SOURCE_ROOT"; };
 		71710690CB8FDCB470B4866B = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_opengl.mm"; path = "../../JuceLibraryCode/include_juce_opengl.mm"; sourceTree = "SOURCE_ROOT"; };
 		72A5BF36DB9E65002E9B818C = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Exercise.h; path = ../../Source/core/Exercise.h; sourceTree = "SOURCE_ROOT"; };
 		73D1D1C9CE3D8F6A01115A35 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatsSheet.h; path = ../../Source/core/StatsSheet.h; sourceTree = "SOURCE_ROOT"; };
@@ -151,7 +152,8 @@
 					D12EF7507F1AD2C9AD0C142F,
 					6E77E53CA047AF8F6545EEF7,
 					D39D9E669B8884A9D3EC4D95,
-					DB4BD6F2525B126FDB46C15B, ); name = gui; sourceTree = "<group>"; };
+					DB4BD6F2525B126FDB46C15B,
+					7095C47FFAF70E8392F5F303, ); name = gui; sourceTree = "<group>"; };
 		3E209E59A73511C12D37B216 = {isa = PBXGroup; children = (
 					465D6A9CFA742F916711F50A,
 					B47676173C50A159E4145098, ); name = util; sourceTree = "<group>"; };

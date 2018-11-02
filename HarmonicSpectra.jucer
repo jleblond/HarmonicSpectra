@@ -48,6 +48,7 @@
       <FILE id="WLvkwk" name="MainWindow.h" compile="0" resource="0" file="Source/gui/MainWindow.h"/>
       <FILE id="rdpbXC" name="VolumeView.h" compile="0" resource="0" file="Source/gui/VolumeView.h"/>
       <FILE id="ng1Scn" name="StatsView.h" compile="0" resource="0" file="Source/gui/StatsView.h"/>
+      <FILE id="ki0VWi" name="StatsBar.h" compile="0" resource="0" file="Source/gui/StatsBar.h"/>
     </GROUP>
     <GROUP id="{80EC68CA-2F15-EFE9-6FAA-1BC20E1623E9}" name="util">
       <FILE id="eJtetu" name="Utility.h" compile="0" resource="0" file="Source/util/Utility.h"/>

@@ -27,7 +27,12 @@ const int HEIGHT = 700;
 const int WIDTH = 900;
 
 const float HEADER_PERCENT_HEIGHT = 0.15;
+
 const float BOTTOM_BUTTONS_HEIGHT = 0.20; //height relative to espace left without header
+
+const float STATSVIEW_HEIGHT = 0.35;
+const float VOLUMEVIEW_WIDTH = 0.10;
+const float QUESTIONSVIEW_WIDTH = 0.30;
 
 
 class MainApplication    : public Component,
@@ -48,6 +53,8 @@ public:
     void showUserConfig(bool isVisible);
     
     void showExerciseConfig(bool isVisible);
+    
+    void showExerciseWindow(bool isVisible);
 
 protected:
     LookAndFeel *m_LF = new LookAndFeel_V4( (LookAndFeel_V4::getLightColourScheme() ) );
@@ -60,6 +67,10 @@ protected:
     TextButton m_startSessionButton;
     TextButton m_endSessionButton;
    
+    MainWindow m_mainWindow;
+    StatsView m_statsView;
+    QuestionsView m_questionsView;
+    VolumeView m_volumeView;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)

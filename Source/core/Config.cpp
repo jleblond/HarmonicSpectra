@@ -26,3 +26,6 @@ Partials Config::partials = Partials::all;
 int Config::nbAmplitudeRatios = 2;
 std::vector<int> Config::vecAudibleRanges {100};
 
+
+//Audio parameters
+float Config::mainVolume = 0.5;

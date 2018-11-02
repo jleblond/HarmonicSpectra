@@ -26,6 +26,9 @@ public:
     static int nbAmplitudeRatios;
     static std::vector<int> vecAudibleRanges;
     
+    //Audio parameters
+    static float mainVolume;
+    
 private:
     
     Config(){}
