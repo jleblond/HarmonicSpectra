@@ -24,7 +24,7 @@ private:
     int m_baseFreq = 200;
     int m_nbAmplitudeRatios = 2;
     
-    std::vector<std::shared_ptr<Exercise>> m_vecExercises;
+
     
 public:
     ExerciseBuilder()
@@ -32,12 +32,7 @@ public:
         
     }
     
-    
-    void createExercise()
-    {
-        
-        m_vecExercises.push_back(std::shared_ptr<Exercise>());
-    }
+
     
     void configExercises(int partialsOption, int audibleRange, int baseFreq, int nbAmpRatios)
     {

@@ -34,6 +34,13 @@ public:
         return m_username;
     }
     
+    void createSession(Partials partialsOption, int nbAmpRatios, int baseFreq, std::vector<int> vecAudRanges)
+    {
+        m_vecSessions.push_back(
+                                std::make_shared<Session>(partialsOption, nbAmpRatios, baseFreq, vecAudRanges));
+    }
+    
+    
 private:
     String m_username = "";
     std::vector<std::shared_ptr<Session>> m_vecSessions;

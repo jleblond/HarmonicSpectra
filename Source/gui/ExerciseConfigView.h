@@ -41,10 +41,7 @@ public:
         addAndMakeVisible (m_allPartialsButton);
         addAndMakeVisible (m_oddPartialsButton);
         addAndMakeVisible (m_oddorallPartialsButton);
-//        m_allPartialsButton.onClick = [this] { updateToggleState (&m_allPartialsButton, "All"); };
-//        m_oddPartialsButton  .onClick = [this] { updateToggleState (&m_oddPartialsButton,   "Odd");   };
-//        m_oddorallPartialsButton .onClick = [this] { updateToggleState (&m_oddorallPartialsButton,  "Odd OR All");  };
-        
+
         m_allPartialsButton.setRadioGroupId (PartialsButtons);
         m_oddPartialsButton.setRadioGroupId (PartialsButtons);
         m_oddorallPartialsButton.setRadioGroupId (PartialsButtons);
@@ -111,7 +108,7 @@ public:
     
     void paint(Graphics& g) override
     {
-      
+       g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     }
     
     void resized() override
@@ -135,9 +132,6 @@ public:
         m_audibleRangeLabel.setBounds(0.6*getWidth(), 0.23*getHeight(), 0.6*getWidth(), 0.07*getHeight());
         m_audibleRangeComboBox.setBounds(0.6*getWidth(), 0.3*getHeight(), 0.25*getWidth(), 0.07*getHeight());
         
-        
- 
-        
     }
     
     void buttonClicked(Button* button) override
@@ -159,16 +153,7 @@ public:
     {
       
     }
-    
-//    void updateToggleState (Button* button, String name)
-//    {
-//        auto state = button->getToggleState();
-//        String stateString    = state ? "ON" : "OFF";
-//        String selectedString = state ? " (selected)" : "";
-//
-//        Logger::outputDebugString (name + " Button changed to " + stateString);
-//        button->setButtonText (name + selectedString);
-//    }
+
     
     int getBaseFreq()
     {
@@ -202,7 +187,6 @@ public:
     
     Partials getPartials()
     {
-        
         if(m_oddPartialsButton.getToggleState() == true)
         {
             return Partials::odd;
@@ -234,7 +218,7 @@ public:
         return 2;
     }
     
-    std::vector<int> getAudibleRange()
+    std::vector<int> getVecAudibleRange()
     {
         std::vector<int> vecAudibleRanges;
         vecAudibleRanges.clear();
@@ -264,9 +248,9 @@ public:
                  vecAudibleRanges.push_back(100);
         };
     
-        
         return vecAudibleRanges;
     }
+    
     
 private:
     

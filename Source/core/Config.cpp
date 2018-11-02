@@ -19,3 +19,10 @@ Config& Config::Instance()
 }
 
 std::shared_ptr<User> Config::user = nullptr;
+
+//Default init parameters
+int Config::baseFreq = 200;
+Partials Config::partials = Partials::all;
+int Config::nbAmplitudeRatios = 2;
+std::vector<int> Config::vecAudibleRanges {100};
+

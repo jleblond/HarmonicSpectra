@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="BhDPWx" name="Harmonic Spectra" projectType="guiapp" version="1.0.0"
-              bundleIdentifier="com.juce.HarmonicSpectra" includeBinaryInAppConfig="1"
+<JUCERPROJECT id="BhDPWx" name="Harmonic Spectrum" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.juce.HarmonicSpectrum" includeBinaryInAppConfig="1"
               jucerVersion="5.1.2" displaySplashScreen="1" reportAppUsage="1"
-              splashScreenColour="Dark" cppLanguageStandard="11">
-  <MAINGROUP id="afUgqg" name="Harmonic Spectra">
+              splashScreenColour="Light" cppLanguageStandard="11">
+  <MAINGROUP id="afUgqg" name="Harmonic Spectrum">
     <FILE id="vhBgkL" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     <GROUP id="{C025B8A0-7621-C485-CA70-BC03D60D70FA}" name="core">
       <FILE id="gs4ReB" name="Config.h" compile="0" resource="0" file="Source/core/Config.h"/>
@@ -58,9 +58,9 @@
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="10.9 SDK" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="SineSynthTutorial"/>
+                       isDebug="1" optimisation="1" targetName="InnerEar Harmonic Spectrum"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="10.9 SDK" osxArchitecture="default"
-                       isDebug="0" optimisation="2" targetName="SineSynthTutorial"/>
+                       isDebug="0" optimisation="2" targetName="InnerEar Harmonic Spectrum"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="modules"/>
@@ -82,9 +82,9 @@
     <VS2017 targetFolder="Builds/VisualStudio2017">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="SineSynthTutorial"/>
+                       isDebug="1" optimisation="1" targetName="InnerEar Harmonic Spectrum"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="SineSynthTutorial"/>
+                       isDebug="0" optimisation="3" targetName="InnerEar Harmonic Spectrum"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../JUCE/modules"/>
@@ -106,9 +106,9 @@
     <LINUX_MAKE targetFolder="Builds/Linux">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
-                       targetName="SineSynthTutorial"/>
+                       targetName="InnerEar Harmonic Spectrum"/>
         <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="2"
-                       targetName="SineSynthTutorial"/>
+                       targetName="InnerEar Harmonic Spectrum"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../JUCE/modules"/>

@@ -10,9 +10,9 @@
     <key>CFBundleIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
     <key>CFBundleName</key>
-    <string>Harmonic Spectra</string>
+    <string>Harmonic Spectrum</string>
     <key>CFBundleDisplayName</key>
-    <string>Harmonic Spectra</string>
+    <string>Harmonic Spectrum</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>

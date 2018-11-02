@@ -81,7 +81,15 @@ void MainApplication::buttonClicked(Button* button)
     }
     if(button == &m_startSessionButton)
     {
+        Config::partials = m_exerciseConfigView.getPartials();
+        Config::nbAmplitudeRatios = m_exerciseConfigView.getNbAmplitudeRatios();
+        Config::baseFreq = m_exerciseConfigView.getBaseFreq();
+        Config::vecAudibleRanges = m_exerciseConfigView.getVecAudibleRange();
         
+        Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
+        
+        //std::cout<<Config::user->getLastSession()->getNbAmplitudeRatios()<<std::endl;
+
         showExerciseConfig(false);
 
     }

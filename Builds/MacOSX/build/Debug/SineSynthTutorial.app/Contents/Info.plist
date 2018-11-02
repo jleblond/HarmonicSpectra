@@ -5,13 +5,13 @@
 	<key>BuildMachineOSBuild</key>
 	<string>16G1114</string>
 	<key>CFBundleDisplayName</key>
-	<string>Harmonic Spectra</string>
+	<string>Harmonic Spectrum</string>
 	<key>CFBundleExecutable</key>
 	<string>SineSynthTutorial</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.juce.HarmonicSpectra</string>
+	<string>com.juce.HarmonicSpectrum</string>
 	<key>CFBundleName</key>
-	<string>Harmonic Spectra</string>
+	<string>Harmonic Spectrum</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
