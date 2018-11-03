@@ -99,6 +99,8 @@ private:
     ScopedPointer<MainWindow> mainWindow;
 };
 
+Component* createMainContentComponent()     { return new MainApplication(); }
+
 //==============================================================================
 // This macro generates the main() routine that launches the app.
 START_JUCE_APPLICATION (InnerEar_HarmonicSpectra_Application)

@@ -214,6 +214,7 @@ void SynthesisEngine::fillVecPartials ()
                 case 11:
                     partialLevel = m_currentLevel/pow (i, 2.0);
                     break;
+
                     
             }; //switch
             

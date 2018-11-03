@@ -12,17 +12,19 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+#include "../core/ExerciseBuilder.h"
+#include "../core/Config.h"
 //==============================================================================
 /*
 */
-class QuestionsView    : public Component
+class QuestionsView    : public Component,
+                         public Button::Listener
 {
 public:
     QuestionsView()
     {
-        // In your constructor, you should add any child components, and
-        // initialise any special settings that your component needs.
-
+        addAndMakeVisible(m_newQuestionButton);
+        m_newQuestionButton.addListener(this);
     }
 
     ~QuestionsView()
@@ -31,31 +33,35 @@ public:
 
     void paint (Graphics& g) override
     {
-        /* This demo code just fills the component's background and
-           draws some placeholder text to get you started.
 
-           You should replace everything in this method with your own
-           drawing code..
-        */
-
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 
         g.setColour (Colours::grey);
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+        g.drawRect (getLocalBounds(), 1);
 
         g.setColour (Colours::white);
         g.setFont (14.0f);
-        g.drawText ("QuestionsView", getLocalBounds(),
-                    Justification::centred, true);   // draw some placeholder text
+//        g.drawText ("QuestionsView", getLocalBounds(),
+//                    Justification::centred, true);
     }
 
     void resized() override
     {
-        // This method is where you should set the bounds of any child
-        // components that your component contains..
+        m_newQuestionButton.setBounds (0.1*getWidth(), 0.1*getHeight(), 0.2*getWidth(), 0.15*getHeight());
 
+    }
+    
+    void buttonClicked(Button* button) override
+    {
+        if(button == &m_newQuestionButton)
+        {
+            ExerciseBuilder::Instance().buildExercise();
+        }
+        
     }
 
 private:
+    TextButton m_newQuestionButton{"NEW QUESTION"};
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (QuestionsView)
 };

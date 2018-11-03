@@ -23,6 +23,7 @@
 #include "../core/Config.h"
 
 
+
 const int HEIGHT = 700;
 const int WIDTH = 900;
 
@@ -31,7 +32,7 @@ const float HEADER_PERCENT_HEIGHT = 0.15;
 const float BOTTOM_BUTTONS_HEIGHT = 0.20; //height relative to espace left without header
 
 const float STATSVIEW_HEIGHT = 0.35;
-const float VOLUMEVIEW_WIDTH = 0.10;
+//const float VOLUMEVIEW_WIDTH = 0.10;
 const float QUESTIONSVIEW_WIDTH = 0.30;
 
 
@@ -70,7 +71,7 @@ protected:
     MainWindow m_mainWindow;
     StatsView m_statsView;
     QuestionsView m_questionsView;
-    VolumeView m_volumeView;
+    //VolumeView m_volumeView;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)

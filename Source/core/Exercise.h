@@ -14,13 +14,14 @@
 class Exercise
 {
 public:
+    Exercise (int waveTypeID, int audibleRange)
+    : m_waveTypeID(waveTypeID), m_audibleRange(audibleRange)
+    {
+        
+    }
     
 protected:
+    int m_waveTypeID = 1; //default ToBeMOdified
     int m_audibleRange = 100;
-    int m_partialOptionNb = 0;
-    
-    
-    int m_baseFreq = 200;
-    int m_nbAmplitudeRatios = 2;
     
 };

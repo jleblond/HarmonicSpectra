@@ -38,6 +38,10 @@ public:
     {
         m_vecSessions.push_back(
                                 std::make_shared<Session>(partialsOption, nbAmpRatios, baseFreq, vecAudRanges));
+        
+        std::cout<<"-- User::createSession(...)"<<std::endl;
+        std::cout<<"nbAmpRatios: "<<nbAmpRatios<<" baseFreq: "<<baseFreq<<std::endl;
+        std::cout<<"[additional info: Partials partialsOption, std::vector<int> vecAudRanges]"<<std::endl;
     }
     
     

@@ -9,3 +9,10 @@
 */
 
 #include "ExerciseBuilder.h"
+
+ExerciseBuilder ExerciseBuilder::m_exerciseBuilder = ExerciseBuilder();
+
+ExerciseBuilder& ExerciseBuilder::Instance()
+{
+    return m_exerciseBuilder;
+}

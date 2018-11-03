@@ -9,8 +9,9 @@
 */
 
 #pragma once
-#include "User.h"
 #include "Partials.h"
+
+#include "User.h"
 
 class Config
 {
@@ -20,14 +21,21 @@ public:
     static std::shared_ptr<User> user;
     
     
-    //Current parameters
-    static int baseFreq;
+    //Current session parameters
     static Partials partials;
     static int nbAmplitudeRatios;
     static std::vector<int> vecAudibleRanges;
     
+    static int baseFreq;
+    
+    //Current synthesis parameters
+    static int nbPartials;
+    
+    
     //Audio parameters
     static float mainVolume;
+    
+
     
 private:
     
