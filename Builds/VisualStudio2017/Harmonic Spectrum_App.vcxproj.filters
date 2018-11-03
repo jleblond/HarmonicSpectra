@@ -14,9 +14,6 @@
     <Filter Include="Harmonic Spectrum\gui">
       <UniqueIdentifier>{8FA66222-329C-B14D-FD62-2D965C682F3C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Harmonic Spectrum\util">
-      <UniqueIdentifier>{00FD8175-67BB-43E1-5BD8-A7FA490606D9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Harmonic Spectrum">
       <UniqueIdentifier>{C37B85C6-24D5-2778-3641-1A7F971D782E}</UniqueIdentifier>
     </Filter>
@@ -385,11 +382,11 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Harmonic Spectrum</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\core\audio\Synthesis.cpp">
+      <Filter>Harmonic Spectrum\core\audio</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\core\Config.cpp">
       <Filter>Harmonic Spectrum\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\core\audio\SynthesisEngine.cpp">
-      <Filter>Harmonic Spectrum\core\audio</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\core\ExerciseBuilder.cpp">
       <Filter>Harmonic Spectrum\core</Filter>
@@ -399,9 +396,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\gui\MainApplication.cpp">
       <Filter>Harmonic Spectrum\gui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\util\Utility.cpp">
-      <Filter>Harmonic Spectrum\util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
@@ -2166,13 +2160,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\core\Config.h">
-      <Filter>Harmonic Spectrum\core</Filter>
+    <ClInclude Include="..\..\Source\MainComponent.h">
+      <Filter>Harmonic Spectrum</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\core\audio\SynthesisEngine.h">
+    <ClInclude Include="..\..\Source\AudioTestComponent.h">
+      <Filter>Harmonic Spectrum</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\audio\Synthesis.h">
       <Filter>Harmonic Spectrum\core\audio</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\core\MainComponent.h">
+    <ClInclude Include="..\..\Source\core\Config.h">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\core\User.h">
@@ -2228,9 +2225,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\StatsBar.h">
       <Filter>Harmonic Spectrum\gui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\util\Utility.h">
-      <Filter>Harmonic Spectrum\util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>Juce Modules\juce_audio_basics\audio_play_head</Filter>

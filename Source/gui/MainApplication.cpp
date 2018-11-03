@@ -14,8 +14,9 @@
 
 MainApplication::MainApplication()
 {
-    setSize (WIDTH, HEIGHT);
-    setLookAndFeel( m_LF );
+    //setSize (WIDTH, HEIGHT);
+    //setLookAndFeel( m_LF );
+    
         
     addAndMakeVisible(m_headerView);
     
@@ -44,7 +45,7 @@ MainApplication::MainApplication()
     
 MainApplication::~MainApplication()
 {
-    delete m_LF;
+    //delete m_LF;
 }
     
 void MainApplication::paint (Graphics& g)
@@ -96,8 +97,12 @@ void MainApplication::buttonClicked(Button* button)
     {
         Config::partials = m_exerciseConfigView.getPartials();
         Config::nbAmplitudeRatios = m_exerciseConfigView.getNbAmplitudeRatios();
-        Config::baseFreq = m_exerciseConfigView.getBaseFreq();
         Config::vecAudibleRanges = m_exerciseConfigView.getVecAudibleRange();
+        
+        int baseFreq = m_exerciseConfigView.getBaseFreq();
+        Config::baseFreq = baseFreq;
+        Synthesis::Instance().setCurrentFundFrequency(baseFreq);
+        
         
         Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
         

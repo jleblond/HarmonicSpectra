@@ -30,12 +30,18 @@ public:
     
     //Current synthesis parameters
     static int nbPartials;
+    static int waveTypeID;
     
     
     //Audio parameters
     static float mainVolume;
     
 
+    static bool isPlaying;
+    
+    
+    
+    static double sampleRate;
     
 private:
     

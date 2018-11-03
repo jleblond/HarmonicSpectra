@@ -21,6 +21,8 @@
 
 #include "Config.h"
 
+
+
 typedef std::pair<Partials, int> keys;
 
 class ExerciseBuilder
@@ -45,11 +47,14 @@ public:
         Config::nbPartials = computeNbPartials(audioRange);
         
         int waveTypeID = rndWaveTypeID();
+        Config::waveTypeID = waveTypeID;
         
         Config::user->getLastSession()->addExercise(waveTypeID, audioRange);
         
         std::cout<<"-- ExerciseBuilder::buildExercise()"<<std::endl;
         std::cout<<"audioRange: "<<audioRange<<" nbPartials: "<<Config::nbPartials<<" waveTypeID: "<< waveTypeID <<std::endl;
+        
+        
     }
    
     

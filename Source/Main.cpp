@@ -9,8 +9,10 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "core/MainComponent.h"
-#include "gui/MainApplication.h"
+
+#include "MainComponent.h"
+#include "AudioTestComponent.h"
+//#include "gui/MainApplication.h"
 
 Component* createMainContentComponent();
 
@@ -99,7 +101,7 @@ private:
     ScopedPointer<MainWindow> mainWindow;
 };
 
-Component* createMainContentComponent()     { return new MainApplication(); }
+Component* createMainContentComponent()     { return new MainContentComponent(); }
 
 //==============================================================================
 // This macro generates the main() routine that launches the app.

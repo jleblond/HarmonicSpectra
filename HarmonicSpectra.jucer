@@ -6,16 +6,16 @@
               splashScreenColour="Light" cppLanguageStandard="11">
   <MAINGROUP id="afUgqg" name="Harmonic Spectrum">
     <FILE id="vhBgkL" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    <FILE id="ppVChh" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+    <FILE id="D8S7Yw" name="AudioTestComponent.h" compile="0" resource="0"
+          file="Source/AudioTestComponent.h"/>
     <GROUP id="{C025B8A0-7621-C485-CA70-BC03D60D70FA}" name="core">
+      <GROUP id="{3EE168FC-1A2A-6193-9F38-453780809CEE}" name="audio">
+        <FILE id="KM9rfI" name="Synthesis.h" compile="0" resource="0" file="Source/core/audio/Synthesis.h"/>
+        <FILE id="XDztiC" name="Synthesis.cpp" compile="1" resource="0" file="Source/core/audio/Synthesis.cpp"/>
+      </GROUP>
       <FILE id="gs4ReB" name="Config.h" compile="0" resource="0" file="Source/core/Config.h"/>
       <FILE id="LKhPGV" name="Config.cpp" compile="1" resource="0" file="Source/core/Config.cpp"/>
-      <GROUP id="{3EE168FC-1A2A-6193-9F38-453780809CEE}" name="audio">
-        <FILE id="KM9rfI" name="SynthesisEngine.h" compile="0" resource="0"
-              file="Source/core/audio/SynthesisEngine.h"/>
-        <FILE id="XDztiC" name="SynthesisEngine.cpp" compile="1" resource="0"
-              file="Source/core/audio/SynthesisEngine.cpp"/>
-      </GROUP>
-      <FILE id="bkrX3P" name="MainComponent.h" compile="0" resource="0" file="Source/core/MainComponent.h"/>
       <FILE id="L7ikBJ" name="User.h" compile="0" resource="0" file="Source/core/User.h"/>
       <FILE id="qlB7zO" name="Session.h" compile="0" resource="0" file="Source/core/Session.h"/>
       <FILE id="S5Ys1F" name="Exercise.h" compile="0" resource="0" file="Source/core/Exercise.h"/>
@@ -49,10 +49,6 @@
       <FILE id="rdpbXC" name="VolumeView.h" compile="0" resource="0" file="Source/gui/VolumeView.h"/>
       <FILE id="ng1Scn" name="StatsView.h" compile="0" resource="0" file="Source/gui/StatsView.h"/>
       <FILE id="ki0VWi" name="StatsBar.h" compile="0" resource="0" file="Source/gui/StatsBar.h"/>
-    </GROUP>
-    <GROUP id="{80EC68CA-2F15-EFE9-6FAA-1BC20E1623E9}" name="util">
-      <FILE id="eJtetu" name="Utility.h" compile="0" resource="0" file="Source/util/Utility.h"/>
-      <FILE id="yCSoYW" name="Utility.cpp" compile="1" resource="0" file="Source/util/Utility.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

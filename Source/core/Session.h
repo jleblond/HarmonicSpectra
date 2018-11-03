@@ -20,7 +20,7 @@ public:
     Session(Partials partialsOption, int nbAmpRatios, int baseFreq, std::vector<int> vecAudRanges)
         : m_partials(partialsOption), m_nbAmplitudeRatios(nbAmpRatios), m_baseFreq(baseFreq), m_vecAudibleRanges(vecAudRanges)
     {
-    
+
     }
     
     int getNbAmplitudeRatios()

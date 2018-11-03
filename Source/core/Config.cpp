@@ -29,7 +29,12 @@ int Config::baseFreq = 200;
 
 //Current synthesis parameters (Default init)
 int Config::nbPartials = 1;
-
+int Config::waveTypeID = 1;
 
 //Audio parameters
-float Config::mainVolume = 0.5;
+float Config::mainVolume = 1.0;
+
+
+double Config::sampleRate = 0;
+
+bool Config::isPlaying = false;

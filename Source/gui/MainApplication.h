@@ -21,11 +21,11 @@
 #include "StatsView.h"
 
 #include "../core/Config.h"
+//#include "../core/audio/AudioEngine.h"
 
 
-
-const int HEIGHT = 700;
-const int WIDTH = 900;
+//const int HEIGHT = 700;
+//const int WIDTH = 900;
 
 const float HEADER_PERCENT_HEIGHT = 0.15;
 
@@ -58,7 +58,8 @@ public:
     void showExerciseWindow(bool isVisible);
 
 protected:
-    LookAndFeel *m_LF = new LookAndFeel_V4( (LookAndFeel_V4::getLightColourScheme() ) );
+   // LookAndFeel *m_LF = new LookAndFeel_V4( (LookAndFeel_V4::getLightColourScheme() ) );
+
     
     HeaderView m_headerView;
     UserConfigView m_userConfigView;

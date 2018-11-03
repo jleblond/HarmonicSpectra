@@ -14,6 +14,7 @@
 
 #include "../core/ExerciseBuilder.h"
 #include "../core/Config.h"
+#include "../core/audio/Synthesis.h"
 //==============================================================================
 /*
 */
@@ -25,6 +26,9 @@ public:
     {
         addAndMakeVisible(m_newQuestionButton);
         m_newQuestionButton.addListener(this);
+        
+        addAndMakeVisible(m_playQuestionButton);
+        m_playQuestionButton.addListener(this);
     }
 
     ~QuestionsView()
@@ -47,7 +51,9 @@ public:
 
     void resized() override
     {
-        m_newQuestionButton.setBounds (0.1*getWidth(), 0.1*getHeight(), 0.2*getWidth(), 0.15*getHeight());
+        m_playQuestionButton.setBounds (0.1*getWidth(), 0.1*getHeight(), 0.3*getWidth(), 0.2*getHeight());
+        m_newQuestionButton.setBounds (0.1*getWidth(), 0.5*getHeight(), 0.3*getWidth(), 0.2*getHeight());
+        
 
     }
     
@@ -58,10 +64,20 @@ public:
             ExerciseBuilder::Instance().buildExercise();
         }
         
+        if(button == &m_playQuestionButton)
+        {
+            
+            Synthesis::Instance().updateSynthesisValues();
+            Synthesis::Instance().fillVecPartials();
+            
+           Config::isPlaying = true;
+        }
+        
     }
 
 private:
-    TextButton m_newQuestionButton{"NEW QUESTION"};
+    TextButton m_newQuestionButton{"New Question"};
+    TextButton m_playQuestionButton{"*PLAY*"};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (QuestionsView)
 };

@@ -146,12 +146,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
+    <ClCompile Include="..\..\Source\core\audio\Synthesis.cpp"/>
     <ClCompile Include="..\..\Source\core\Config.cpp"/>
-    <ClCompile Include="..\..\Source\core\audio\SynthesisEngine.cpp"/>
     <ClCompile Include="..\..\Source\core\ExerciseBuilder.cpp"/>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp"/>
     <ClCompile Include="..\..\Source\gui\MainApplication.cpp"/>
-    <ClCompile Include="..\..\Source\util\Utility.cpp"/>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1762,9 +1761,10 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\MainComponent.h"/>
+    <ClInclude Include="..\..\Source\AudioTestComponent.h"/>
+    <ClInclude Include="..\..\Source\core\audio\Synthesis.h"/>
     <ClInclude Include="..\..\Source\core\Config.h"/>
-    <ClInclude Include="..\..\Source\core\audio\SynthesisEngine.h"/>
-    <ClInclude Include="..\..\Source\core\MainComponent.h"/>
     <ClInclude Include="..\..\Source\core\User.h"/>
     <ClInclude Include="..\..\Source\core\Session.h"/>
     <ClInclude Include="..\..\Source\core\Exercise.h"/>
@@ -1783,7 +1783,6 @@
     <ClInclude Include="..\..\Source\gui\VolumeView.h"/>
     <ClInclude Include="..\..\Source\gui\StatsView.h"/>
     <ClInclude Include="..\..\Source\gui\StatsBar.h"/>
-    <ClInclude Include="..\..\Source\util\Utility.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>
