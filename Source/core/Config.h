@@ -10,8 +10,9 @@
 
 #pragma once
 #include "Partials.h"
-
 #include "User.h"
+
+#include <chrono>
 
 class Config
 {
@@ -40,8 +41,9 @@ public:
     static bool isPlaying;
     
     
-    
     static double sampleRate;
+    
+    static auto msSoundDuration;
     
 private:
     

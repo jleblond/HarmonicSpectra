@@ -12,7 +12,6 @@
 
 #include "MainComponent.h"
 #include "AudioTestComponent.h"
-//#include "gui/MainApplication.h"
 
 Component* createMainContentComponent();
 

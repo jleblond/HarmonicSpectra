@@ -56,6 +56,23 @@ public:
         
         
     }
+    
+    int computeNbPartials(int audioRange)
+    {
+        int nbPartials = 1;
+        
+        //From: baseFreq, To: nb of partials
+        assert (Config::baseFreq>1);
+        nbPartials = (18000/Config::baseFreq-1);
+        
+        //Nb of partials might be modified by audible range var
+        float nb = static_cast<float>(nbPartials)*(audioRange/100.0);
+        nbPartials = static_cast<int>(nb);
+        
+        
+        return nbPartials;
+    }
+
    
     
     
@@ -129,21 +146,6 @@ private:
     }
     
     
-    int computeNbPartials(int audioRange)
-    {
-        int nbPartials = 1;
-        
-        //From: baseFreq, To: nb of partials
-        assert (Config::baseFreq>1);
-        nbPartials = (18000/Config::baseFreq-1);
-        
-        //Nb of partials might be modified by audible range var
-        float nb = static_cast<float>(nbPartials)*(audioRange/100.0);
-        nbPartials = static_cast<int>(nb);
-        
-
-        return nbPartials;
-    }
 
     
    

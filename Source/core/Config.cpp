@@ -38,3 +38,5 @@ float Config::mainVolume = 1.0;
 double Config::sampleRate = 0;
 
 bool Config::isPlaying = false;
+
+auto Config::msSoundDuration = 1000;

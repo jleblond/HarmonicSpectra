@@ -14,6 +14,9 @@
 #include "gui/MainApplication.h"
 #include "core/Config.h"
 
+#include <chrono>
+#include<iostream>
+
 const int HEIGHT = 700;
 const int WIDTH = 900;
 
@@ -64,6 +67,7 @@ public:
 
         if(Config::isPlaying)
         {
+            //auto begin = std::chrono::high_resolution_clock::now();
         
         for (auto sample = 0; sample < bufferToFill.numSamples; ++sample)
         {
@@ -72,6 +76,7 @@ public:
             leftBuffer[sample]  = currentSample * Config::mainVolume; 
             rightBuffer[sample] = currentSample * Config::mainVolume;
         }
+           // auto end = std::chrono::high_resolution_clock::now();
         }
         
     }

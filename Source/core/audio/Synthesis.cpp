@@ -21,7 +21,7 @@ Synthesis::Synthesis()
     : m_sampleRate (0.0),
       m_amplitudeFactor(1.0),
       m_currentFundFrequency (20),
-      m_waveType (1),
+      m_waveType (11),
       m_nbPartials (1) //default nb at intialization
 {
     
@@ -100,6 +100,8 @@ void Synthesis::updateSynthesisValues()
     std::cout<<"-- Synthesis::updateSynthesisValues()"<<std::endl;
     std::cout<<"Config::waveTypeID: "<<Config::waveTypeID<<" Config::nbPartials: "<<Config::nbPartials<<std::endl;
      std::cout<<"Synthesis::waveTypeID: "<<m_waveType<<" Synthesis::nbPartials: "<<m_nbPartials<<std::endl;
+    
+    fillVecPartials();
 }
 
 
@@ -144,6 +146,7 @@ void Synthesis::fillVecPartials ()
     
     bool neg = false;
     
+    
     if(m_waveType == 11)
     {
         double partialFreq = m_currentFundFrequency;
@@ -168,26 +171,26 @@ void Synthesis::fillVecPartials ()
                     //SQUARE
                 case 1:
                     if (i % 2 != 0)
-                        partialLevel = 1/i;
-                    
+                        partialLevel = 1/pow (i, 1);
+                  //  std::cout<<"SQUARE"<<std::endl;
                     break;
                     
                 case 2:
                     if (i % 2 != 0)
                         partialLevel = 1/pow (i, 1.25);
-                    
+                 //   std::cout<<"SQUARE 2 TRI"<<std::endl;
                     break;
                     
                 case 3:
                     if (i % 2 != 0)
                         partialLevel = 1/pow (i, 1.50);
-                    
+                 //   std::cout<<"SQUARE 3 TRI"<<std::endl;
                     break;
                     
                 case 4:
                     if (i % 2 != 0)
                         partialLevel = 1/pow (i, 1.75);
-                    
+                  //  std::cout<<"SQUARE 4 TRI"<<std::endl;
                     break;
                     
                     //TRI
@@ -201,28 +204,33 @@ void Synthesis::fillVecPartials ()
 
                         neg = !neg;
                     }
+                //    std::cout<<"TRI"<<std::endl;
                     break;
                     
                     //SAW
                 case 6:
-                    partialLevel = 1/(i);
+                    partialLevel = 1/pow (i, 1);
+               //     std::cout<<"SAW 1"<<std::endl;
                     break;
-                    
                     // STEEPER SAW
                 case 7:
                     partialLevel = 1/pow (i, 1.25);
+               //     std::cout<<"SAW 2"<<std::endl;
                     break;
                     
                 case 8:
                     partialLevel = 1/pow (i, 1.5);
+                //    std::cout<<"SAW 3"<<std::endl;
                     break;
                     
                 case 9:
                     partialLevel = 1/pow (i, 1.75);
+                //    std::cout<<"SAW 4"<<std::endl;
                     break;
                 
                 case 10:
                     partialLevel = 1/pow (i, 2.0);
+                 //   std::cout<<"SAW 5"<<std::endl;
                     break;
 
                     
@@ -234,18 +242,20 @@ void Synthesis::fillVecPartials ()
                                     );
         } //for loop
         
+        
+//            std::cout<<"-- Synthesis::fillVecPartials()"<<std::endl;
+//            std::cout<<"-- Print all normalized partials in m_vecPartials"<<std::endl;
+//            for(auto& i : m_vecPartials)
+//            {
+//                i.print();
+//            }
+        
+        
     } //else
    
     normalizePartialsAmp(m_vecPartials);
     
     
-    std::cout<<"-- Synthesis::fillVecPartials()"<<std::endl;
-    std::cout<<"-- Print all normalized partials in m_vecPartials"<<std::endl;
-    for(auto& i : m_vecPartials)
-    {
-        i.print();
-    }
-        
 }
 
 
@@ -260,7 +270,6 @@ void Synthesis::normalizePartialsAmp(std::vector<Partial>& vec)
     
     if(sum > 1)
     {
-        std::cout<<sum<<std::endl;
         for(auto &partial : vec)
         {
             partial.amplitude *= (1/sum);
@@ -269,7 +278,6 @@ void Synthesis::normalizePartialsAmp(std::vector<Partial>& vec)
     else if (sum > 0.9)  // 0.9 < sum < 1.0
         //added specifically for TRI WAVE whose partials sum is about 0.91 but still clips
     {
-        std::cout<<sum<<std::endl;
         
         for(auto &partial : vec)
         {

@@ -20,6 +20,16 @@ public:
         
     }
     
+    int getWaveTypeID()
+    {
+        return m_waveTypeID;
+    }
+    
+    int getAudibleRange()
+    {
+        return m_audibleRange;
+    }
+    
 protected:
     int m_waveTypeID = 1; //default ToBeMOdified
     int m_audibleRange = 100;

@@ -38,8 +38,7 @@ public:
         m_amplitudeSlider.addListener (this);
         
         addAndMakeVisible (m_waveformComboBox);
-        m_waveformComboBox.addItem ("Sine", 11);
-        m_waveformComboBox.addSeparator();
+
         m_waveformComboBox.addSectionHeading ("ODD Partials");
         m_waveformComboBox.addItem ("Square", 1);
         m_waveformComboBox.addItem ("Square Triangled", 2);
@@ -53,7 +52,9 @@ public:
         m_waveformComboBox.addItem ("Very Steep Saw", 8);
         m_waveformComboBox.addItem ("Almost-Exponential Saw", 9);
         m_waveformComboBox.addItem ("Exponential Saw", 10);
-        m_waveformComboBox.setSelectedId (1);
+         m_waveformComboBox.addSeparator();
+         m_waveformComboBox.addItem ("Sine", 11);
+        m_waveformComboBox.setSelectedId (11);
         m_waveformComboBox.addListener (this);
         
         setSize (600, 200);
@@ -78,6 +79,8 @@ public:
         if (comboBoxThatHasChanged == &m_waveformComboBox)
         {
             int waveType = m_waveformComboBox.getSelectedId();
+            std::cout<<"comboboxID::: "<<m_waveformComboBox.getSelectedId();
+            
             Synthesis::Instance().setWaveType (waveType);
             
             Synthesis::Instance().fillVecPartials();
