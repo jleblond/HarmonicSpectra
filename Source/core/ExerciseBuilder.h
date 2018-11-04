@@ -53,6 +53,7 @@ public:
         
         std::cout<<"-- ExerciseBuilder::buildExercise()"<<std::endl;
         std::cout<<"audioRange: "<<audioRange<<" nbPartials: "<<Config::nbPartials<<" waveTypeID: "<< waveTypeID <<std::endl;
+    
         
         
     }
@@ -72,6 +73,15 @@ public:
         
         return nbPartials;
     }
+    
+    std::vector<int> getVecWaves()
+    {
+        auto search = m_tableOfWaves.find(keys(Config::partials, Config::nbAmplitudeRatios));
+        
+        auto const vecWaves = (search->second);
+        
+        return vecWaves;
+    }
 
    
     
@@ -87,7 +97,7 @@ private:
     std::vector<int> all5{6,7,8,9,10};
     std::vector<int> both2{1,5,6,10};
     std::vector<int> both3{1,3,5,6,8,10};
-    std::vector<int> both5{1,2,3,4,5,6,7,8,8,10};
+    std::vector<int> both5{1,2,3,4,5,6,7,8,9,10};
 
     static ExerciseBuilder m_exerciseBuilder;
     

@@ -110,6 +110,8 @@ void MainApplication::buttonClicked(Button* button)
 
         showExerciseConfig(false);
         showExerciseWindow(true);
+        
+        m_mainWindow.resized();
     }
     
     if(button == &m_endSessionButton)
