@@ -88,7 +88,7 @@ public:
             Config::nbPartials = ExerciseBuilder::Instance().computeNbPartials(audioRange);
             
             Synthesis::Instance().updateSynthesisValues();
-            Config::isPlaying = true;
+            Config::hasStartedPlaying = true;
         }
         
         if(button == &m_playSineWaveButton)
@@ -97,7 +97,7 @@ public:
             Config::nbPartials = 1; //facultative for sine, but changed for clarity
             
             Synthesis::Instance().updateSynthesisValues();
-            Config::isPlaying = true;
+            Config::hasStartedPlaying = true;
         }
         
         if(button == &m_answerButton)

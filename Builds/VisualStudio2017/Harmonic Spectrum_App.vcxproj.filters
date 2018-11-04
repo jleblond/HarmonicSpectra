@@ -14,6 +14,9 @@
     <Filter Include="Harmonic Spectrum\gui">
       <UniqueIdentifier>{8FA66222-329C-B14D-FD62-2D965C682F3C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Harmonic Spectrum\utils">
+      <UniqueIdentifier>{1D61F54C-9D40-8567-009B-6EDC2B69B3C7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Harmonic Spectrum">
       <UniqueIdentifier>{C37B85C6-24D5-2778-3641-1A7F971D782E}</UniqueIdentifier>
     </Filter>
@@ -2225,6 +2228,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\StatsBar.h">
       <Filter>Harmonic Spectrum\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\utils\CustomTimer.h">
+      <Filter>Harmonic Spectrum\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>Juce Modules\juce_audio_basics\audio_play_head</Filter>

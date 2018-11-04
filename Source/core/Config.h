@@ -39,11 +39,13 @@ public:
     
 
     static bool isPlaying;
+    static bool hasStartedPlaying;
+    
+    static double soundDuration;
     
     
     static double sampleRate;
     
-    static auto msSoundDuration;
     
 private:
     

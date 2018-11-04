@@ -89,6 +89,7 @@ void MainApplication::buttonClicked(Button* button)
     {
         String username = m_userConfigView.getTextFieldValue();
         Config::user = std::make_shared<User>(username);
+        m_headerView.setUserLabel(username);
         
         showUserConfig(false);
         showExerciseConfig(true);
@@ -106,7 +107,6 @@ void MainApplication::buttonClicked(Button* button)
         
         Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
         
-        //std::cout<<Config::user->getLastSession()->getNbAmplitudeRatios()<<std::endl;
 
         showExerciseConfig(false);
         showExerciseWindow(true);

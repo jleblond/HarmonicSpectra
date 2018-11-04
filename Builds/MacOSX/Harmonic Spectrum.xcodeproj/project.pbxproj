@@ -67,6 +67,7 @@
 		3EC07D9D8A1C48B2FE10DECB = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		4A686398DF6679DC21AA4CFE = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = "SOURCE_ROOT"; };
 		4B90D6616A4442080B852F02 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_basics.mm"; path = "../../JuceLibraryCode/include_juce_audio_basics.mm"; sourceTree = "SOURCE_ROOT"; };
+		4ECEEBAD6CAB0AB22AACA3BC = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomTimer.h; path = ../../Source/utils/CustomTimer.h; sourceTree = "SOURCE_ROOT"; };
 		52E0D22B0015CC8CFB6A7198 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_processors.mm"; path = "../../JuceLibraryCode/include_juce_audio_processors.mm"; sourceTree = "SOURCE_ROOT"; };
 		5320ED48F63010122F5C0A7A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ExerciseBuilder.cpp; path = ../../Source/core/ExerciseBuilder.cpp; sourceTree = "SOURCE_ROOT"; };
 		537BBDB684B22E3FFBE82E0D = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_video.mm"; path = "../../JuceLibraryCode/include_juce_video.mm"; sourceTree = "SOURCE_ROOT"; };
@@ -151,12 +152,15 @@
 					D39D9E669B8884A9D3EC4D95,
 					DB4BD6F2525B126FDB46C15B,
 					7095C47FFAF70E8392F5F303, ); name = gui; sourceTree = "<group>"; };
+		80F4B8E7A71BAAE5FF35F876 = {isa = PBXGroup; children = (
+					4ECEEBAD6CAB0AB22AACA3BC, ); name = utils; sourceTree = "<group>"; };
 		CB7A574696FB69CFC9B1B055 = {isa = PBXGroup; children = (
 					FF116E5D4118DC18A538A2AB,
 					80DD879FB5D3BCC63DC8FE1F,
 					8766AFF2605A3C9BFCED446A,
 					AC0D26E1A4AF9E5F99C4C095,
-					D1AEE672260F924602A5725C, ); name = "Harmonic Spectrum"; sourceTree = "<group>"; };
+					D1AEE672260F924602A5725C,
+					80F4B8E7A71BAAE5FF35F876, ); name = "Harmonic Spectrum"; sourceTree = "<group>"; };
 		E84E40F16A099545A1BFC9A0 = {isa = PBXGroup; children = (
 					560967F3C9E78ABFA83FF8C4,
 					3BA17B430F13EC7D450C6C08,

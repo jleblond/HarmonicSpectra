@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    SynthesisEngine.h
+    Synthesis.h
     Created: 19 Dec 2017 1:12:58pm
     Author:  Jasmine Leblond-Chartrand
 
