@@ -33,6 +33,8 @@ const float BOTTOM_BUTTONS_HEIGHT = 0.20; //height relative to espace left witho
 const float STATSVIEW_HEIGHT = 0.35;
 //const float VOLUMEVIEW_WIDTH = 0.10;
 
+const float ENDSESSIONBUTTON_WIDTH = 0.10;
+
 
 class MainApplication    : public Component,
                             public Button::Listener
@@ -65,7 +67,7 @@ protected:
     
     TextButton m_createUserButton;
     TextButton m_startSessionButton;
-    TextButton m_endSessionButton;
+    TextButton m_endSessionButton{"SESSION [X]"};
    
     MainWindow m_mainWindow;
     StatsView m_statsView;

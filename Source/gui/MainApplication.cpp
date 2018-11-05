@@ -39,6 +39,12 @@ MainApplication::MainApplication()
    // addAndMakeVisible(m_volumeView);
    // m_volumeView.setVisible(false);
     
+    addAndMakeVisible(m_endSessionButton);
+    m_endSessionButton.setColour(TextButton::buttonColourId, Colour (0xff003F5F));
+    m_endSessionButton.setColour(TextButton::textColourOffId, Colours::white);
+    m_endSessionButton.addListener(this);
+    m_endSessionButton.setVisible(false);
+    
 }
     
 MainApplication::~MainApplication()
@@ -62,6 +68,8 @@ void MainApplication::paint (Graphics& g)
     
 void MainApplication::resized()
 {
+    m_endSessionButton.setBounds (getWidth() - 0.05 -  ENDSESSIONBUTTON_WIDTH*getWidth(), 0, ENDSESSIONBUTTON_WIDTH*getWidth(), 0.03*getHeight());
+    
     Rectangle<int> area (getLocalBounds());
     m_headerView.setBounds (area.removeFromTop( HEADER_PERCENT_HEIGHT*getHeight()));
         
@@ -105,9 +113,10 @@ void MainApplication::buttonClicked(Button* button)
         Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
         
 
+        
         showExerciseConfig(false);
         showExerciseWindow(true);
-        
+        m_endSessionButton.setVisible(true);
         m_mainWindow.updateMatrixView();
     }
     
@@ -116,8 +125,11 @@ void MainApplication::buttonClicked(Button* button)
         //hide curr windows
         
         //report generation options
+        
+        m_mainWindow.resetMatrixButtonsColours();
         showExerciseWindow(false);
         showExerciseConfig(true);
+        m_endSessionButton.setVisible(false);
     }
 
     

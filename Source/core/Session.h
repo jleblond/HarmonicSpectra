@@ -33,10 +33,10 @@ public:
         return m_baseFreq;
     }
     
-    int getNbPartials()
-    {
-        return m_nbPartials;
-    }
+//    int getNbPartials()
+//    {
+//        return m_nbPartials;
+//    }
     
     const std::vector<std::shared_ptr<Question>>& getVecQuestions()
     {
@@ -70,5 +70,5 @@ protected:
     int m_baseFreq = 200;
     std::vector<int> m_vecAudibleRanges;
     
-    int m_nbPartials = 1;
+   // int m_nbPartials = 1;
 };

@@ -217,11 +217,11 @@ public:
         {
             if(button == m_arrARButtons.getUnchecked(i))
             {
-                if(m_isQuestionMode)
+                if(m_isQuestionMode || m_isTestMode)
                 {
                     resetARButtonsColours();
                     m_arrARCSquares[i]->setColour(Colours::black);
-                    m_answeredAudibleRange = m_vecARPercents[i];
+                    m_selectedAudibleRange = m_vecARPercents[i];
                 }
             }
         }
@@ -230,11 +230,11 @@ public:
         {
             if(button == m_arrWavesButtons.getUnchecked(i))
             {
-                if(m_isQuestionMode)
+                if(m_isQuestionMode || m_isTestMode)
                 {
                     resetWaveButtonsColours();
                     m_arrWavesCSquares[i]->setColour(Colours::black);
-                    m_answeredWaveTypeID = (i+1);
+                    m_selectedWaveTypeID = (i+1);
                 }
                 
             }
@@ -262,7 +262,7 @@ public:
     void correctWaveTypeID(int correctWaveTypeID)
     {
         m_arrWavesCSquares[correctWaveTypeID-1]->setColour(Colours::green);
-        m_answeredWaveTypeID = 0;
+        m_selectedWaveTypeID = 0;
     }
     
     void correctAudibleRange(int correctAudibleRange)
@@ -274,7 +274,7 @@ public:
                 m_arrARCSquares[i]->setColour(Colours::green);
             }
         }
-        m_answeredAudibleRange = 0;
+        m_selectedAudibleRange = 0;
     }
     
     void setQuestionMode (bool isQuestionMode)
@@ -282,21 +282,32 @@ public:
         m_isQuestionMode = isQuestionMode;
     }
     
-    int getAnsweredWaveTypeID()
+    void setTestMode (bool isTestMode)
     {
-        return m_answeredWaveTypeID;
+        m_isTestMode = isTestMode;
     }
     
-    int getAnsweredAudibleRange()
+    int getSelectedWaveTypeID()
     {
-        return m_answeredAudibleRange;
+        return m_selectedWaveTypeID;
     }
     
+    int getSelectedAudibleRange()
+    {
+        return m_selectedAudibleRange;
+    }
+    
+    void resetSelectedValues()
+    {
+        m_selectedWaveTypeID = 0;
+        m_selectedAudibleRange = 0;
+    }
     
 protected:
     bool m_isQuestionMode = false;
-    int m_answeredWaveTypeID = 0;
-    int m_answeredAudibleRange = 0;
+    bool m_isTestMode = true; //default value at init
+    int m_selectedWaveTypeID = 0;
+    int m_selectedAudibleRange = 0;
     
     OwnedArray<TextButton> m_arrWavesButtons;
     OwnedArray<ColourSquare> m_arrWavesCSquares;
