@@ -11,10 +11,10 @@
 #pragma once
 
 
-class Exercise
+class Question
 {
 public:
-    Exercise (int waveTypeID, int audibleRange)
+    Question (int waveTypeID, int audibleRange)
     : m_waveTypeID(waveTypeID), m_audibleRange(audibleRange)
     {
         
@@ -30,8 +30,31 @@ public:
         return m_audibleRange;
     }
     
+    int getAnsweredWaveTypeID()
+    {
+        return m_answeredWaveTypeID;
+    }
+    
+    int getAnsweredAudibleRange()
+    {
+        return m_answeredAudibleRange;
+    }
+    
+    void setAnsweredWaveTypeID(int answeredWaveTypeID)
+    {
+        m_answeredWaveTypeID = answeredWaveTypeID;
+    }
+    
+    void setAnsweredAudibleRange(int answeredAudibleRange)
+    {
+        m_answeredAudibleRange = answeredAudibleRange;
+    }
+    
 protected:
     int m_waveTypeID = 1; //default ToBeMOdified
     int m_audibleRange = 100;
+    
+    int m_answeredWaveTypeID = 0;
+    int m_answeredAudibleRange = 0;
     
 };

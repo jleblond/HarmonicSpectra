@@ -9,7 +9,7 @@
 */
 
 #pragma once
-#include "Exercise.h"
+#include "Question.h"
 #include "Partials.h"
 #include "StatsSheet.h"
 
@@ -38,26 +38,31 @@ public:
         return m_nbPartials;
     }
     
-    const std::vector<std::shared_ptr<Exercise>>& getVecExercises()
+    const std::vector<std::shared_ptr<Question>>& getVecQuestions()
     {
-        return m_vecExercises;
+        return m_vecQuestions;
     }
     
-    std::shared_ptr<Exercise> getLastExercise()
+    std::shared_ptr<Question> getLastQuestion()
     {
-        int sizeVec = m_vecExercises.size();
+        int sizeVec = m_vecQuestions.size();
         assert(sizeVec >=1);
-        return m_vecExercises[sizeVec-1];
+        return m_vecQuestions[sizeVec-1];
     }
     
     void addExercise(int waveTypeID, int audibleRange)
     {
-        m_vecExercises.push_back(std::make_shared<Exercise>(waveTypeID, audibleRange));
+        m_vecQuestions.push_back(std::make_shared<Question>(waveTypeID, audibleRange));
+    }
+    
+    int getVecAudibleRangesSize()
+    {
+        return m_vecAudibleRanges.size();
     }
     
     
 protected:
-    std::vector<std::shared_ptr<Exercise>> m_vecExercises;
+    std::vector<std::shared_ptr<Question>> m_vecQuestions;
     
     //default init
     Partials m_partials = Partials::all;

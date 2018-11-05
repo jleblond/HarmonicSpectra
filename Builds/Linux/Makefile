@@ -69,7 +69,7 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
   $(JUCE_OBJDIR)/Synthesis_d92d58f4.o \
   $(JUCE_OBJDIR)/Config_45934953.o \
-  $(JUCE_OBJDIR)/ExerciseBuilder_bb89fefc.o \
+  $(JUCE_OBJDIR)/QuestionBuilder_7627902e.o \
   $(JUCE_OBJDIR)/ReportBuilder_9688b320.o \
   $(JUCE_OBJDIR)/MainApplication_378365e4.o \
   $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
@@ -114,9 +114,9 @@ $(JUCE_OBJDIR)/Config_45934953.o: ../../Source/core/Config.cpp
 	@echo "Compiling Config.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/ExerciseBuilder_bb89fefc.o: ../../Source/core/ExerciseBuilder.cpp
+$(JUCE_OBJDIR)/QuestionBuilder_7627902e.o: ../../Source/core/QuestionBuilder.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling ExerciseBuilder.cpp"
+	@echo "Compiling QuestionBuilder.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/ReportBuilder_9688b320.o: ../../Source/core/ReportBuilder.cpp

@@ -10,7 +10,7 @@
 
 #pragma once
 #include "../core/Config.h"
-#include "../core/ExerciseBuilder.h"
+#include "../core/QuestionBuilder.h"
 
 #include "../utils/ColourSquare.h"
 
@@ -128,7 +128,7 @@ public:
         
         // WAVETYPES: Buttons OR Labels 'N/A'
         
-        std::vector<int> vecWaves = ExerciseBuilder::Instance().getVecWaves();
+        std::vector<int> vecWaves = QuestionBuilder::Instance().getVecWaves();
         int indexALLPartials = 0;
         
         for (int j=0;j<vecWaves.size();j++)
@@ -217,10 +217,12 @@ public:
         {
             if(button == m_arrARButtons.getUnchecked(i))
             {
-                std::cout<<"m_arrARButtons button #"+static_cast<String>(i+1)<<std::endl;
-                resetARButtonsColours();
-                m_arrARCSquares[i]->setColour(Colours::black);
-                
+                if(m_isQuestionMode)
+                {
+                    resetARButtonsColours();
+                    m_arrARCSquares[i]->setColour(Colours::black);
+                    m_answeredAudibleRange = m_vecARPercents[i];
+                }
             }
         }
         
@@ -228,9 +230,12 @@ public:
         {
             if(button == m_arrWavesButtons.getUnchecked(i))
             {
-                std::cout<<"m_arrWavesButtons button #"+static_cast<String>(i+1)<<std::endl;
-                resetWaveButtonsColours();
-                 m_arrWavesCSquares[i]->setColour(Colours::black);
+                if(m_isQuestionMode)
+                {
+                    resetWaveButtonsColours();
+                    m_arrWavesCSquares[i]->setColour(Colours::black);
+                    m_answeredWaveTypeID = (i+1);
+                }
                 
             }
         }
@@ -254,8 +259,45 @@ public:
         }
     }
     
+    void correctWaveTypeID(int correctWaveTypeID)
+    {
+        m_arrWavesCSquares[correctWaveTypeID-1]->setColour(Colours::green);
+        m_answeredWaveTypeID = 0;
+    }
+    
+    void correctAudibleRange(int correctAudibleRange)
+    {
+        for(int i=0;i<m_arrARCSquares.size();i++)
+        {
+            if(m_vecARPercents[i] == correctAudibleRange)
+            {
+                m_arrARCSquares[i]->setColour(Colours::green);
+            }
+        }
+        m_answeredAudibleRange = 0;
+    }
+    
+    void setQuestionMode (bool isQuestionMode)
+    {
+        m_isQuestionMode = isQuestionMode;
+    }
+    
+    int getAnsweredWaveTypeID()
+    {
+        return m_answeredWaveTypeID;
+    }
+    
+    int getAnsweredAudibleRange()
+    {
+        return m_answeredAudibleRange;
+    }
+    
     
 protected:
+    bool m_isQuestionMode = false;
+    int m_answeredWaveTypeID = 0;
+    int m_answeredAudibleRange = 0;
+    
     OwnedArray<TextButton> m_arrWavesButtons;
     OwnedArray<ColourSquare> m_arrWavesCSquares;
     

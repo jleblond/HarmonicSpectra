@@ -16,7 +16,7 @@
 #include <time.h>       /* time */
 #include <math.h>       /* floor */
 
-#include "Exercise.h"
+#include "Question.h"
 #include "Partials.h"
 
 #include "Config.h"
@@ -25,11 +25,11 @@
 
 typedef std::pair<Partials, int> keys;
 
-class ExerciseBuilder
+class QuestionBuilder
 {
 public:
     
-    static ExerciseBuilder& Instance();
+    static QuestionBuilder& Instance();
     
     
     
@@ -39,7 +39,7 @@ public:
     // TO: exercise
     // int waveTypeID, int nbAmplitudeRatios, int audioRange
     
-    void buildExercise()
+    void buildQuestion()
     {
         assert(Config::user->getVecSessions().size() >= 1);
         
@@ -99,9 +99,9 @@ private:
     std::vector<int> both3{1,3,5,6,8,10};
     std::vector<int> both5{1,2,3,4,5,6,7,8,9,10};
 
-    static ExerciseBuilder m_exerciseBuilder;
+    static QuestionBuilder m_exerciseBuilder;
     
-    ExerciseBuilder()
+    QuestionBuilder()
     {
         //note: insert and emplace are equivalent fcts
         m_tableOfWaves.insert(std::make_pair(keys(Partials::odd, 2), odd2));

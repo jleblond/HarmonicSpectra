@@ -8,11 +8,11 @@
   ==============================================================================
 */
 
-#include "ExerciseBuilder.h"
+#include "QuestionBuilder.h"
 
-ExerciseBuilder ExerciseBuilder::m_exerciseBuilder = ExerciseBuilder();
+QuestionBuilder QuestionBuilder::m_exerciseBuilder = QuestionBuilder();
 
-ExerciseBuilder& ExerciseBuilder::Instance()
+QuestionBuilder& QuestionBuilder::Instance()
 {
     return m_exerciseBuilder;
 }

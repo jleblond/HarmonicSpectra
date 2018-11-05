@@ -391,7 +391,7 @@
     <ClCompile Include="..\..\Source\core\Config.cpp">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\core\ExerciseBuilder.cpp">
+    <ClCompile Include="..\..\Source\core\QuestionBuilder.cpp">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp">
@@ -2181,10 +2181,10 @@
     <ClInclude Include="..\..\Source\core\Session.h">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\core\Exercise.h">
+    <ClInclude Include="..\..\Source\core\Question.h">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\core\ExerciseBuilder.h">
+    <ClInclude Include="..\..\Source\core\QuestionBuilder.h">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\core\StatsSheet.h">

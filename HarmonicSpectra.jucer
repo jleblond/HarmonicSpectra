@@ -18,11 +18,11 @@
       <FILE id="LKhPGV" name="Config.cpp" compile="1" resource="0" file="Source/core/Config.cpp"/>
       <FILE id="L7ikBJ" name="User.h" compile="0" resource="0" file="Source/core/User.h"/>
       <FILE id="qlB7zO" name="Session.h" compile="0" resource="0" file="Source/core/Session.h"/>
-      <FILE id="S5Ys1F" name="Exercise.h" compile="0" resource="0" file="Source/core/Exercise.h"/>
-      <FILE id="AAVomQ" name="ExerciseBuilder.h" compile="0" resource="0"
-            file="Source/core/ExerciseBuilder.h"/>
-      <FILE id="APLofj" name="ExerciseBuilder.cpp" compile="1" resource="0"
-            file="Source/core/ExerciseBuilder.cpp"/>
+      <FILE id="dZpEOj" name="Question.h" compile="0" resource="0" file="Source/core/Question.h"/>
+      <FILE id="wLmOik" name="QuestionBuilder.h" compile="0" resource="0"
+            file="Source/core/QuestionBuilder.h"/>
+      <FILE id="hec5TY" name="QuestionBuilder.cpp" compile="1" resource="0"
+            file="Source/core/QuestionBuilder.cpp"/>
       <FILE id="WCxncW" name="StatsSheet.h" compile="0" resource="0" file="Source/core/StatsSheet.h"/>
       <FILE id="XLz2e2" name="Comment.h" compile="0" resource="0" file="Source/core/Comment.h"/>
       <FILE id="V7Hz4K" name="Report.h" compile="0" resource="0" file="Source/core/Report.h"/>

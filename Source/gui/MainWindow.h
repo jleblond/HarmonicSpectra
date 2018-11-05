@@ -12,7 +12,7 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
-#include "../core/ExerciseBuilder.h"
+#include "../core/QuestionBuilder.h"
 #include "../core/Config.h"
 #include "../core/audio/Synthesis.h"
 
@@ -43,6 +43,9 @@ public:
         addAndMakeVisible(m_answerButton);
         m_answerButton.addListener(this);
         
+        addAndMakeVisible(m_notAnsweredLabel);
+        m_notAnsweredLabel.setColour(juce::Label::textColourId, Colours::red);
+        
         
         displayPanel(1);
     }
@@ -71,14 +74,15 @@ public:
         m_matrixView.setBounds (area.removeFromRight( MATRIX_WIDTH*getWidth()));
         
         
+        m_newQuestionButton.setBounds (0.08*getWidth(), 0.15*getHeight(), 0.175*getWidth(), 0.25*getHeight());
         
-        m_newQuestionButton.setBounds (0.08*getWidth(), 0.2*getHeight(), 0.175*getWidth(), 0.25*getHeight());
         
+        m_playQuestionButton.setBounds (0.08*getWidth(), 0.15*getHeight(), 0.21*getWidth(), 0.2*getHeight());
+        m_playSineWaveButton.setBounds (0.11*getWidth(), 0.37*getHeight(), 0.14*getWidth(), 0.1*getHeight());
         
-        m_playQuestionButton.setBounds (0.08*getWidth(), 0.2*getHeight(), 0.21*getWidth(), 0.2*getHeight());
-        m_playSineWaveButton.setBounds (0.11*getWidth(), 0.45*getHeight(), 0.14*getWidth(), 0.1*getHeight());
+        m_answerButton.setBounds (0.09*getWidth(), 0.62*getHeight(), 0.175*getWidth(), 0.2*getHeight());
         
-        m_answerButton.setBounds (0.09*getWidth(), 0.7*getHeight(), 0.175*getWidth(), 0.2*getHeight());
+        m_notAnsweredLabel.setBounds (0.09*getWidth(), 0.83*getHeight(), 0.25*getWidth(), 0.15*getHeight());
         
         
     }
@@ -87,39 +91,51 @@ public:
     {
         if(button == &m_newQuestionButton)
         {
-            ExerciseBuilder::Instance().buildExercise();
+            //MODEL
+            QuestionBuilder::Instance().buildQuestion();
+            
+            //VIEW
+            m_matrixView.setQuestionMode(true);
+            m_matrixView.resetARButtonsColours();
+            m_matrixView.resetWaveButtonsColours();
             displayPanel(2);
         }
         
         if(button == &m_playQuestionButton)
         {
-            auto lastExercise = Config::user->getLastSession()->getLastExercise();
-            Config::waveTypeID = lastExercise->getWaveTypeID();
-            int audioRange = lastExercise->getAudibleRange();
-            
-            Config::nbPartials = ExerciseBuilder::Instance().computeNbPartials(audioRange);
-            
+            //MODEL
+            auto lastQuestion = Config::user->getLastSession()->getLastQuestion();
+            Config::waveTypeID = lastQuestion->getWaveTypeID();
+            int audioRange = lastQuestion->getAudibleRange();
+            Config::nbPartials = QuestionBuilder::Instance().computeNbPartials(audioRange);
             Synthesis::Instance().updateSynthesisValues();
             Config::hasStartedPlaying = true;
         }
         
         if(button == &m_playSineWaveButton)
         {
+            //MODEL
             Config::waveTypeID = 11; //sine wave
             Config::nbPartials = 1; //facultative for sine, but changed for clarity
-            
             Synthesis::Instance().updateSynthesisValues();
             Config::hasStartedPlaying = true;
         }
         
         if(button == &m_answerButton)
         {
-            //correct answer
+            m_notAnsweredLabel.setText("", dontSendNotification);
+      
+            correctAnswers();
             
-            //temporary
-            Config::isPlaying = false;
+            Config::isPlaying = false; //temporary
             
-            displayPanel(1);
+            //VIEW
+            
+            if(m_notAnsweredLabel.getText() == "")
+            {
+                m_matrixView.setQuestionMode(false);
+                displayPanel(1);
+            }
         }
         
     }
@@ -149,6 +165,61 @@ public:
         m_matrixView.resized();
     }
     
+    void correctAnswers()
+    {
+        auto lastSession = Config::user->getLastSession();
+        auto lastQuestion = lastSession->getLastQuestion();
+        
+        String message = "";
+        
+        //Check 'WaveTypeID'
+        int answerWaveTypeID = m_matrixView.getAnsweredWaveTypeID();
+        if (isAnswered(answerWaveTypeID) == false)
+        {
+            message += "* ODD/ALL not selected *\n";
+        }
+        
+    
+        //Check 'AudibleRange'
+        //If and only if AUDIBLE RANGE is being tested for this session/question
+        
+        int answerAudibleRange = m_matrixView.getAnsweredAudibleRange();
+        if(lastSession->getVecAudibleRangesSize() >1)
+        {
+            if (isAnswered(answerAudibleRange) == false)
+            {
+                message += "* Audible Range not selected *";
+            }
+        }
+
+        
+        //CORRECTION if both wavetype and audiblerange are ok
+        if(message == "")
+        {
+           lastQuestion->setAnsweredWaveTypeID (answerWaveTypeID);
+           m_matrixView.correctWaveTypeID (lastQuestion->getWaveTypeID());
+            
+            if(lastSession->getVecAudibleRangesSize() >1)
+            {
+                 lastQuestion->setAnsweredAudibleRange(answerAudibleRange);
+                 m_matrixView.correctAudibleRange (lastQuestion->getAudibleRange());
+            }
+        }
+        
+         m_notAnsweredLabel.setText(message, dontSendNotification);
+    }
+    
+    
+    bool isAnswered(int answerValue)
+    {
+        if(answerValue != 0)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+    
 private:
     MatrixView m_matrixView;
     
@@ -156,5 +227,7 @@ private:
     TextButton m_playQuestionButton{"PLAY Question"};
     TextButton m_playSineWaveButton{"Play Sine Wave (reference)"};
     TextButton m_answerButton{"Answer"};
+    
+    Label m_notAnsweredLabel{{}, ""};
 
 };
