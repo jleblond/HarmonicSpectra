@@ -43,6 +43,7 @@
 		4C3C89D947BB7273A9502494 = {isa = PBXBuildFile; fileRef = 71710690CB8FDCB470B4866B; };
 		4CF2D9CA9A76B3A24633E328 = {isa = PBXBuildFile; fileRef = 537BBDB684B22E3FFBE82E0D; };
 		002D0202AC1C62CF832DCDF8 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Synthesis.cpp; path = ../../Source/core/audio/Synthesis.cpp; sourceTree = "SOURCE_ROOT"; };
+		01DA0BBDB8F6B61D89B04839 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MatrixView.h; path = ../../Source/gui/MatrixView.h; sourceTree = "SOURCE_ROOT"; };
 		0379A2295FDD7B68AAB52645 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../../Source/core/User.h; sourceTree = "SOURCE_ROOT"; };
 		03D342A00C3A0B93270889A0 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InnerEar Harmonic Spectrum.app"; sourceTree = "BUILT_PRODUCTS_DIR"; };
 		0A1F75871D4C276041B9F0C9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserConfigView.h; path = ../../Source/gui/UserConfigView.h; sourceTree = "SOURCE_ROOT"; };
@@ -92,6 +93,7 @@
 		9B9AA1840E910FB5BB9AD908 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_video"; path = "../../modules/juce_video"; sourceTree = "SOURCE_ROOT"; };
 		9CF683FFD424F3DC57E2FB46 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Synthesis.h; path = ../../Source/core/audio/Synthesis.h; sourceTree = "SOURCE_ROOT"; };
 		A2DD16AAABD590384B31C396 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_audio_utils.mm"; path = "../../JuceLibraryCode/include_juce_audio_utils.mm"; sourceTree = "SOURCE_ROOT"; };
+		A40EDC192B5E4BF7C895CAC7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ColourSquare.h; path = ../../Source/utils/ColourSquare.h; sourceTree = "SOURCE_ROOT"; };
 		A57CF0E12783FC6E1CB22B25 = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = "SOURCE_ROOT"; };
 		AA3DC832F7AFED314FC19B21 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_audio_utils"; path = "../../modules/juce_audio_utils"; sourceTree = "SOURCE_ROOT"; };
 		AC0B00D98A4C46851F41BBB0 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_data_structures.mm"; path = "../../JuceLibraryCode/include_juce_data_structures.mm"; sourceTree = "SOURCE_ROOT"; };
@@ -106,7 +108,6 @@
 		C878952983106C28B6729C58 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = "SOURCE_ROOT"; };
 		C8CB8C4B8E0C9C98791C83F9 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_gui_extra"; path = "../../modules/juce_gui_extra"; sourceTree = "SOURCE_ROOT"; };
 		CC712DE3127F804094EF454A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_graphics.mm"; path = "../../JuceLibraryCode/include_juce_graphics.mm"; sourceTree = "SOURCE_ROOT"; };
-		D12EF7507F1AD2C9AD0C142F = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = QuestionsView.h; path = ../../Source/gui/QuestionsView.h; sourceTree = "SOURCE_ROOT"; };
 		D39D9E669B8884A9D3EC4D95 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VolumeView.h; path = ../../Source/gui/VolumeView.h; sourceTree = "SOURCE_ROOT"; };
 		D47C65CB7DB8FB8DE24E75BF = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB4BD6F2525B126FDB46C15B = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatsView.h; path = ../../Source/gui/StatsView.h; sourceTree = "SOURCE_ROOT"; };
@@ -147,13 +148,14 @@
 					0A1F75871D4C276041B9F0C9,
 					0E5127F2C3103A04CB32474C,
 					C17AE8E43C297AE9BF5953E9,
-					D12EF7507F1AD2C9AD0C142F,
 					6E77E53CA047AF8F6545EEF7,
+					01DA0BBDB8F6B61D89B04839,
 					D39D9E669B8884A9D3EC4D95,
 					DB4BD6F2525B126FDB46C15B,
 					7095C47FFAF70E8392F5F303, ); name = gui; sourceTree = "<group>"; };
 		80F4B8E7A71BAAE5FF35F876 = {isa = PBXGroup; children = (
-					4ECEEBAD6CAB0AB22AACA3BC, ); name = utils; sourceTree = "<group>"; };
+					4ECEEBAD6CAB0AB22AACA3BC,
+					A40EDC192B5E4BF7C895CAC7, ); name = utils; sourceTree = "<group>"; };
 		CB7A574696FB69CFC9B1B055 = {isa = PBXGroup; children = (
 					FF116E5D4118DC18A538A2AB,
 					80DD879FB5D3BCC63DC8FE1F,

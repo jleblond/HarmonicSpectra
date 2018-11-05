@@ -1778,12 +1778,13 @@
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\HeaderView.h"/>
-    <ClInclude Include="..\..\Source\gui\QuestionsView.h"/>
     <ClInclude Include="..\..\Source\gui\MainWindow.h"/>
+    <ClInclude Include="..\..\Source\gui\MatrixView.h"/>
     <ClInclude Include="..\..\Source\gui\VolumeView.h"/>
     <ClInclude Include="..\..\Source\gui\StatsView.h"/>
     <ClInclude Include="..\..\Source\gui\StatsBar.h"/>
     <ClInclude Include="..\..\Source\utils\CustomTimer.h"/>
+    <ClInclude Include="..\..\Source\utils\ColourSquare.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

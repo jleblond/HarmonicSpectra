@@ -2214,10 +2214,10 @@
     <ClInclude Include="..\..\Source\gui\HeaderView.h">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\gui\QuestionsView.h">
+    <ClInclude Include="..\..\Source\gui\MainWindow.h">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\gui\MainWindow.h">
+    <ClInclude Include="..\..\Source\gui\MatrixView.h">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\VolumeView.h">
@@ -2230,6 +2230,9 @@
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\utils\CustomTimer.h">
+      <Filter>Harmonic Spectrum\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\utils\ColourSquare.h">
       <Filter>Harmonic Spectrum\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">

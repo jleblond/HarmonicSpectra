@@ -16,7 +16,6 @@
 #include "UserConfigView.h"
 #include "ExerciseConfigView.h"
 #include "MainWindow.h"
-#include "QuestionsView.h"
 #include "VolumeView.h"
 #include "StatsView.h"
 
@@ -33,7 +32,6 @@ const float BOTTOM_BUTTONS_HEIGHT = 0.20; //height relative to espace left witho
 
 const float STATSVIEW_HEIGHT = 0.35;
 //const float VOLUMEVIEW_WIDTH = 0.10;
-const float QUESTIONSVIEW_WIDTH = 0.30;
 
 
 class MainApplication    : public Component,
@@ -71,7 +69,6 @@ protected:
    
     MainWindow m_mainWindow;
     StatsView m_statsView;
-    QuestionsView m_questionsView;
     //VolumeView m_volumeView;
     
     

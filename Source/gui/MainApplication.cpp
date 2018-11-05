@@ -36,8 +36,6 @@ MainApplication::MainApplication()
     m_mainWindow.setVisible(false);
     addAndMakeVisible(m_statsView);
     m_statsView.setVisible(false);
-    addAndMakeVisible(m_questionsView);
-    m_questionsView.setVisible(false);
    // addAndMakeVisible(m_volumeView);
    // m_volumeView.setVisible(false);
     
@@ -77,7 +75,6 @@ void MainApplication::resized()
         
     Rectangle<int> area3 (area);
     m_statsView.setBounds(area3.removeFromBottom(STATSVIEW_HEIGHT*getHeight()));
-    m_questionsView.setBounds(area3.removeFromRight(QUESTIONSVIEW_WIDTH*getWidth()));
    // m_volumeView.setBounds (area3.removeFromRight(VOLUMEVIEW_WIDTH*getWidth()));
     m_mainWindow.setBounds(area3);
         
@@ -111,7 +108,7 @@ void MainApplication::buttonClicked(Button* button)
         showExerciseConfig(false);
         showExerciseWindow(true);
         
-        m_mainWindow.resized();
+        m_mainWindow.updateMatrixView();
     }
     
     if(button == &m_endSessionButton)
@@ -142,7 +139,6 @@ void MainApplication::showExerciseWindow(bool isVisible)
 {
     m_mainWindow.setVisible(isVisible);
     m_statsView.setVisible(isVisible);
-    m_questionsView.setVisible(isVisible);
    // m_volumeView.setVisible(isVisible);
 }
 

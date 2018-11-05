@@ -9,203 +9,152 @@
 */
 
 #pragma once
-#include "../core/Config.h"
+
+#include "../../JuceLibraryCode/JuceHeader.h"
+
 #include "../core/ExerciseBuilder.h"
+#include "../core/Config.h"
+#include "../core/audio/Synthesis.h"
+
+#include "MatrixView.h"
+
+const float QUESTIONS_WIDTH = 0.35;
+const float MATRIX_WIDTH = 1-QUESTIONS_WIDTH;
 
 
-class MainWindow : public Component,
-                   public Button::Listener
+class MainWindow    : public Component,
+public Button::Listener
 {
 public:
     MainWindow()
     {
-         addAndMakeVisible(m_oddLabel);
-         addAndMakeVisible(m_allLabel);
-         addAndMakeVisible(m_arLabel);
-        
-        addAndMakeVisible(m_NALabel);
-        addAndMakeVisible(m_fixedARLabel);
+        addAndMakeVisible(m_matrixView);
         
         
-        for (int i = 0; i < 5; i++)
-        {
-            TextButton* newARButton = new TextButton();
-            String arButtonText = static_cast<String>(m_vecARPercents[i])+"%";
-            newARButton->setButtonText(arButtonText);
-            m_arrARButtons.add (newARButton);
-            newARButton->addListener(this);
-            addAndMakeVisible (newARButton);
-            
-            
-            TextButton* newODDButton = new TextButton();
-            newODDButton->setButtonText("ODD"+static_cast<String>(i+1));
-            m_arrODDButtons.add (newODDButton);
-            newODDButton->addListener(this);
-            addAndMakeVisible (newODDButton);
-        }
+        addAndMakeVisible(m_newQuestionButton);
+        m_newQuestionButton.addListener(this);
         
-        for (int i = 0; i < 5; i++)
-        {
-            TextButton* newALLButton = new TextButton();
-            newALLButton->setButtonText("ALL"+static_cast<String>(i+1));
-            m_arrALLButtons.add (newALLButton);
-            newALLButton->addListener(this);
-            addAndMakeVisible (newALLButton);
-        }
+        addAndMakeVisible(m_playQuestionButton);
+        m_playQuestionButton.addListener(this);
+        
+        addAndMakeVisible(m_playSineWaveButton);
+        m_playSineWaveButton.addListener(this);
+        
+        addAndMakeVisible(m_answerButton);
+        m_answerButton.addListener(this);
         
         
+        displayPanel(1);
     }
     
     ~MainWindow()
     {
-        
     }
     
     void paint (Graphics& g) override
     {
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
         
+        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+        
+        g.setColour (Colours::grey);
+        g.drawRect (getLocalBounds(), 1);
+        
+        g.setColour (Colours::white);
+        g.setFont (14.0f);
+        //        g.drawText ("MainWindow", getLocalBounds(),
+        //                    Justification::centred, true);
     }
     
     void resized() override
     {
-        
-        // General-Main LABELS
-        
-        m_oddLabel.setBounds (0.08*getWidth(), 0.1*getHeight(), 0.2*getWidth(), 0.1*getHeight());
-        m_allLabel.setBounds (0.08*getWidth(), 0.3*getHeight(), 0.2*getWidth(), 0.1*getHeight());
-        m_arLabel.setBounds (0.08*getWidth(), 0.7*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+        Rectangle<int> area (getLocalBounds());
+        m_matrixView.setBounds (area.removeFromRight( MATRIX_WIDTH*getWidth()));
         
         
-        //AUDIBLE RANGE : Buttons OR Label with fixed AR text
         
-        int sizeVecAR = Config::vecAudibleRanges.size();
-        
-        if (sizeVecAR > 1)
-        {
-            for (int i=0;i<sizeVecAR;i++)
-            {
-                m_arrARButtons.getUnchecked(i)->setBounds( (0.3*getWidth()+i*0.12*getWidth()),
-                                                          0.7*getHeight(),
-                                                          0.1*getWidth(), 0.15*getHeight());
-            }
-            displayAudioRangeButtons(true);
-        }
-        else if (sizeVecAR == 1)
-        {
-            m_fixedARLabel.setText (static_cast<String>(Config::vecAudibleRanges[0])+"%", dontSendNotification);
-            m_fixedARLabel.setBounds (0.3*getWidth(),0.68*getHeight(),
-                                      0.3*getWidth(), 0.15*getHeight());
-            
-             displayAudioRangeButtons(false);
-        }
-
+        m_newQuestionButton.setBounds (0.08*getWidth(), 0.2*getHeight(), 0.175*getWidth(), 0.25*getHeight());
         
         
-        // WAVETYPES: Buttons OR Labels 'N/A'
+        m_playQuestionButton.setBounds (0.08*getWidth(), 0.2*getHeight(), 0.21*getWidth(), 0.2*getHeight());
+        m_playSineWaveButton.setBounds (0.11*getWidth(), 0.45*getHeight(), 0.14*getWidth(), 0.1*getHeight());
         
-        std::vector<int> vecWaves = ExerciseBuilder::Instance().getVecWaves();
-        int indexALLPartials = 0;
-
-        for (int j=0;j<vecWaves.size();j++)
-        {
-            int waveID = vecWaves[j];
-            std::cout<<static_cast<String>(waveID);
-
-            if (waveID <=5) //odd partials waves
-            {
-                m_arrODDButtons.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
-                                                                   0.1*getHeight(),
-                                                                   0.1*getWidth(), 0.15*getHeight());
-            }
-            else if(waveID > 5) //all partials waves
-            {
-                m_arrALLButtons.getUnchecked(waveID-6)->setBounds (
-                        (0.3*getWidth()+indexALLPartials*0.12*getWidth()),0.3*getHeight(),0.1*getWidth(), 0.15*getHeight());
-                indexALLPartials++;
-            }
-        }
+        m_answerButton.setBounds (0.09*getWidth(), 0.7*getHeight(), 0.175*getWidth(), 0.2*getHeight());
         
-        if (Config::partials == Partials::odd)
-        {
-            m_NALabel.setBounds(0.3*getWidth(),0.28*getHeight(),
-                                0.3*getWidth(), 0.15*getHeight());
-            
-            displayWaveTypeButtons(true, false);
-        }
-        else if (Config::partials == Partials::all)
-        {
-            m_NALabel.setBounds(0.3*getWidth(),0.075*getHeight(),
-                                0.3*getWidth(), 0.15*getHeight());
-             displayWaveTypeButtons(false, true);
-        }
-        else if (Config::partials == Partials::both)
-        {
-            displayWaveTypeButtons(true,true);
-        }
-    
-    }
-
-    
-    void displayAudioRangeButtons(bool isVisible)
-    {
-        for( int i=0;i<5;i++)
-        {
-            m_arrARButtons.getUnchecked(i)->setVisible(isVisible);
-        }
-    }
-    
-    void displayWaveTypeButtons (bool showODD, bool showALL)
-    {
-        for(int i=0;i<m_arrODDButtons.size();i++)
-        {
-            m_arrODDButtons[i]->setVisible(showODD);
-        }
-        for(const auto& j: m_arrALLButtons)
-        {
-            j->setVisible(showALL);
-        }
+        
     }
     
     void buttonClicked(Button* button) override
     {
-        for(int i=0;i<m_arrARButtons.size();i++)
+        if(button == &m_newQuestionButton)
         {
-            if(button == m_arrARButtons.getUnchecked(i))
-            {
-                std::cout<<"m_arrARButtons button #"+static_cast<String>(i+1)<<std::endl;
-            }
+            ExerciseBuilder::Instance().buildExercise();
+            displayPanel(2);
         }
         
-        for(int i=0;i<m_arrODDButtons.size();i++)
+        if(button == &m_playQuestionButton)
         {
-            if(button == m_arrODDButtons.getUnchecked(i))
-            {
-                std::cout<<"m_arrODDButtons button #"+static_cast<String>(i+1)<<std::endl;
-            }
+            auto lastExercise = Config::user->getLastSession()->getLastExercise();
+            Config::waveTypeID = lastExercise->getWaveTypeID();
+            int audioRange = lastExercise->getAudibleRange();
+            
+            Config::nbPartials = ExerciseBuilder::Instance().computeNbPartials(audioRange);
+            
+            Synthesis::Instance().updateSynthesisValues();
+            Config::hasStartedPlaying = true;
         }
         
-        for(int i=0;i<m_arrALLButtons.size();i++)
+        if(button == &m_playSineWaveButton)
         {
-            if(button == m_arrALLButtons.getUnchecked(i))
-            {
-                std::cout<<"m_arrALLButtons button #"+static_cast<String>(i+1)<<std::endl;
-            }
+            Config::waveTypeID = 11; //sine wave
+            Config::nbPartials = 1; //facultative for sine, but changed for clarity
+            
+            Synthesis::Instance().updateSynthesisValues();
+            Config::hasStartedPlaying = true;
         }
-
+        
+        if(button == &m_answerButton)
+        {
+            //correct answer
+            
+            //temporary
+            Config::isPlaying = false;
+            
+            displayPanel(1);
+        }
         
     }
     
-protected:
-    OwnedArray<TextButton> m_arrALLButtons;
-    OwnedArray<TextButton> m_arrODDButtons;
+    void displayPanel(int panelNb)
+    {
+        switch(panelNb)
+        {
+            case 1: //Press new button
+                m_newQuestionButton.setVisible(true);
+                m_playQuestionButton.setVisible(false);
+                m_playSineWaveButton.setVisible(false);
+                m_answerButton.setVisible(false);
+                break;
+            case 2: //Play the sound (and then select the correct answer)
+                m_newQuestionButton.setVisible(false);
+                m_playQuestionButton.setVisible(true);
+                m_playSineWaveButton.setVisible(true);
+                m_answerButton.setVisible(true);
+                break;
+        };
+    }
     
-    OwnedArray<TextButton>  m_arrARButtons;
-    std::vector<int> m_vecARPercents {10, 25, 50, 75, 100};
     
-    Label m_allLabel{{}, "ALL:"}, m_oddLabel{{}, "ODD:"}, m_arLabel{{}, "AUDIBLE RANGE:"};
-    Label m_NALabel{{}, "N/A"};
-    Label m_fixedARLabel;
-};
+    void updateMatrixView()
+    {
+        m_matrixView.resized();
+    }
+    
+private:
+    MatrixView m_matrixView;
+    
+    TextButton m_newQuestionButton{"New Question"};
+    TextButton m_playQuestionButton{"PLAY Question"};
+    TextButton m_playSineWaveButton{"Play Sine Wave (reference)"};
+    TextButton m_answerButton{"Answer"};
 
+};
