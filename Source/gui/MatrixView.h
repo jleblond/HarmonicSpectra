@@ -18,6 +18,13 @@ class MatrixView : public Component,
 public Button::Listener
 {
 public:
+    OwnedArray<TextButton> m_arrWavesButtons;
+    OwnedArray<ColourSquare> m_arrWavesCSquares;
+    
+    OwnedArray<TextButton>  m_arrARButtons;
+    OwnedArray<ColourSquare> m_arrARCSquares;
+    
+    
     MatrixView()
     {
         addAndMakeVisible(m_oddLabel);
@@ -55,7 +62,7 @@ public:
             newODDButton->addListener(this);
             addAndMakeVisible (newODDButton);
         }
-        for (int i = 5; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             ColourSquare* newColourSquare = new ColourSquare();
             m_arrWavesCSquares.add (newColourSquare);
@@ -221,41 +228,34 @@ public:
     
     void buttonClicked(Button* button) override
     {
-        for(int i=0;i<m_arrARButtons.size();i++)
+        
+    }
+    
+    void pressARButton(int index)
+    {
+        if(m_isQuestionMode || m_isTestMode)
         {
-            if(button == m_arrARButtons.getUnchecked(i))
-            {
-                if(m_isQuestionMode || m_isTestMode)
-                {
-//                    resetARButtonsColours();
-//                    m_arrARCSquares[i]->setColour(Colours::black);
-                    m_selectedAudibleRange = m_vecARPercents[i];
-                    
-                    resetEnabledARButtons();
-                    m_arrARButtons[i]->setEnabled(false);
-                    
-                }
-            }
+            //                    resetARButtonsColours();
+            //                    m_arrARCSquares[i]->setColour(Colours::black);
+            m_selectedAudibleRange = m_vecARPercents[index];
+            
+            resetEnabledARButtons();
+            m_arrARButtons[index]->setEnabled(false);
+            
         }
-        
-        for(int i=0;i<m_arrWavesButtons.size();i++)
+    }
+                             
+    void pressWaveButton(int index)
+    {
+        if(m_isQuestionMode || m_isTestMode)
         {
-            if(button == m_arrWavesButtons.getUnchecked(i))
-            {
-                if(m_isQuestionMode || m_isTestMode)
-                {
-//                    resetWaveButtonsColours();
-//                    m_arrWavesCSquares[i]->setColour(Colours::black);
-                    m_selectedWaveTypeID = (i+1);
-                    
-                     resetEnabledWavesButtons();
-                     m_arrWavesButtons[i]->setEnabled(false);
-                }
-                
-            }
+            //                    resetWaveButtonsColours();
+            //                    m_arrWavesCSquares[i]->setColour(Colours::black);
+            m_selectedWaveTypeID = (index+1);
+            
+            resetEnabledWavesButtons();
+            m_arrWavesButtons[index]->setEnabled(false);
         }
-        
-        
     }
 
     
@@ -338,12 +338,7 @@ protected:
     bool m_isTestMode = true; //default value at init
     int m_selectedWaveTypeID = 0;
     int m_selectedAudibleRange = 0;
-    
-    OwnedArray<TextButton> m_arrWavesButtons;
-    OwnedArray<ColourSquare> m_arrWavesCSquares;
-    
-    OwnedArray<TextButton>  m_arrARButtons;
-    OwnedArray<ColourSquare> m_arrARCSquares;
+
     std::vector<int> m_vecARPercents {10, 25, 50, 75, 100};
     
     Label m_allLabel{{}, "ALL:"}, m_oddLabel{{}, "ODD:"}, m_arLabel{{}, "AUDIBLE RANGE:"};

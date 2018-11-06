@@ -35,6 +35,7 @@ public:
         m_playTestButton.addListener(this);
         
         addAndMakeVisible(m_playTestLabel);
+        addAndMakeVisible(m_playTestValuesLabel);
         
         addAndMakeVisible(m_newQuestionButton);
         m_newQuestionButton.addListener(this);
@@ -53,6 +54,16 @@ public:
         
         
         displayPanel(1);
+        
+        
+        for(int i=0;i<m_matrixView.m_arrARButtons.size();i++)
+        {
+            m_matrixView.m_arrARButtons[i]->addListener(this);
+        }
+        for(int i=0;i<m_matrixView.m_arrWavesButtons.size();i++)
+        {
+            m_matrixView.m_arrWavesButtons[i]->addListener(this);
+        }
     }
     
     ~MainWindow()
@@ -81,7 +92,9 @@ public:
         
         m_playTestButton.setBounds (0.07*getWidth(), 0.15*getHeight(), 0.09*getWidth(), 0.12*getHeight());
         
-        m_playTestLabel.setBounds (0.17*getWidth(), 0.15*getHeight(), 0.18*getWidth(), 0.1*getHeight());
+        m_playTestLabel.setBounds (0.17*getWidth(), 0.13*getHeight(), 0.18*getWidth(), 0.1*getHeight());
+        
+        m_playTestValuesLabel.setBounds (0.18*getWidth(), 0.21*getHeight(), 0.20*getWidth(), 0.16*getHeight());
         
         m_newQuestionButton.setBounds (0.09*getWidth(), 0.6*getHeight(), 0.175*getWidth(), 0.25*getHeight());
         
@@ -108,6 +121,8 @@ public:
             {
                 playSound(waveTypeID, nbPartials);
             }
+            
+            updatePlayTestValuesLabelText();
            
             
         }
@@ -157,6 +172,25 @@ public:
             }
         }
         
+        
+        for(int i=0;i<m_matrixView.m_arrARButtons.size();i++)
+        {
+            if(button == m_matrixView.m_arrARButtons.getUnchecked(i))
+            {
+                m_matrixView.pressARButton(i);
+                updatePlayTestValuesLabelText();
+            }
+        }
+        
+        for(int i=0;i<m_matrixView.m_arrWavesButtons.size();i++)
+        {
+            if(button == m_matrixView.m_arrWavesButtons.getUnchecked(i))
+            {
+                m_matrixView.pressWaveButton(i);
+                updatePlayTestValuesLabelText();
+            }
+        }
+        
     }
     
     void playSound(int waveTypeID, int audibleRange)
@@ -182,6 +216,8 @@ public:
             case 1: //Press new button
                 m_playTestButton.setVisible(true);
                 m_playTestLabel.setVisible(true);
+                m_playTestValuesLabel.setVisible(true);
+                    updatePlayTestValuesLabelText();
                 m_newQuestionButton.setVisible(true);
                 m_playQuestionButton.setVisible(false);
                 m_playSineWaveButton.setVisible(false);
@@ -190,6 +226,8 @@ public:
             case 2: //Play the sound (and then select the correct answer)
                 m_playTestButton.setVisible(false);
                 m_playTestLabel.setVisible(false);
+                m_playTestValuesLabel.setVisible(false);
+                    m_playTestValuesLabel.setText("", dontSendNotification);
                 m_newQuestionButton.setVisible(false);
                 m_playQuestionButton.setVisible(true);
                 m_playSineWaveButton.setVisible(true);
@@ -252,6 +290,8 @@ public:
     
     int getValidNbPartialsFromMatrix()
     {
+        assert (Config::user != nullptr);
+        assert(Config::user->getVecSessions().size()>0);
         auto lastSession = Config::user->getLastSession();
         if(lastSession->getVecAudibleRangesSize() >1)
         {
@@ -270,6 +310,65 @@ public:
         return 0; //non-valid output
     }
     
+    
+    int getValidAudibleRangeFromMatrix()
+    {
+        int audibleRange = 0;
+        if(Config::user != nullptr)
+        {
+            if(Config::user->getVecSessions().size()>0)
+            {
+                auto lastSession = Config::user->getLastSession();
+                if(lastSession->getVecAudibleRangesSize() >1)
+                {
+                    audibleRange = m_matrixView.getSelectedAudibleRange();
+                }
+                else
+                {
+                    audibleRange = Config::vecAudibleRanges[0];
+                }
+            }
+        }
+        
+        return audibleRange;
+    }
+    
+    void updatePlayTestValuesLabelText()
+    {
+        String labelText = "Current  values";
+        
+        int waveTypeID = m_matrixView.getSelectedWaveTypeID();
+        labelText = "\nWave: \n";
+        
+        if(waveTypeID == 0)
+        {
+            labelText += "(not selected)";
+        }
+        else if(waveTypeID <= 5)
+        {
+            labelText += "ODD #"+static_cast<String>(waveTypeID);
+        }
+        else
+        {
+            labelText += "ALL #"+static_cast<String>(waveTypeID-5);
+        }
+        
+        
+        int audibleRange = getValidAudibleRangeFromMatrix();
+        labelText +="\nAudible Range: \n";
+        
+        if(audibleRange == 0)
+        {
+            labelText += "(not selected)";
+        }
+        else
+        {
+            labelText += static_cast<String>(audibleRange)+"%";
+        }
+    
+                                                              
+        m_playTestValuesLabel.setText(labelText, dontSendNotification);
+    }
 
     void resetAll()
     {
@@ -302,6 +401,7 @@ private:
     TextButton m_answerButton{"Answer"};
     
     Label m_notAnsweredLabel{{}, ""};
-    Label m_playTestLabel{{}, "Test different values from the right window!"};
+    Label m_playTestLabel{{}, "Test different values!"};
+    Label m_playTestValuesLabel{{}, ""};
 
 };
