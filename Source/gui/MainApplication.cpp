@@ -96,8 +96,7 @@ void MainApplication::buttonClicked(Button* button)
         Config::user = std::make_shared<User>(username);
         m_headerView.setUserLabel(username);
         
-        showUserConfig(false);
-        showExerciseConfig(true);
+        displayPanel(1);
     }
     if(button == &m_startSessionButton)
     {
@@ -109,15 +108,9 @@ void MainApplication::buttonClicked(Button* button)
         Config::baseFreq = baseFreq;
         Synthesis::Instance().setCurrentFundFrequency(baseFreq);
         
-        
         Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
         
-
-        
-        showExerciseConfig(false);
-        showExerciseWindow(true);
-        m_endSessionButton.setVisible(true);
-        m_mainWindow.updateMatrixView();
+        displayPanel(2);
     }
     
     if(button == &m_endSessionButton)
@@ -125,14 +118,35 @@ void MainApplication::buttonClicked(Button* button)
         //hide curr windows
         
         //report generation options
-        
-        m_mainWindow.resetMatrixButtonsColours();
-        showExerciseWindow(false);
-        showExerciseConfig(true);
-        m_endSessionButton.setVisible(false);
+
+        m_mainWindow.resetAll(); //includes both GUI and m_ values (for waveType and audibleRange)
+        displayPanel(3);
     }
 
     
+}
+
+void MainApplication::displayPanel(int panelNb)
+{
+    switch(panelNb)
+    {
+        case 1: //Pressing 'create user' -> Exercise config
+            showUserConfig(false);
+            showExerciseConfig(true);
+            break;
+        case 2: //Pressing 'new session' -> Main Window
+            showExerciseConfig(false);
+            showMainWindow(true);
+            m_endSessionButton.setVisible(true);
+            m_mainWindow.updateMatrixView();
+            m_mainWindow.displayPanel(1);
+            break;
+        case 3: //Pressing 'end session' -> ExerciseConfig view
+            showMainWindow(false);
+            showExerciseConfig(true);
+            m_endSessionButton.setVisible(false);
+            break;
+    };
 }
     
 void MainApplication::showUserConfig(bool isVisible)
@@ -147,7 +161,7 @@ void MainApplication::showExerciseConfig(bool isVisible)
     m_startSessionButton.setVisible(isVisible);
 }
 
-void MainApplication::showExerciseWindow(bool isVisible)
+void MainApplication::showMainWindow(bool isVisible)
 {
     m_mainWindow.setVisible(isVisible);
     m_statsView.setVisible(isVisible);

@@ -121,6 +121,7 @@ public:
             m_matrixView.setQuestionMode(true);
             m_matrixView.setTestMode(false);
             resetMatrixButtonsColours();
+            resetMatrixButtonsEnabled();
             displayPanel(2);
         }
         
@@ -270,6 +271,15 @@ public:
     }
     
 
+    void resetAll()
+    {
+        resetMatrixButtonsColours();
+        resetMatrixButtonsEnabled();
+        m_notAnsweredLabel.setText("", dontSendNotification);
+        
+        m_matrixView.resetSelectedValues();
+    
+    }
         
     void resetMatrixButtonsColours()
     {
@@ -277,6 +287,11 @@ public:
         m_matrixView.resetWaveButtonsColours();
     }
     
+    void resetMatrixButtonsEnabled()
+    {
+        m_matrixView.resetEnabledARButtons();
+        m_matrixView.resetEnabledWavesButtons();
+    }
     
 private:
     MatrixView m_matrixView;

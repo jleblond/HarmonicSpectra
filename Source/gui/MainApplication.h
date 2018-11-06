@@ -51,11 +51,13 @@ public:
 
     void buttonClicked(Button* button) override;
     
+    void displayPanel(int panelNb);
+    
     void showUserConfig(bool isVisible);
     
     void showExerciseConfig(bool isVisible);
     
-    void showExerciseWindow(bool isVisible);
+    void showMainWindow(bool isVisible);
 
 protected:
    // LookAndFeel *m_LF = new LookAndFeel_V4( (LookAndFeel_V4::getLightColourScheme() ) );

@@ -112,6 +112,8 @@ public:
                 m_arrARButtons.getUnchecked(i)->setBounds( (0.3*getWidth()+i*0.12*getWidth()),
                                                           0.7*getHeight(),
                                                           0.1*getWidth(), 0.15*getHeight());
+                
+                m_fixedARLabel.setVisible(false);
             }
             displayAudioRangeButtons(true);
         }
@@ -120,6 +122,8 @@ public:
             m_fixedARLabel.setText (static_cast<String>(Config::vecAudibleRanges[0])+"%", dontSendNotification);
             m_fixedARLabel.setBounds (0.3*getWidth(),0.68*getHeight(),
                                       0.3*getWidth(), 0.15*getHeight());
+            
+            m_fixedARLabel.setVisible(true);
             
             displayAudioRangeButtons(false);
         }
@@ -134,7 +138,6 @@ public:
         for (int j=0;j<vecWaves.size();j++)
         {
             int waveID = vecWaves[j];
-            std::cout<<static_cast<String>(waveID);
             
             if (waveID <=5) //odd partials waves
             {
@@ -162,17 +165,19 @@ public:
         {
             m_NALabel.setBounds(0.3*getWidth(),0.28*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
-            
+             m_NALabel.setVisible(true);
             displayWaveTypeButtons(true, false);
         }
         else if (Config::partials == Partials::all)
         {
             m_NALabel.setBounds(0.3*getWidth(),0.075*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
+            m_NALabel.setVisible(true);
             displayWaveTypeButtons(false, true);
         }
         else if (Config::partials == Partials::both)
         {
+            m_NALabel.setVisible(false);
             displayWaveTypeButtons(true,true);
         }
         
@@ -219,9 +224,13 @@ public:
             {
                 if(m_isQuestionMode || m_isTestMode)
                 {
-                    resetARButtonsColours();
-                    m_arrARCSquares[i]->setColour(Colours::black);
+//                    resetARButtonsColours();
+//                    m_arrARCSquares[i]->setColour(Colours::black);
                     m_selectedAudibleRange = m_vecARPercents[i];
+                    
+                    resetEnabledARButtons();
+                    m_arrARButtons[i]->setEnabled(false);
+                    
                 }
             }
         }
@@ -232,9 +241,12 @@ public:
             {
                 if(m_isQuestionMode || m_isTestMode)
                 {
-                    resetWaveButtonsColours();
-                    m_arrWavesCSquares[i]->setColour(Colours::black);
+//                    resetWaveButtonsColours();
+//                    m_arrWavesCSquares[i]->setColour(Colours::black);
                     m_selectedWaveTypeID = (i+1);
+                    
+                     resetEnabledWavesButtons();
+                     m_arrWavesButtons[i]->setEnabled(false);
                 }
                 
             }
@@ -242,27 +254,12 @@ public:
         
         
     }
-    
-    void resetARButtonsColours()
-    {
-        for(int i=0;i<m_arrARButtons.size();i++)
-        {
-            m_arrARCSquares[i]->setColour(Colours::transparentWhite);
-        }
-    }
-    
-    void resetWaveButtonsColours()
-    {
-        for(int i=0;i<m_arrWavesButtons.size();i++)
-        {
-            m_arrWavesCSquares[i]->setColour(Colours::transparentWhite);
-        }
-    }
+
     
     void correctWaveTypeID(int correctWaveTypeID)
     {
         m_arrWavesCSquares[correctWaveTypeID-1]->setColour(Colours::green);
-        m_selectedWaveTypeID = 0;
+      //  m_selectedWaveTypeID = 0;
     }
     
     void correctAudibleRange(int correctAudibleRange)
@@ -274,7 +271,7 @@ public:
                 m_arrARCSquares[i]->setColour(Colours::green);
             }
         }
-        m_selectedAudibleRange = 0;
+     //   m_selectedAudibleRange = 0;
     }
     
     void setQuestionMode (bool isQuestionMode)
@@ -301,6 +298,38 @@ public:
     {
         m_selectedWaveTypeID = 0;
         m_selectedAudibleRange = 0;
+    }
+    
+    void resetARButtonsColours()
+    {
+        for(int i=0;i<m_arrARButtons.size();i++)
+        {
+            m_arrARCSquares[i]->setColour(Colours::transparentWhite);
+        }
+    }
+    
+    void resetWaveButtonsColours()
+    {
+        for(int i=0;i<m_arrWavesButtons.size();i++)
+        {
+            m_arrWavesCSquares[i]->setColour(Colours::transparentWhite);
+        }
+    }
+    
+    void resetEnabledARButtons()
+    {
+        for(int i=0;i<m_arrARButtons.size();i++)
+        {
+            m_arrARButtons.getUnchecked(i)->setEnabled(true);
+        }
+    }
+    
+    void resetEnabledWavesButtons()
+    {
+        for(int i=0;i<m_arrWavesButtons.size();i++)
+        {
+            m_arrWavesButtons.getUnchecked(i)->setEnabled(true);
+        }
     }
     
 protected:
