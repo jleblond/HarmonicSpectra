@@ -96,6 +96,9 @@ public:
         m_allLabel.setBounds (0.08*getWidth(), 0.3*getHeight(), 0.2*getWidth(), 0.1*getHeight());
         m_arLabel.setBounds (0.08*getWidth(), 0.7*getHeight(), 0.2*getWidth(), 0.1*getHeight());
         
+        //reset
+        
+        
         
         //AUDIBLE RANGE : Buttons OR Label with fixed AR text
         
@@ -135,6 +138,8 @@ public:
         std::vector<int> vecWaves = QuestionBuilder::Instance().getVecWaves();
         int indexALLPartials = 0;
         
+        displayWaveTypeButtons(false, false);
+        
         for (int j=0;j<vecWaves.size();j++)
         {
             int waveID = vecWaves[j];
@@ -148,6 +153,7 @@ public:
                 m_arrWavesButtons.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
                                                                      0.1*getHeight(),
                                                                      0.1*getWidth(), 0.15*getHeight());
+                m_arrWavesButtons.getUnchecked(waveID-1)->setVisible(true);
             }
             else if(waveID > 5) //all partials waves
             {
@@ -156,7 +162,7 @@ public:
                                                                       0.11*getWidth(), 0.16*getHeight());
                 m_arrWavesButtons.getUnchecked(waveID-1)->setBounds (
                                                                      (0.3*getWidth()+indexALLPartials*0.12*getWidth()),0.3*getHeight(),0.1*getWidth(), 0.15*getHeight());
-                
+                m_arrWavesButtons.getUnchecked(waveID-1)->setVisible(true);
                 indexALLPartials++;
             }
         }
@@ -166,19 +172,16 @@ public:
             m_NALabel.setBounds(0.3*getWidth(),0.28*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
              m_NALabel.setVisible(true);
-            displayWaveTypeButtons(true, false);
         }
         else if (Config::partials == Partials::all)
         {
             m_NALabel.setBounds(0.3*getWidth(),0.075*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
             m_NALabel.setVisible(true);
-            displayWaveTypeButtons(false, true);
         }
         else if (Config::partials == Partials::both)
         {
             m_NALabel.setVisible(false);
-            displayWaveTypeButtons(true,true);
         }
         
     }
@@ -259,7 +262,6 @@ public:
     void correctWaveTypeID(int correctWaveTypeID)
     {
         m_arrWavesCSquares[correctWaveTypeID-1]->setColour(Colours::green);
-      //  m_selectedWaveTypeID = 0;
     }
     
     void correctAudibleRange(int correctAudibleRange)
@@ -271,7 +273,6 @@ public:
                 m_arrARCSquares[i]->setColour(Colours::green);
             }
         }
-     //   m_selectedAudibleRange = 0;
     }
     
     void setQuestionMode (bool isQuestionMode)

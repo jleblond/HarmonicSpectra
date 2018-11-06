@@ -278,7 +278,6 @@ public:
         m_notAnsweredLabel.setText("", dontSendNotification);
         
         m_matrixView.resetSelectedValues();
-    
     }
         
     void resetMatrixButtonsColours()
