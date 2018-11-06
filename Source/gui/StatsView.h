@@ -12,6 +12,7 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+#include "../core/Config.h"
 //==============================================================================
 /*
 */
@@ -20,25 +21,25 @@ class StatsView    : public Component
 public:
     StatsView()
     {
-        addAndMakeVisible(mTitle);
-        mTitle.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
-        mTitle.setFont(Font("Arial", 18, Font::bold));
+        addAndMakeVisible(m_title);
+        m_title.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
+        m_title.setFont(Font("Arial", 18, Font::bold));
         
-        addAndMakeVisible(mNbQuestions);
-        mNbQuestions.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
-        mNbQuestions.setFont(14);
+        addAndMakeVisible(m_nbQuestions);
+        m_nbQuestions.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
+        m_nbQuestions.setFont(14);
         
-        addAndMakeVisible(mScoreTitleLabel);
-        mScoreTitleLabel.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
-        mScoreTitleLabel.setFont(14);
+        addAndMakeVisible(m_scoreTitleLabel);
+        m_scoreTitleLabel.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
+        m_scoreTitleLabel.setFont(14);
         
-        addAndMakeVisible(mScoreLabel);
-        mScoreLabel.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
-        mScoreLabel.setFont(Font("Arial", 36, Font::bold));
+        addAndMakeVisible(m_scoreLabel);
+        m_scoreLabel.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
+        m_scoreLabel.setFont(Font("Arial", 36, Font::bold));
         
-        addAndMakeVisible(mPercentScoreLabel);
-        mPercentScoreLabel.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
-        mPercentScoreLabel.setFont(14);
+        addAndMakeVisible(m_percentScoreLabel);
+        m_percentScoreLabel.setColour(juce::Label::textColourId, juce::Colour(0.0f, 0.0f, 0.0f));
+        m_percentScoreLabel.setFont(14);
 
     }
 
@@ -61,23 +62,23 @@ public:
 
     void resized() override
     {
-        mTitle.setBounds(0.05*getWidth(), 0.1*getHeight(), 150, 30);
-        mNbQuestions.setBounds(0.05*getWidth(), 0.15*getHeight(), 150, 50);
+        m_title.setBounds(0.05*getWidth(), 0.1*getHeight(), 150, 30);
+        m_nbQuestions.setBounds(0.05*getWidth(), 0.15*getHeight(), 150, 50);
         
-        mScoreTitleLabel.setBounds(0.08*getWidth(), 0.395*getHeight(), 130, 30);
-        mScoreLabel.setBounds(0.08*getWidth(), 0.42*getHeight(), 150, 60);
-        mPercentScoreLabel.setBounds(0.08*getWidth(), 0.6*getHeight(), 130, 75);
+        m_scoreTitleLabel.setBounds(0.08*getWidth(), 0.395*getHeight(), 130, 30);
+        m_scoreLabel.setBounds(0.08*getWidth(), 0.42*getHeight(), 150, 60);
+        m_percentScoreLabel.setBounds(0.08*getWidth(), 0.6*getHeight(), 130, 75);
 
     }
 
 private:
-    Label mTitle{{}, "STATISTICS"};
+    Label m_title{{}, "STATISTICS"};
     
-    Label mScoreTitleLabel{{}, "SCORE:"};
-    Label mScoreLabel{{}, "[ ]"};
-    Label mPercentScoreLabel{{}, ""};
+    Label m_scoreTitleLabel{{}, "SCORE:"};
+    Label m_scoreLabel{{}, "[ ]"};
+    Label m_percentScoreLabel{{}, ""};
     
-    Label mNbQuestions{{}, "# of questions: 0"};
+    Label m_nbQuestions{{}, "# of questions: 0"};
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StatsView)

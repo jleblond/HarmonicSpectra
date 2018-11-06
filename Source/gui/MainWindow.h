@@ -90,11 +90,11 @@ public:
         m_matrixView.setBounds (area.removeFromRight( MATRIX_WIDTH*getWidth()));
         
         
-        m_playTestButton.setBounds (0.07*getWidth(), 0.15*getHeight(), 0.09*getWidth(), 0.12*getHeight());
+        m_playTestButton.setBounds (0.2*getWidth(), 0.2*getHeight(), 0.09*getWidth(), 0.12*getHeight());
         
-        m_playTestLabel.setBounds (0.17*getWidth(), 0.13*getHeight(), 0.18*getWidth(), 0.1*getHeight());
+        m_playTestLabel.setBounds (0.1*getWidth(), 0.1*getHeight(), 0.18*getWidth(), 0.1*getHeight());
         
-        m_playTestValuesLabel.setBounds (0.18*getWidth(), 0.21*getHeight(), 0.20*getWidth(), 0.16*getHeight());
+        m_playTestValuesLabel.setBounds (0.05*getWidth(), 0.21*getHeight(), 0.15*getWidth(), 0.16*getHeight());
         
         m_newQuestionButton.setBounds (0.09*getWidth(), 0.6*getHeight(), 0.175*getWidth(), 0.25*getHeight());
         
@@ -274,12 +274,12 @@ public:
         if(message == "")
         {
            lastQuestion->setAnsweredWaveTypeID (selectedWaveTypeID);
-           m_matrixView.correctWaveTypeID (lastQuestion->getWaveTypeID());
+           m_matrixView.correctWaveTypeID (selectedWaveTypeID, lastQuestion->getWaveTypeID());
             
             if(lastSession->getVecAudibleRangesSize() >1)
             {
                  lastQuestion->setAnsweredAudibleRange(selectedAudibleRange);
-                 m_matrixView.correctAudibleRange (lastQuestion->getAudibleRange());
+                 m_matrixView.correctAudibleRange (selectedAudibleRange, lastQuestion->getAudibleRange());
             }
         }
         
@@ -391,6 +391,7 @@ public:
         m_matrixView.resetEnabledWavesButtons();
     }
     
+
 private:
     MatrixView m_matrixView;
     

@@ -63,6 +63,7 @@ public:
         return wasStarted;
     }
     
+    
 protected:
     Clock::time_point m_timeStarted;
     Clock::time_point m_timeStopped;

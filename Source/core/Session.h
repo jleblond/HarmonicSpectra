@@ -20,7 +20,7 @@ public:
     Session(Partials partialsOption, int nbAmpRatios, int baseFreq, std::vector<int> vecAudRanges)
         : m_partials(partialsOption), m_nbAmplitudeRatios(nbAmpRatios), m_baseFreq(baseFreq), m_vecAudibleRanges(vecAudRanges)
     {
-
+ 
     }
     
     int getNbAmplitudeRatios()
@@ -32,11 +32,6 @@ public:
     {
         return m_baseFreq;
     }
-    
-//    int getNbPartials()
-//    {
-//        return m_nbPartials;
-//    }
     
     const std::vector<std::shared_ptr<Question>>& getVecQuestions()
     {
@@ -60,6 +55,11 @@ public:
         return m_vecAudibleRanges.size();
     }
     
+    StatsSheet& getStats()
+    {
+        return m_stats;
+    }
+    
     
 protected:
     std::vector<std::shared_ptr<Question>> m_vecQuestions;
@@ -70,5 +70,5 @@ protected:
     int m_baseFreq = 200;
     std::vector<int> m_vecAudibleRanges;
     
-   // int m_nbPartials = 1;
+    StatsSheet m_stats; 
 };

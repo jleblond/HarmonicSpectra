@@ -42,12 +42,12 @@ public:
         }
         else if(m_percent < 0.005)
         {
-            paintRectangle(g, Colours::darkred, 0, getWidth(),
+            paintRectangle(g, m_colour, 0, getWidth(),
                            getHeight() - 0.005*getHeight(), 0.005*getHeight() );
         }
         else
         {
-            paintRectangle(g, Colours::darkred, 0, getWidth(),
+            paintRectangle(g, m_colour, 0, getWidth(),
                            startY, std::abs(getHeight() - startY ) );
         }
         
@@ -82,6 +82,12 @@ public:
         g.fillRect(rect);
     }
     
+    void setColour(juce::Colour c)
+    {
+        m_colour = c;
+        this->repaint();
+    }
+    
     void updateValues(float percent, int count)
     {
         m_percent = percent;
@@ -93,10 +99,12 @@ public:
         repaint();
     }
     
+
 private:
     float m_percent = 0;
     float m_barID = 0;
     int m_count = 0;
     
+    juce::Colour m_colour = Colours::darkred;
 };
 
