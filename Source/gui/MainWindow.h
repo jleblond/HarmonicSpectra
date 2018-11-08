@@ -26,6 +26,8 @@ class MainWindow    : public Component,
 public Button::Listener
 {
 public:
+    TextButton m_answerButton{"Answer"};
+    
     MainWindow()
     {
         addAndMakeVisible(m_matrixView);
@@ -274,12 +276,12 @@ public:
         if(message == "")
         {
            lastQuestion->setAnsweredWaveTypeID (selectedWaveTypeID);
-            m_matrixView.correctWaveTypeID (selectedWaveTypeID, lastQuestion->getWaveTypeID() );
+            m_matrixView.displayCorrectWaveTypeID (selectedWaveTypeID, lastQuestion->getWaveTypeID() );
             
             if(lastSession->getVecAudibleRangesSize() >1)
             {
                  lastQuestion->setAnsweredAudibleRange(selectedAudibleRange);
-                 m_matrixView.correctAudibleRange (selectedAudibleRange, lastQuestion->getAudibleRange());
+                 m_matrixView.displayCorrectAudibleRange (selectedAudibleRange, lastQuestion->getAudibleRange());
             }
         }
         
@@ -399,7 +401,7 @@ private:
     TextButton m_playTestButton{"Play"};
     TextButton m_playQuestionButton{"PLAY Question"};
     TextButton m_playSineWaveButton{"Play Sine Wave (reference)"};
-    TextButton m_answerButton{"Answer"};
+
     
     Label m_notAnsweredLabel{{}, ""};
     Label m_playTestLabel{{}, "Test different values!"};

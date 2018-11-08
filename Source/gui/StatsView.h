@@ -111,6 +111,18 @@ public:
 
         g.setColour (Colours::white);
         g.setFont (14.0f);
+        
+        assert(Config::user != nullptr);
+        assert(Config::user->getLastSession() != nullptr);
+        
+        StatsSheet& stats = Config::user->getLastSession()->getStats();
+        
+        
+        for(int i=0;i<m_arrBars.size();i++)
+        {
+            m_arrBars[i]->updateValues(stats.vecWaves[i].percent, stats.vecWaves[i].count);
+            m_arrBars[i]->repaintBar();
+        }
       
     }
 

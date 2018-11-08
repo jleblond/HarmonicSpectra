@@ -260,9 +260,8 @@ public:
     }
 
     
-    void correctWaveTypeID(int selectedWaveTypeID, int correctWaveTypeID)
+    void displayCorrectWaveTypeID(int selectedWaveTypeID, int correctWaveTypeID)
     {
-     
         float score = AnswerChecker::Instance().scoreWaveTypeID();
         
         if(score == 1)
@@ -282,7 +281,7 @@ public:
 
     }
     
-    void correctAudibleRange(int selectedAudibleRange, int correctAudibleRange)
+    void displayCorrectAudibleRange(int selectedAudibleRange, int correctAudibleRange)
     {
         int selectedAudibleRangeIndex = 0;
         int correctAudibleRangeIndex = 0;

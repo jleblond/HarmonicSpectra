@@ -45,6 +45,8 @@ MainApplication::MainApplication()
     m_endSessionButton.addListener(this);
     m_endSessionButton.setVisible(false);
     
+    m_mainWindow.m_answerButton.addListener(this);
+    
 }
     
 MainApplication::~MainApplication()
@@ -121,6 +123,12 @@ void MainApplication::buttonClicked(Button* button)
 
         m_mainWindow.resetAll(); //includes both GUI and m_ values (for waveType and audibleRange)
         displayPanel(3);
+    }
+    
+    
+    if (button == &m_mainWindow.m_answerButton)
+    {
+        m_statsView.repaint();
     }
 
     
