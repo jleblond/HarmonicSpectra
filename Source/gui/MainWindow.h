@@ -274,7 +274,7 @@ public:
         if(message == "")
         {
            lastQuestion->setAnsweredWaveTypeID (selectedWaveTypeID);
-           m_matrixView.correctWaveTypeID (selectedWaveTypeID, lastQuestion->getWaveTypeID());
+            m_matrixView.correctWaveTypeID (selectedWaveTypeID, lastQuestion->getWaveTypeID() );
             
             if(lastSession->getVecAudibleRangesSize() >1)
             {

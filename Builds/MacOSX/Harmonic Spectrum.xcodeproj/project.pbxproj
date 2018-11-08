@@ -25,6 +25,7 @@
 		F068C990D55F07BC427A0A4B = {isa = PBXBuildFile; fileRef = 002D0202AC1C62CF832DCDF8; };
 		16EDA469544FCDF17899D209 = {isa = PBXBuildFile; fileRef = 927574BF960B848DDEF2B337; };
 		C7E603D6288A6552783AB19A = {isa = PBXBuildFile; fileRef = 6D90D89E2C2DC2C5FA973D67; };
+		1535073DF19F79A3366D8D52 = {isa = PBXBuildFile; fileRef = 05FC7230161A8D465D693584; };
 		E3914982B8A13E2DE498B723 = {isa = PBXBuildFile; fileRef = C0EBC56D5FDC592DC3C42120; };
 		855441E5C0A88951415C9D66 = {isa = PBXBuildFile; fileRef = 64240E580A5D043A76AB163C; };
 		56061A5D130D7C43850D8F8B = {isa = PBXBuildFile; fileRef = 3BA9BBD3DA196A8C276DFE30; };
@@ -46,6 +47,7 @@
 		01DA0BBDB8F6B61D89B04839 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MatrixView.h; path = ../../Source/gui/MatrixView.h; sourceTree = "SOURCE_ROOT"; };
 		0379A2295FDD7B68AAB52645 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../../Source/core/User.h; sourceTree = "SOURCE_ROOT"; };
 		03D342A00C3A0B93270889A0 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InnerEar Harmonic Spectrum.app"; sourceTree = "BUILT_PRODUCTS_DIR"; };
+		05FC7230161A8D465D693584 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AnswerChecker.cpp; path = ../../Source/core/AnswerChecker.cpp; sourceTree = "SOURCE_ROOT"; };
 		0A1F75871D4C276041B9F0C9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserConfigView.h; path = ../../Source/gui/UserConfigView.h; sourceTree = "SOURCE_ROOT"; };
 		0B3EEA4228B37E4ACE01D764 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Question.h; path = ../../Source/core/Question.h; sourceTree = "SOURCE_ROOT"; };
 		0E5127F2C3103A04CB32474C = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ExerciseConfigView.h; path = ../../Source/gui/ExerciseConfigView.h; sourceTree = "SOURCE_ROOT"; };
@@ -109,6 +111,7 @@
 		C878952983106C28B6729C58 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-App.plist"; path = "Info-App.plist"; sourceTree = "SOURCE_ROOT"; };
 		C8CB8C4B8E0C9C98791C83F9 = {isa = PBXFileReference; lastKnownFileType = file; name = "juce_gui_extra"; path = "../../modules/juce_gui_extra"; sourceTree = "SOURCE_ROOT"; };
 		CC712DE3127F804094EF454A = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = "include_juce_graphics.mm"; path = "../../JuceLibraryCode/include_juce_graphics.mm"; sourceTree = "SOURCE_ROOT"; };
+		CFC062583CC4593B9CABE698 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AnswerChecker.h; path = ../../Source/core/AnswerChecker.h; sourceTree = "SOURCE_ROOT"; };
 		D39D9E669B8884A9D3EC4D95 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VolumeView.h; path = ../../Source/gui/VolumeView.h; sourceTree = "SOURCE_ROOT"; };
 		D47C65CB7DB8FB8DE24E75BF = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DB4BD6F2525B126FDB46C15B = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StatsView.h; path = ../../Source/gui/StatsView.h; sourceTree = "SOURCE_ROOT"; };
@@ -133,12 +136,14 @@
 					0B3EEA4228B37E4ACE01D764,
 					6F6E0E3AAF57AC959B875543,
 					6D90D89E2C2DC2C5FA973D67,
+					CFC062583CC4593B9CABE698,
+					05FC7230161A8D465D693584,
 					73D1D1C9CE3D8F6A01115A35,
-					2EBEEA6CF76368F0B539C133,
 					F8200D00925CBEDE5EAAA9F8,
 					319B0E61974E138CDFA6184C,
 					C0EBC56D5FDC592DC3C42120,
-					58B6EE9EC01D2425BE79BD60, ); name = core; sourceTree = "<group>"; };
+					58B6EE9EC01D2425BE79BD60,
+					2EBEEA6CF76368F0B539C133, ); name = core; sourceTree = "<group>"; };
 		D0BAC5B75A5E88BFF4311D89 = {isa = PBXGroup; children = (
 					3949B1FF2B1ED31A4B0F8309, ); name = img; sourceTree = "<group>"; };
 		D1AEE672260F924602A5725C = {isa = PBXGroup; children = (
@@ -374,6 +379,7 @@
 					F068C990D55F07BC427A0A4B,
 					16EDA469544FCDF17899D209,
 					C7E603D6288A6552783AB19A,
+					1535073DF19F79A3366D8D52,
 					E3914982B8A13E2DE498B723,
 					855441E5C0A88951415C9D66,
 					56061A5D130D7C43850D8F8B,

@@ -22,6 +22,14 @@ struct StatsSheet
     std::vector<StatsValue> vecWaves;
     StatsValue audibleRange;
     
+    float score = -1;
+    float percentTotalScore = 0;
+    float maxScore = 100;
+    float weightedAverage = 0;
+    int countInvolvedValues = 0;
+    int questionsCount = 0 ;
+    
+    
     StatsSheet()
     {
         for(int i=0;i<10;i++)

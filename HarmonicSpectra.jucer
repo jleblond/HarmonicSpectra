@@ -23,13 +23,16 @@
             file="Source/core/QuestionBuilder.h"/>
       <FILE id="hec5TY" name="QuestionBuilder.cpp" compile="1" resource="0"
             file="Source/core/QuestionBuilder.cpp"/>
+      <FILE id="pQv3mt" name="AnswerChecker.h" compile="0" resource="0" file="Source/core/AnswerChecker.h"/>
+      <FILE id="XNjFkC" name="AnswerChecker.cpp" compile="1" resource="0"
+            file="Source/core/AnswerChecker.cpp"/>
       <FILE id="WCxncW" name="StatsSheet.h" compile="0" resource="0" file="Source/core/StatsSheet.h"/>
-      <FILE id="XLz2e2" name="Comment.h" compile="0" resource="0" file="Source/core/Comment.h"/>
       <FILE id="V7Hz4K" name="Report.h" compile="0" resource="0" file="Source/core/Report.h"/>
       <FILE id="HrsmfT" name="ReportBuilder.h" compile="0" resource="0" file="Source/core/ReportBuilder.h"/>
       <FILE id="mhYUw1" name="ReportBuilder.cpp" compile="1" resource="0"
             file="Source/core/ReportBuilder.cpp"/>
       <FILE id="r6hhUn" name="Partials.h" compile="0" resource="0" file="Source/core/Partials.h"/>
+      <FILE id="XLz2e2" name="Comment.h" compile="0" resource="0" file="Source/core/Comment.h"/>
     </GROUP>
     <GROUP id="{E8254A5C-7149-F172-F8EC-CEFD48AC03B2}" name="gui">
       <GROUP id="{656E2D66-5E62-6228-EEBF-A3E90555CA6F}" name="img">

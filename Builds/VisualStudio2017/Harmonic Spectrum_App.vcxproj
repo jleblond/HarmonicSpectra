@@ -149,6 +149,7 @@
     <ClCompile Include="..\..\Source\core\audio\Synthesis.cpp"/>
     <ClCompile Include="..\..\Source\core\Config.cpp"/>
     <ClCompile Include="..\..\Source\core\QuestionBuilder.cpp"/>
+    <ClCompile Include="..\..\Source\core\AnswerChecker.cpp"/>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp"/>
     <ClCompile Include="..\..\Source\gui\MainApplication.cpp"/>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
@@ -1769,11 +1770,12 @@
     <ClInclude Include="..\..\Source\core\Session.h"/>
     <ClInclude Include="..\..\Source\core\Question.h"/>
     <ClInclude Include="..\..\Source\core\QuestionBuilder.h"/>
+    <ClInclude Include="..\..\Source\core\AnswerChecker.h"/>
     <ClInclude Include="..\..\Source\core\StatsSheet.h"/>
-    <ClInclude Include="..\..\Source\core\Comment.h"/>
     <ClInclude Include="..\..\Source\core\Report.h"/>
     <ClInclude Include="..\..\Source\core\ReportBuilder.h"/>
     <ClInclude Include="..\..\Source\core\Partials.h"/>
+    <ClInclude Include="..\..\Source\core\Comment.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>

@@ -18,10 +18,9 @@
 class StatsBar    : public Component
 {
 public:
-    StatsBar(int barID)
+    StatsBar()
     {
-        m_barID = barID;
-        
+
     }
     
     ~StatsBar()
@@ -102,7 +101,6 @@ public:
 
 private:
     float m_percent = 0;
-    float m_barID = 0;
     int m_count = 0;
     
     juce::Colour m_colour = Colours::darkred;

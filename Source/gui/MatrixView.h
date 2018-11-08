@@ -11,6 +11,7 @@
 #pragma once
 #include "../core/Config.h"
 #include "../core/QuestionBuilder.h"
+#include "../core/AnswerChecker.h"
 
 #include "../utils/ColourSquare.h"
 
@@ -261,45 +262,31 @@ public:
     
     void correctWaveTypeID(int selectedWaveTypeID, int correctWaveTypeID)
     {
-        int hDiff = 0;
-        int vDiff = 0;
+     
+        float score = AnswerChecker::Instance().scoreWaveTypeID();
         
-        if(Config::nbAmplitudeRatios == 5)
+        if(score == 1)
         {
-            hDiff = 1;
-            vDiff = 5;
+            m_arrWavesCSquares[selectedWaveTypeID-1]->setColour(Colours::green);
         }
-        else if(Config::nbAmplitudeRatios == 3)
+        else if(score == 0.5)
         {
-            hDiff = 2;
-            vDiff = 5;
-        }
-        
-        if(selectedWaveTypeID == correctWaveTypeID+hDiff || selectedWaveTypeID == correctWaveTypeID - hDiff
-           || selectedWaveTypeID == correctWaveTypeID+vDiff || selectedWaveTypeID == correctWaveTypeID - vDiff)
-        {
-            if( !(selectedWaveTypeID == 5 && correctWaveTypeID ==6) &&
-               !(selectedWaveTypeID == 6 && correctWaveTypeID ==5) )
-            {
-                m_arrWavesCSquares[selectedWaveTypeID-1]->setColour(Colours::orange);
-            }
-            else
-            {
-                 m_arrWavesCSquares[selectedWaveTypeID-1]->setColour(Colours::red);
-            }
+            m_arrWavesCSquares[selectedWaveTypeID-1]->setColour(Colours::orange);
         }
         else
         {
             m_arrWavesCSquares[selectedWaveTypeID-1]->setColour(Colours::red);
         }
-        
+ 
          m_arrWavesCSquares[correctWaveTypeID-1]->setColour(Colours::green);
+
     }
     
     void correctAudibleRange(int selectedAudibleRange, int correctAudibleRange)
     {
         int selectedAudibleRangeIndex = 0;
         int correctAudibleRangeIndex = 0;
+        
         
         for(int i=0;i<m_vecARPercents.size();i++)
         {
@@ -314,15 +301,23 @@ public:
             
         }
         
-        if(selectedAudibleRangeIndex == correctAudibleRangeIndex+1 ||selectedAudibleRangeIndex == correctAudibleRangeIndex-1)
+        float score = AnswerChecker::Instance().scoreAudibleRange();
+        
+        if(score == 1)
         {
-            m_arrARCSquares[selectedAudibleRangeIndex]->setColour(Colours::orange);
+             m_arrARCSquares[selectedAudibleRangeIndex]->setColour(Colours::green);
+        }
+        else if(score == 0.5)
+        {
+             m_arrARCSquares[selectedAudibleRangeIndex]->setColour(Colours::orange);
         }
         else
         {
             m_arrARCSquares[selectedAudibleRangeIndex]->setColour(Colours::red);
         }
         
+        
+    
         //must be separed loop to guarantee green color identifed
         for(int i=0;i<m_arrARCSquares.size();i++)
         {
@@ -331,6 +326,8 @@ public:
                 m_arrARCSquares[i]->setColour(Colours::green);
             }
         }
+        
+      
 
     }
     
