@@ -106,11 +106,12 @@ void MainApplication::buttonClicked(Button* button)
         Config::nbAmplitudeRatios = m_exerciseConfigView.getNbAmplitudeRatios();
         Config::vecAudibleRanges = m_exerciseConfigView.getVecAudibleRange();
         
-        int baseFreq = m_exerciseConfigView.getBaseFreq();
-        Config::baseFreq = baseFreq;
-        Synthesis::Instance().setCurrentFundFrequency(baseFreq);
+        Config::baseFreq = m_exerciseConfigView.getBaseFreq();
+        Synthesis::Instance().setCurrentFundFrequency(Config::baseFreq);
         
         Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
+        
+        Config::user->getLastSession()->getStats().maxScore = StatsBuilder::Instance().calculateMaxScore();
         
         displayPanel(2);
     }

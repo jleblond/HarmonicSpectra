@@ -26,6 +26,9 @@
       <FILE id="pQv3mt" name="AnswerChecker.h" compile="0" resource="0" file="Source/core/AnswerChecker.h"/>
       <FILE id="XNjFkC" name="AnswerChecker.cpp" compile="1" resource="0"
             file="Source/core/AnswerChecker.cpp"/>
+      <FILE id="HAXTlw" name="StatsBuilder.h" compile="0" resource="0" file="Source/core/StatsBuilder.h"/>
+      <FILE id="X9sTi2" name="StatsBuilder.cpp" compile="1" resource="0"
+            file="Source/core/StatsBuilder.cpp"/>
       <FILE id="WCxncW" name="StatsSheet.h" compile="0" resource="0" file="Source/core/StatsSheet.h"/>
       <FILE id="V7Hz4K" name="Report.h" compile="0" resource="0" file="Source/core/Report.h"/>
       <FILE id="HrsmfT" name="ReportBuilder.h" compile="0" resource="0" file="Source/core/ReportBuilder.h"/>

@@ -13,7 +13,12 @@
 struct StatsValue
 {
     int count = 0;
-    float percent = 0.0;
+    float correctanswer = 0.0;
+    
+    float getPercent()
+    {
+        return (correctanswer/static_cast<float>(count));
+    }
 };
 
 
@@ -24,7 +29,7 @@ struct StatsSheet
     
     float score = -1;
     float percentTotalScore = 0;
-    float maxScore = 100;
+    int maxScore = 100;
     float weightedAverage = 0;
     int countInvolvedValues = 0;
     int questionsCount = 0 ;

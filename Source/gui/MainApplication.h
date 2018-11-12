@@ -19,6 +19,8 @@
 #include "VolumeView.h"
 #include "StatsView.h"
 
+#include "../core/StatsBuilder.h"
+
 #include "../core/Config.h"
 //#include "../core/audio/AudioEngine.h"
 
@@ -36,7 +38,7 @@ const float STATSVIEW_HEIGHT = 0.35;
 const float ENDSESSIONBUTTON_WIDTH = 0.10;
 
 
-class MainApplication    : public Component,
+class MainApplication    :  public Component,
                             public Button::Listener
 {
 public:

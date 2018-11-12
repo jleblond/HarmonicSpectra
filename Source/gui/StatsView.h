@@ -120,7 +120,7 @@ public:
         
         for(int i=0;i<m_arrBars.size();i++)
         {
-            m_arrBars[i]->updateValues(stats.vecWaves[i].percent, stats.vecWaves[i].count);
+            m_arrBars[i]->updateValues(stats.vecWaves[i].getPercent(), stats.vecWaves[i].count);
             m_arrBars[i]->repaintBar();
         }
       

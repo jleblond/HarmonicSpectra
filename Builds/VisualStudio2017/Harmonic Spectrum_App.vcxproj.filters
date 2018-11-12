@@ -397,6 +397,9 @@
     <ClCompile Include="..\..\Source\core\AnswerChecker.cpp">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\core\StatsBuilder.cpp">
+      <Filter>Harmonic Spectrum\core</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClCompile>
@@ -2191,6 +2194,9 @@
       <Filter>Harmonic Spectrum\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\core\AnswerChecker.h">
+      <Filter>Harmonic Spectrum\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\core\StatsBuilder.h">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\core\StatsSheet.h">
