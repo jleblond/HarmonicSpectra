@@ -36,7 +36,7 @@ public:
         
         if(m_count == 0)
         {
-            paintRectangle(g, Colours::darkgrey, 0, getWidth(),
+            paintRectangle(g, Colours::black, 0, getWidth(),
                            getHeight() - 0.005*getHeight(), 0.005*getHeight() );
         }
         else if(m_percent < 0.005)
@@ -91,12 +91,9 @@ public:
     {
         m_percent = percent;
         m_count = count;
+        this->repaint();
     }
-    
-    void repaintBar()
-    {
-        repaint();
-    }
+
     
 
 private:

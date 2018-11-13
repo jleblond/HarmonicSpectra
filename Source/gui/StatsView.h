@@ -69,36 +69,47 @@ public:
         for(int i=0;i<5;i++)
         {
             StatsBar* oddWaveBar = new StatsBar();
-            oddWaveBar->setColour(Colour (0xffBBFFFF));
+            oddWaveBar->setColour(Colours::dodgerblue);
             m_arrBars.add(oddWaveBar);
+            addAndMakeVisible(oddWaveBar);
             
             Label* ratioLabel = new Label();
             m_arrRatiosLabels.add(ratioLabel);
+            addAndMakeVisible(ratioLabel);
             
             Label* countLabel = new Label();
             m_arrCountsLabels.add(countLabel);
+            addAndMakeVisible(countLabel);
         }
         for(int i=0;i<5;i++)
         {
             StatsBar* allWaveBar = new StatsBar();
-            allWaveBar->setColour(Colour (0xff80D9FF));
+            allWaveBar->setColour(Colours::deepskyblue);
             m_arrBars.add(allWaveBar);
+            addAndMakeVisible(allWaveBar);
             
             Label* ratioLabel = new Label();
             m_arrRatiosLabels.add(ratioLabel);
+            addAndMakeVisible(ratioLabel);
             
             Label* countLabel = new Label();
             m_arrCountsLabels.add(countLabel);
+            addAndMakeVisible(countLabel);
         }
         
-        m_ARBar = new StatsBar();
-        m_ARBar->setColour(Colour (0xffE2CFC8));
+
+        m_ARBar.setColour(Colours::darkblue);
+        addAndMakeVisible(m_ARBar);
+        
+        addAndMakeVisible(m_ARLabel);
+        
+        resized();
 
     }
 
     ~StatsView()
     {
-        delete m_ARBar;
+       // delete m_ARBar;
     }
 
     void paint (Graphics& g) override
@@ -121,35 +132,42 @@ public:
         for(int i=0;i<m_arrBars.size();i++)
         {
             m_arrBars[i]->updateValues(stats.vecWaves[i].getPercent(), stats.vecWaves[i].count);
-            m_arrBars[i]->repaintBar();
+        }
+        
+        if(Config::vecAudibleRanges.size() > 1)
+        {
+            m_ARBar.updateValues(stats.audibleRange.getPercent(), stats.audibleRange.count);
         }
       
     }
 
     void resized() override
     {
-        m_title.setBounds(0.05*getWidth(), 0.1*getHeight(), 150, 30);
-        m_nbQuestions.setBounds(0.05*getWidth(), 0.15*getHeight(), 150, 50);
+        m_title.setBounds(0.05*getWidth(), 0.05*getHeight(), 150, 30);
+        m_nbQuestions.setBounds(0.05*getWidth(), 0.1*getHeight(), 150, 50);
         
-        m_scoreTitleLabel.setBounds(0.08*getWidth(), 0.395*getHeight(), 130, 30);
-        m_scoreLabel.setBounds(0.08*getWidth(), 0.42*getHeight(), 150, 60);
-        m_percentScoreLabel.setBounds(0.08*getWidth(), 0.6*getHeight(), 130, 75);
+        m_scoreTitleLabel.setBounds(0.08*getWidth(), 0.345*getHeight(), 130, 30);
+        m_scoreLabel.setBounds(0.08*getWidth(), 0.37*getHeight(), 150, 60);
+        m_percentScoreLabel.setBounds(0.08*getWidth(), 0.55*getHeight(), 130, 75);
         
-        m_countsTitle.setBounds(0.2*getWidth(), 0.1*getHeight(), 70, 30);
-        m_percentsTitle.setBounds(0.2*getWidth(), 0.47*getHeight(), 70, 30);
+        m_countsTitle.setBounds(0.2*getWidth(), 0.05*getHeight(), 70, 30);
+        m_percentsTitle.setBounds(0.2*getWidth(), 0.42*getHeight(), 70, 30);
         m_ratiosTitle.setBounds(0.2*getWidth(), 0.8*getHeight(), 70, 30);
         
         for(int i=0;i<m_arrBars.size();i++)
         {
-            m_arrCountsLabels[i]->setBounds( m_vecXPos[i]*getWidth(), 0.1*getHeight(),
+            m_arrCountsLabels[i]->setBounds( m_vecXPos[i]*getWidth(), 0.05*getHeight(),
                                           m_barSize, m_barSize );
-            
-            m_arrBars[i]->setBounds (m_vecXPos[i]*getWidth(), 0.25*getHeight(),
+
+            m_arrBars[i]->setBounds (m_vecXPos[i]*getWidth(), 0.2*getHeight(),
                                      m_barSize, 0.6*getHeight() );
             m_arrRatiosLabels[i]->setBounds (m_vecXPos[i]*getWidth(),
-                                       0.77*getHeight(),
+                                       0.72*getHeight(),
                                        m_barSize*1.25, m_barSize*2);
         }
+
+        m_ARBar.setBounds(0.9*getWidth(), 0.2*getHeight(), m_barSize, 0.6*getHeight() );
+        m_ARLabel.setBounds(0.9*getWidth(), 0.72*getHeight(), m_barSize*2, m_barSize*2 );
 
     }
 
@@ -169,14 +187,14 @@ private:
     Label m_ratiosTitle{{}, "Amplitude ratios"};
     
     
-     float m_barSize = 0.05*getWidth(); //35
+    float m_barSize = 40; //0.05*getWidth(); //35
     
     OwnedArray<StatsBar> m_arrBars;
     OwnedArray<Label> m_arrRatiosLabels;
     OwnedArray<Label> m_arrCountsLabels;
-    StatsBar* m_ARBar = nullptr;
+    StatsBar m_ARBar;
     Label m_ARLabel{{}, "Audible Range"};
-    std::vector<double> m_vecXPos = {0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85};
+    std::vector<double> m_vecXPos = {0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StatsView)
 };

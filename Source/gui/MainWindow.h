@@ -16,6 +16,8 @@
 #include "../core/Config.h"
 #include "../core/audio/Synthesis.h"
 
+#include "../core/AnswerChecker.h"
+
 #include "MatrixView.h"
 
 const float QUESTIONS_WIDTH = 0.35;
@@ -171,6 +173,7 @@ public:
                 m_matrixView.setQuestionMode(false);
                 m_matrixView.setTestMode(true);
                 displayPanel(1);
+                compileStats();
             }
         }
         
@@ -393,6 +396,50 @@ public:
         m_matrixView.resetEnabledWavesButtons();
     }
     
+    void compileStats()
+    {
+        auto stats = &Config::user->getLastSession()->getStats();
+        auto lastQuestion = Config::user->getLastSession()->getLastQuestion();
+        
+        
+        //AUDIBLE RANGE
+        if(Config::vecAudibleRanges.size() > 1)
+        {
+            stats->audibleRange.count += 1;
+            stats->audibleRange.correctanswer += AnswerChecker::Instance().scoreAudibleRange();
+        }
+        
+        
+        //WAVE TYPE
+        float waveTypeScore = AnswerChecker::Instance().scoreWaveTypeID();
+        
+        int waveTypeCorrectAnswer = lastQuestion->getWaveTypeID();
+        int waveTypeAnswered = lastQuestion->getAnsweredWaveTypeID();
+        
+        if(waveTypeScore == 1)
+        {
+            stats->vecWaves[waveTypeAnswered-1].correctanswer += 1;
+            stats->vecWaves[waveTypeAnswered-1].count += 1;
+        }
+        else if (waveTypeScore == 0.5)
+        {
+            stats->vecWaves[waveTypeAnswered-1].correctanswer += 0.5;
+            stats->vecWaves[waveTypeAnswered-1].count += 1;
+            
+            stats->vecWaves[waveTypeCorrectAnswer-1].correctanswer += 0.5;
+            stats->vecWaves[waveTypeCorrectAnswer-1].count += 1;
+        }
+        else
+        {
+            stats->vecWaves[waveTypeAnswered-1].correctanswer += 0;
+            stats->vecWaves[waveTypeAnswered-1].count += 1;
+            
+            stats->vecWaves[waveTypeCorrectAnswer-1].correctanswer += 0;
+            stats->vecWaves[waveTypeCorrectAnswer-1].count += 1;
+        }
+        
+        stats->print();
+    }
 
 private:
     MatrixView m_matrixView;
