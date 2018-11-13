@@ -19,6 +19,7 @@
 #include "../core/AnswerChecker.h"
 
 #include "MatrixView.h"
+#include "StatsView.h"
 
 const float QUESTIONS_WIDTH = 0.35;
 const float MATRIX_WIDTH = 1-QUESTIONS_WIDTH;
@@ -28,7 +29,7 @@ class MainWindow    : public Component,
 public Button::Listener
 {
 public:
-    TextButton m_answerButton{"Answer"};
+    StatsView m_statsView;
     
     MainWindow()
     {
@@ -76,7 +77,6 @@ public:
     
     void paint (Graphics& g) override
     {
-        
         g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
         
         g.setColour (Colours::grey);
@@ -84,8 +84,6 @@ public:
         
         g.setColour (Colours::white);
         g.setFont (14.0f);
-        //        g.drawText ("MainWindow", getLocalBounds(),
-        //                    Justification::centred, true);
     }
     
     void resized() override
@@ -166,14 +164,15 @@ public:
             
             Config::isPlaying = false; //temporary
             
-            //VIEW
-            
             if(m_notAnsweredLabel.getText() == "")
             {
                 m_matrixView.setQuestionMode(false);
                 m_matrixView.setTestMode(true);
+                
                 displayPanel(1);
+                
                 compileStats();
+                m_statsView.repaint();
             }
         }
         
@@ -448,7 +447,7 @@ private:
     TextButton m_playTestButton{"Play"};
     TextButton m_playQuestionButton{"PLAY Question"};
     TextButton m_playSineWaveButton{"Play Sine Wave (reference)"};
-
+    TextButton m_answerButton{"Answer"};
     
     Label m_notAnsweredLabel{{}, ""};
     Label m_playTestLabel{{}, "Test different values!"};

@@ -109,17 +109,14 @@ public:
 
     ~StatsView()
     {
-       // delete m_ARBar;
+      
     }
 
     void paint (Graphics& g) override
     {
         g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
         g.fillAll(Colours::white);
-
         g.setColour (Colours::grey);
-        //g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
         g.setColour (Colours::white);
         g.setFont (14.0f);
         
@@ -127,7 +124,6 @@ public:
         assert(Config::user->getLastSession() != nullptr);
         
         StatsSheet& stats = Config::user->getLastSession()->getStats();
-        
         
         for(int i=0;i<m_arrBars.size();i++)
         {

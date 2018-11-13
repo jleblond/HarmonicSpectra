@@ -74,7 +74,7 @@ protected:
     TextButton m_endSessionButton{"SESSION [X]"};
    
     MainWindow m_mainWindow;
-    StatsView m_statsView;
+   // StatsView m_statsView;
     //VolumeView m_volumeView;
     
     

@@ -34,18 +34,14 @@ MainApplication::MainApplication()
     
     addAndMakeVisible(m_mainWindow);
     m_mainWindow.setVisible(false);
-    addAndMakeVisible(m_statsView);
-    m_statsView.setVisible(false);
-   // addAndMakeVisible(m_volumeView);
-   // m_volumeView.setVisible(false);
+    addAndMakeVisible(m_mainWindow.m_statsView);
+    m_mainWindow.m_statsView.setVisible(false);
     
     addAndMakeVisible(m_endSessionButton);
     m_endSessionButton.setColour(TextButton::buttonColourId, Colour (0xff003F5F));
     m_endSessionButton.setColour(TextButton::textColourOffId, Colours::white);
     m_endSessionButton.addListener(this);
     m_endSessionButton.setVisible(false);
-    
-    m_mainWindow.m_answerButton.addListener(this);
     
 }
     
@@ -56,12 +52,9 @@ MainApplication::~MainApplication()
     
 void MainApplication::paint (Graphics& g)
 {
-        
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-        
     g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-        
     g.setColour (Colours::white);
     g.setFont (14.0f);
     g.drawText ("MainApplication", getLocalBounds(),
@@ -84,8 +77,7 @@ void MainApplication::resized()
     m_exerciseConfigView.setBounds(area2);
         
     Rectangle<int> area3 (area);
-    m_statsView.setBounds(area3.removeFromBottom(STATSVIEW_HEIGHT*getHeight()));
-   // m_volumeView.setBounds (area3.removeFromRight(VOLUMEVIEW_WIDTH*getWidth()));
+    m_mainWindow.m_statsView.setBounds(area3.removeFromBottom(STATSVIEW_HEIGHT*getHeight()));
     m_mainWindow.setBounds(area3);
         
 }
@@ -122,15 +114,8 @@ void MainApplication::buttonClicked(Button* button)
         
         //report generation options
 
-        m_mainWindow.resetAll(); //includes both GUI and m_ values (for waveType and audibleRange)
+        m_mainWindow.resetAll(); //includes both GUI and model m_ values (for waveType and audibleRange)
         displayPanel(3);
-    }
-    
-    
-    if (button == &m_mainWindow.m_answerButton)
-    {
-        
-        m_statsView.repaint();
     }
 
     
@@ -174,7 +159,7 @@ void MainApplication::showExerciseConfig(bool isVisible)
 void MainApplication::showMainWindow(bool isVisible)
 {
     m_mainWindow.setVisible(isVisible);
-    m_statsView.setVisible(isVisible);
+    m_mainWindow.m_statsView.setVisible(isVisible);
    // m_volumeView.setVisible(isVisible);
 }
 
