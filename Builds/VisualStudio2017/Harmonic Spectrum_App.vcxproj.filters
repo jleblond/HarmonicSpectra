@@ -8,6 +8,9 @@
     <Filter Include="Harmonic Spectrum\core">
       <UniqueIdentifier>{61820829-9045-517D-9FAD-A6490FCA08BB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Harmonic Spectrum\gui\components">
+      <UniqueIdentifier>{FD771584-334E-BAC3-2750-0E7BCBF82383}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Harmonic Spectrum\gui\img">
       <UniqueIdentifier>{C0D85C88-91F9-17A2-B98F-A70D317D5420}</UniqueIdentifier>
     </Filter>
@@ -2214,6 +2217,15 @@
     <ClInclude Include="..\..\Source\core\Comment.h">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\gui\components\ColourSquare.h">
+      <Filter>Harmonic Spectrum\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\components\RatioFormula.h">
+      <Filter>Harmonic Spectrum\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\components\StatsBar.h">
+      <Filter>Harmonic Spectrum\gui\components</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\gui\MainApplication.h">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>
@@ -2238,13 +2250,7 @@
     <ClInclude Include="..\..\Source\gui\StatsView.h">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\gui\StatsBar.h">
-      <Filter>Harmonic Spectrum\gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\utils\CustomTimer.h">
-      <Filter>Harmonic Spectrum\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\utils\ColourSquare.h">
       <Filter>Harmonic Spectrum\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">

@@ -199,10 +199,10 @@ void Synthesis::fillVecPartials ()
                     {
                         partialLevel = 1/pow (i, 2.0);
                         
-                        if(neg)
-                            partialLevel = -partialLevel;
-
-                        neg = !neg;
+//                        if(neg)
+//                            partialLevel = -partialLevel;
+//
+//                        neg = !neg;
                     }
                 //    std::cout<<"TRI"<<std::endl;
                     break;

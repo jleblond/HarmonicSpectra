@@ -1778,6 +1778,9 @@
     <ClInclude Include="..\..\Source\core\ReportBuilder.h"/>
     <ClInclude Include="..\..\Source\core\Partials.h"/>
     <ClInclude Include="..\..\Source\core\Comment.h"/>
+    <ClInclude Include="..\..\Source\gui\components\ColourSquare.h"/>
+    <ClInclude Include="..\..\Source\gui\components\RatioFormula.h"/>
+    <ClInclude Include="..\..\Source\gui\components\StatsBar.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>
@@ -1786,9 +1789,7 @@
     <ClInclude Include="..\..\Source\gui\MatrixView.h"/>
     <ClInclude Include="..\..\Source\gui\VolumeView.h"/>
     <ClInclude Include="..\..\Source\gui\StatsView.h"/>
-    <ClInclude Include="..\..\Source\gui\StatsBar.h"/>
     <ClInclude Include="..\..\Source\utils\CustomTimer.h"/>
-    <ClInclude Include="..\..\Source\utils\ColourSquare.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

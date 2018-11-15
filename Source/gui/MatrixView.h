@@ -13,7 +13,7 @@
 #include "../core/QuestionBuilder.h"
 #include "../core/AnswerChecker.h"
 
-#include "../utils/ColourSquare.h"
+#include "components/ColourSquare.h"
 
 class MatrixView : public Component,
 public Button::Listener
