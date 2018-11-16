@@ -2397,6 +2397,16 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\gui\img\ratios\1.png"/>
+    <None Include="..\..\Source\gui\img\ratios\2.png"/>
+    <None Include="..\..\Source\gui\img\ratios\3.png"/>
+    <None Include="..\..\Source\gui\img\ratios\4.png"/>
+    <None Include="..\..\Source\gui\img\ratios\5.png"/>
+    <None Include="..\..\Source\gui\img\ratios\6.png"/>
+    <None Include="..\..\Source\gui\img\ratios\7.png"/>
+    <None Include="..\..\Source\gui\img\ratios\8.png"/>
+    <None Include="..\..\Source\gui\img\ratios\9.png"/>
+    <None Include="..\..\Source\gui\img\ratios\10.png"/>
     <None Include="..\..\Source\gui\img\logo.png"/>
     <None Include="..\..\..\..\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\..\..\JUCE\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>

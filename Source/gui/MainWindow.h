@@ -21,7 +21,7 @@
 #include "MatrixView.h"
 #include "StatsView.h"
 
-const float QUESTIONS_WIDTH = 0.35;
+const float QUESTIONS_WIDTH = 0.25;
 const float MATRIX_WIDTH = 1-QUESTIONS_WIDTH;
 
 
@@ -40,7 +40,9 @@ public:
         m_playTestButton.addListener(this);
         
         addAndMakeVisible(m_playTestLabel);
+        m_playTestLabel.setFont(16);
         addAndMakeVisible(m_playTestValuesLabel);
+        m_playTestValuesLabel.setFont(14);
         
         addAndMakeVisible(m_newQuestionButton);
         m_newQuestionButton.addListener(this);
@@ -83,7 +85,7 @@ public:
         g.drawRect (getLocalBounds(), 1);
         
         g.setColour (Colours::white);
-        g.setFont (14.0f);
+        g.setFont (12.0f);
     }
     
     void resized() override
@@ -92,22 +94,22 @@ public:
         m_matrixView.setBounds (area.removeFromRight( MATRIX_WIDTH*getWidth()));
         
         
-        m_playTestButton.setBounds (0.2*getWidth(), 0.2*getHeight(), 0.09*getWidth(), 0.12*getHeight());
+        m_playTestButton.setBounds (0.2*getWidth(), 0.2*getHeight(), 0.06*getWidth(), 0.12*getHeight());
         
-        m_playTestLabel.setBounds (0.1*getWidth(), 0.1*getHeight(), 0.18*getWidth(), 0.1*getHeight());
+        m_playTestLabel.setBounds (0.1*getWidth(), 0.1*getHeight(), 0.13*getWidth(), 0.15*getHeight());
         
-        m_playTestValuesLabel.setBounds (0.05*getWidth(), 0.21*getHeight(), 0.15*getWidth(), 0.16*getHeight());
+        m_playTestValuesLabel.setBounds (0.05*getWidth(), 0.21*getHeight(), 0.1*getWidth(), 0.2*getHeight());
         
-        m_newQuestionButton.setBounds (0.09*getWidth(), 0.6*getHeight(), 0.175*getWidth(), 0.25*getHeight());
+        m_newQuestionButton.setBounds (0.09*getWidth(), 0.6*getHeight(), 0.125*getWidth(), 0.25*getHeight());
         
         
         
-        m_playQuestionButton.setBounds (0.08*getWidth(), 0.15*getHeight(), 0.21*getWidth(), 0.2*getHeight());
-        m_playSineWaveButton.setBounds (0.11*getWidth(), 0.37*getHeight(), 0.14*getWidth(), 0.1*getHeight());
+        m_playQuestionButton.setBounds (0.08*getWidth(), 0.15*getHeight(), 0.16*getWidth(), 0.2*getHeight());
+        m_playSineWaveButton.setBounds (0.11*getWidth(), 0.37*getHeight(), 0.09*getWidth(), 0.1*getHeight());
         
-        m_answerButton.setBounds (0.09*getWidth(), 0.62*getHeight(), 0.175*getWidth(), 0.2*getHeight());
+        m_answerButton.setBounds (0.09*getWidth(), 0.62*getHeight(), 0.125*getWidth(), 0.2*getHeight());
         
-        m_notAnsweredLabel.setBounds (0.09*getWidth(), 0.83*getHeight(), 0.25*getWidth(), 0.15*getHeight());
+        m_notAnsweredLabel.setBounds (0.09*getWidth(), 0.83*getHeight(), 0.2*getWidth(), 0.15*getHeight());
         
         
     }

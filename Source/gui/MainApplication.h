@@ -22,7 +22,6 @@
 #include "../core/StatsBuilder.h"
 
 #include "../core/Config.h"
-//#include "../core/audio/AudioEngine.h"
 
 
 //const int HEIGHT = 700;
@@ -33,7 +32,6 @@ const float HEADER_PERCENT_HEIGHT = 0.15;
 const float BOTTOM_BUTTONS_HEIGHT = 0.20; //height relative to espace left without header
 
 const float STATSVIEW_HEIGHT = 0.35;
-//const float VOLUMEVIEW_WIDTH = 0.10;
 
 const float ENDSESSIONBUTTON_WIDTH = 0.10;
 
@@ -74,8 +72,6 @@ protected:
     TextButton m_endSessionButton{"SESSION [X]"};
    
     MainWindow m_mainWindow;
-   // StatsView m_statsView;
-    //VolumeView m_volumeView;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)

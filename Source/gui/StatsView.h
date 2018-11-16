@@ -77,7 +77,6 @@ public:
             Label* partialLabel = new Label("", "ODD");
             m_arrPartialsLabels.add(partialLabel);
             addAndMakeVisible(partialLabel);
-         //   partialLabel->setJustificationType(juce::Justification::horizontallyCentred);
             partialLabel->setFont (Font (14.0f, Font::plain));
             
             RatioFormula* ratioLabel = new RatioFormula(m_vecRatioStr[i]);
@@ -100,7 +99,6 @@ public:
             Label* partialLabel = new Label("", "ALL");
             m_arrPartialsLabels.add(partialLabel);
             addAndMakeVisible(partialLabel);
-        //    partialLabel->setJustificationType(juce::Justification::horizontallyCentred);
             partialLabel->setFont (Font (14.0f, Font::plain));
             
             RatioFormula* ratioLabel = new RatioFormula(m_vecRatioStr[i-5]);

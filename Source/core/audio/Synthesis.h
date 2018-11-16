@@ -85,4 +85,6 @@ private:
     std::vector<Partial> m_vecPartials;
 
     void normalizePartialsAmp(std::vector<Partial>& vec);
+    
+    float secondNormalization();
 };

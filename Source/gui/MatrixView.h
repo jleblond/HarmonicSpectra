@@ -19,7 +19,7 @@ class MatrixView : public Component,
 public Button::Listener
 {
 public:
-    OwnedArray<TextButton> m_arrWavesButtons;
+    OwnedArray<TextButton>  m_arrWavesButtons;
     OwnedArray<ColourSquare> m_arrWavesCSquares;
     
     OwnedArray<TextButton>  m_arrARButtons;
@@ -62,6 +62,8 @@ public:
             m_arrWavesButtons.add (newODDButton);
             newODDButton->addListener(this);
             addAndMakeVisible (newODDButton);
+
+            
         }
         for (int i = 0; i < 5; i++)
         {
@@ -399,4 +401,24 @@ protected:
     Label m_allLabel{{}, "ALL:"}, m_oddLabel{{}, "ODD:"}, m_arLabel{{}, "AUDIBLE RANGE:"};
     Label m_NALabel{{}, "N/A"};
     Label m_fixedARLabel;
+    
+    
+//    Image logoImage = ImageCache::getFromMemory (BinaryData::logo_png, BinaryData::logo_pngSize);
+//
+    
+
+//    ImageButton mLogoButton;
+//    Image mLogo;
+//
+//    OwnedArray<Image> m_arrRatioImages;
+    
+//    mLogoButton.setImages (true, true, true,
+//                           logoImage, 0.7f, Colours::transparentBlack,
+//                           logoImage, 1.0f, Colours::transparentBlack,
+//                           logoImage, 1.0f, Colours::lightgrey.withAlpha (0.8f),
+//                           0.5f);
+//
+//    mLogoButton.setTooltip ("Information about the Inner Ear Project");
+//    addAndMakeVisible(mLogoButton);
+//    mLogoButton.addListener(this);
 };

@@ -44,6 +44,18 @@
         <FILE id="D1Pj1F" name="StatsBar.h" compile="0" resource="0" file="Source/gui/components/StatsBar.h"/>
       </GROUP>
       <GROUP id="{656E2D66-5E62-6228-EEBF-A3E90555CA6F}" name="img">
+        <GROUP id="{28809875-34E7-2F08-2DBC-30B834C78164}" name="ratios">
+          <FILE id="yJ3FqN" name="1.png" compile="0" resource="1" file="Source/gui/img/ratios/1.png"/>
+          <FILE id="JQSkcT" name="2.png" compile="0" resource="1" file="Source/gui/img/ratios/2.png"/>
+          <FILE id="SvKRKB" name="3.png" compile="0" resource="1" file="Source/gui/img/ratios/3.png"/>
+          <FILE id="hnZ77Q" name="4.png" compile="0" resource="1" file="Source/gui/img/ratios/4.png"/>
+          <FILE id="WGaSjj" name="5.png" compile="0" resource="1" file="Source/gui/img/ratios/5.png"/>
+          <FILE id="PXGEcH" name="6.png" compile="0" resource="1" file="Source/gui/img/ratios/6.png"/>
+          <FILE id="Yy6KDs" name="7.png" compile="0" resource="1" file="Source/gui/img/ratios/7.png"/>
+          <FILE id="C1WyG3" name="8.png" compile="0" resource="1" file="Source/gui/img/ratios/8.png"/>
+          <FILE id="vEdWA0" name="9.png" compile="0" resource="1" file="Source/gui/img/ratios/9.png"/>
+          <FILE id="OHAiRM" name="10.png" compile="0" resource="1" file="Source/gui/img/ratios/10.png"/>
+        </GROUP>
         <FILE id="nRhQUZ" name="logo.png" compile="0" resource="1" file="Source/gui/img/logo.png"/>
       </GROUP>
       <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"

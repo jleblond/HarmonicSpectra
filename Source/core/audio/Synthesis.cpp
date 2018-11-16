@@ -183,13 +183,19 @@ void Synthesis::fillVecPartials ()
                     
                 case 3:
                     if (i % 2 != 0)
+                    {
                         partialLevel = 1/pow (i, 1.50);
+                    }
+                
                  //   std::cout<<"SQUARE 3 TRI"<<std::endl;
                     break;
                     
                 case 4:
                     if (i % 2 != 0)
+                    {
                         partialLevel = 1/pow (i, 1.75);
+                    }
+
                   //  std::cout<<"SQUARE 4 TRI"<<std::endl;
                     break;
                     
@@ -199,10 +205,10 @@ void Synthesis::fillVecPartials ()
                     {
                         partialLevel = 1/pow (i, 2.0);
                         
-//                        if(neg)
-//                            partialLevel = -partialLevel;
-//
-//                        neg = !neg;
+                        if(neg)
+                            partialLevel = -partialLevel;
+
+                        neg = !neg;
                     }
                 //    std::cout<<"TRI"<<std::endl;
                     break;
@@ -261,6 +267,7 @@ void Synthesis::fillVecPartials ()
 
 void Synthesis::normalizePartialsAmp(std::vector<Partial>& vec)
 {
+    //First normalization to prevent clipping
     double sum = 0;
     
     for(const auto &partial : vec)
@@ -285,8 +292,67 @@ void Synthesis::normalizePartialsAmp(std::vector<Partial>& vec)
         }
     }
     
+    
+    // Second normalization based on subjective loudness
+    for(auto &partial : vec)
+    {
+        partial.amplitude *= secondNormalization();
+    }
+
+    
 }
 
+
+
+float Synthesis::secondNormalization()
+{
+    float factor = 1;
+   
+    switch(m_waveType)
+    {
+        case 1:
+            factor = 0.42;
+            break;
+            
+        case 2:
+            factor = 0.5;
+            break;
+            
+        case 3:
+            factor = 0.5;
+            break;
+            
+        case 4:
+            factor = 0.79;
+            break;
+            
+        case 5:
+            factor = 1;
+            break;
+            
+        case 6:
+            factor = 0.63;
+            break;
+            
+        case 7:
+            factor = 0.7;
+            break;
+            
+        case 8:
+            factor = 0.86;
+            break;
+            
+        case 9:
+            factor = 0.94;
+            break;
+            
+        case 10:
+            factor = 1;
+            break;
+    };
+    
+    return factor;
+}
     
 
     

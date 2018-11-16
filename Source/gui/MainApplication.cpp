@@ -160,6 +160,5 @@ void MainApplication::showMainWindow(bool isVisible)
 {
     m_mainWindow.setVisible(isVisible);
     m_mainWindow.m_statsView.setVisible(isVisible);
-   // m_volumeView.setVisible(isVisible);
 }
 

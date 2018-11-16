@@ -11,6 +11,9 @@
     <Filter Include="Harmonic Spectrum\gui\components">
       <UniqueIdentifier>{FD771584-334E-BAC3-2750-0E7BCBF82383}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Harmonic Spectrum\gui\img\ratios">
+      <UniqueIdentifier>{2DEAEA77-C7A1-4B3C-DECC-E146992D8A46}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Harmonic Spectrum\gui\img">
       <UniqueIdentifier>{C0D85C88-91F9-17A2-B98F-A70D317D5420}</UniqueIdentifier>
     </Filter>
@@ -4070,6 +4073,36 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\gui\img\ratios\1.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\2.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\3.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\4.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\5.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\6.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\7.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\8.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\9.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
+    <None Include="..\..\Source\gui\img\ratios\10.png">
+      <Filter>Harmonic Spectrum\gui\img\ratios</Filter>
+    </None>
     <None Include="..\..\Source\gui\img\logo.png">
       <Filter>Harmonic Spectrum\gui\img</Filter>
     </None>
