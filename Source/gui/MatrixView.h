@@ -14,12 +14,20 @@
 #include "../core/AnswerChecker.h"
 
 #include "components/ColourSquare.h"
+#include "components/RatioFormula.h"
+
+#include "../../JuceLibraryCode/JuceHeader.h"
+
+const float ODD_HEIGHT = 0.1;
+const float FORMULAS_HEIGHT = 0.29;
+const float ALL_HEIGHT = 0.4;
+const float AR_HEIGHT = 0.8;
 
 class MatrixView : public Component,
 public Button::Listener
 {
 public:
-    OwnedArray<TextButton>  m_arrWavesButtons;
+    OwnedArray<ImageButton> m_arrImgButtons;
     OwnedArray<ColourSquare> m_arrWavesCSquares;
     
     OwnedArray<TextButton>  m_arrARButtons;
@@ -36,10 +44,23 @@ public:
         addAndMakeVisible(m_fixedARLabel);
         
         
+        m_arrRatioImages.push_back(img1);
+        m_arrRatioImages.push_back(img2);
+        m_arrRatioImages.push_back(img3);
+        m_arrRatioImages.push_back(img4);
+        m_arrRatioImages.push_back(img5);
+        m_arrRatioImages.push_back(img6);
+        m_arrRatioImages.push_back(img7);
+        m_arrRatioImages.push_back(img8);
+        m_arrRatioImages.push_back(img9);
+        m_arrRatioImages.push_back(img10);
+        
         //Order is important due to z-index
         
         for (int i = 0; i < 5; i++)
         {
+            //Audible Range Row
+            
             ColourSquare* newARColourSquare = new ColourSquare();
             m_arrARCSquares.add (newARColourSquare);
             addAndMakeVisible (newARColourSquare);
@@ -52,30 +73,50 @@ public:
             addAndMakeVisible (newARButton);
             
             
+            //ODD row
             
             ColourSquare* newColourSquare = new ColourSquare();
             m_arrWavesCSquares.add (newColourSquare);
             addAndMakeVisible (newColourSquare);
             
-            TextButton* newODDButton = new TextButton();
-            newODDButton->setButtonText("ODD"+static_cast<String>(i+1));
-            m_arrWavesButtons.add (newODDButton);
-            newODDButton->addListener(this);
-            addAndMakeVisible (newODDButton);
-
+            
+            
+            ImageButton* imgButton = new ImageButton();
+            m_arrImgButtons.add(imgButton);
+            imgButton->setImages (false, true, false,
+                                  m_arrRatioImages[i], 1.0f, Colours::transparentBlack,
+                                m_arrRatioImages[i], 1.0f, Colours::white.withAlpha (0.8f),
+                                 m_arrRatioImages[i], 1.0f, Colours::transparentBlack,
+                                0.5f);
+            addAndMakeVisible(imgButton);
+            imgButton->addListener(this);
+            //    mLogoButton.setTooltip ("Information about the Inner Ear Project");
+            
+            
+            //Ratio Formulas
+            RatioFormula* ratioLabel = new RatioFormula(m_vecRatioStr[i]);
+            m_arrRatiosLabels.add(ratioLabel);
+            addAndMakeVisible(ratioLabel);
+            ratioLabel->setBackgroundColour(Colour(0xffefefef));
             
         }
+        
+        //ALL row
         for (int i = 0; i < 5; i++)
         {
             ColourSquare* newColourSquare = new ColourSquare();
             m_arrWavesCSquares.add (newColourSquare);
             addAndMakeVisible (newColourSquare);
             
-            TextButton* newALLButton = new TextButton();
-            newALLButton->setButtonText("ALL"+static_cast<String>(i+1));
-            m_arrWavesButtons.add (newALLButton);
-            newALLButton->addListener(this);
-            addAndMakeVisible (newALLButton);
+            ImageButton* imgButton = new ImageButton();
+            m_arrImgButtons.add(imgButton);
+            imgButton->setImages (false, true, false,
+                                  m_arrRatioImages[i+5], 1.0f, Colours::transparentBlack,
+                                  m_arrRatioImages[i+5], 1.0f, Colours::white.withAlpha (0.8f),
+                                   m_arrRatioImages[i+5], 1.0f, Colours::transparentBlack,
+                                  0.5f);
+            addAndMakeVisible(imgButton);
+            imgButton->addListener(this);
         
         }
         
@@ -102,12 +143,10 @@ public:
         
         // General-Main LABELS
         
-        m_oddLabel.setBounds (0.08*getWidth(), 0.1*getHeight(), 0.2*getWidth(), 0.1*getHeight());
-        m_allLabel.setBounds (0.08*getWidth(), 0.3*getHeight(), 0.2*getWidth(), 0.1*getHeight());
-        m_arLabel.setBounds (0.08*getWidth(), 0.7*getHeight(), 0.2*getWidth(), 0.1*getHeight());
-        
-        //reset
-        
+        m_oddLabel.setBounds (0.08*getWidth(), ODD_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+        m_allLabel.setBounds (0.08*getWidth(), ALL_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+        m_arLabel.setBounds (0.08*getWidth(), AR_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+    
         
         
         //AUDIBLE RANGE : Buttons OR Label with fixed AR text
@@ -119,11 +158,11 @@ public:
             for (int i=0;i<sizeVecAR;i++)
             {
                 m_arrARCSquares.getUnchecked(i)->setBounds( (0.3*getWidth()+i*0.12*getWidth()),
-                                                           0.7*getHeight(),
+                                                           AR_HEIGHT*getHeight(),
                                                            0.11*getWidth(), 0.16*getHeight());
                 
                 m_arrARButtons.getUnchecked(i)->setBounds( (0.3*getWidth()+i*0.12*getWidth()),
-                                                          0.7*getHeight(),
+                                                          AR_HEIGHT*getHeight(),
                                                           0.1*getWidth(), 0.15*getHeight());
                 
                 m_fixedARLabel.setVisible(false);
@@ -133,7 +172,7 @@ public:
         else if (sizeVecAR == 1)
         {
             m_fixedARLabel.setText (static_cast<String>(Config::vecAudibleRanges[0])+"%", dontSendNotification);
-            m_fixedARLabel.setBounds (0.3*getWidth(),0.68*getHeight(),
+            m_fixedARLabel.setBounds (0.3*getWidth(),AR_HEIGHT*0.97*getHeight(),
                                       0.3*getWidth(), 0.15*getHeight());
             
             m_fixedARLabel.setVisible(true);
@@ -150,6 +189,13 @@ public:
         
         displayWaveTypeButtons(false, false);
         
+        
+        for( int i=0;i<5;i++)
+        {
+            m_arrRatiosLabels[i]->setBounds ( (0.335*getWidth()+i*0.12*getWidth()), FORMULAS_HEIGHT*getHeight(), 0.1*getWidth(), 0.09*getHeight());
+        }
+        
+        
         for (int j=0;j<vecWaves.size();j++)
         {
             int waveID = vecWaves[j];
@@ -157,35 +203,41 @@ public:
             if (waveID <=5) //odd partials waves
             {
                 m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
-                                                                      0.1*getHeight(),
+                                                                      ODD_HEIGHT*getHeight(),
                                                                       0.11*getWidth(), 0.16*getHeight());
                 
-                m_arrWavesButtons.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
-                                                                     0.1*getHeight(),
-                                                                     0.1*getWidth(), 0.15*getHeight());
-                m_arrWavesButtons.getUnchecked(waveID-1)->setVisible(true);
+
+                m_arrImgButtons[waveID-1]->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
+                                                     ODD_HEIGHT*getHeight(),
+                                                     0.1*getWidth(), 0.15*getHeight());
+                m_arrImgButtons[waveID-1]->setVisible(true);
+                
             }
             else if(waveID > 5) //all partials waves
             {
-                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+indexALLPartials*0.12*getWidth()),
-                                                                      0.3*getHeight(),
-                                                                      0.11*getWidth(), 0.16*getHeight());
-                m_arrWavesButtons.getUnchecked(waveID-1)->setBounds (
-                                                                     (0.3*getWidth()+indexALLPartials*0.12*getWidth()),0.3*getHeight(),0.1*getWidth(), 0.15*getHeight());
-                m_arrWavesButtons.getUnchecked(waveID-1)->setVisible(true);
+                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*getHeight(),
+                                                    0.11*getWidth(), 0.16*getHeight());
+                
+                m_arrImgButtons[waveID-1]->setBounds (
+                                                         (0.3*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*getHeight(),0.1*getWidth(), 0.15*getHeight()
+                                                    );
+                
+                m_arrImgButtons[waveID-1]->setVisible(true);
+                
+                
                 indexALLPartials++;
             }
         }
         
         if (Config::partials == Partials::odd)
         {
-            m_NALabel.setBounds(0.3*getWidth(),0.28*getHeight(),
+             m_NALabel.setBounds(0.3*getWidth(),ALL_HEIGHT*0.97*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
              m_NALabel.setVisible(true);
         }
         else if (Config::partials == Partials::all)
         {
-            m_NALabel.setBounds(0.3*getWidth(),0.075*getHeight(),
+            m_NALabel.setBounds(0.3*getWidth(),ODD_HEIGHT*0.8*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
             m_NALabel.setVisible(true);
         }
@@ -207,14 +259,15 @@ public:
     
     void displayWaveTypeButtons (bool showODD, bool showALL)
     {
-        for(int i=0;i<5;i++)
-        {
-            m_arrWavesButtons[i]->setVisible(showODD);
-        }
-        for(int i=5;i<m_arrWavesButtons.size();i++)
-        {
-            m_arrWavesButtons[i]->setVisible(showALL);
-        }
+            for(int i=0;i<5;i++)
+            {
+                m_arrImgButtons[i]->setVisible(showODD);
+            }
+            for(int i=5;i<m_arrImgButtons.size();i++)
+            {
+                m_arrImgButtons[i]->setVisible(showALL);
+            }
+        
     }
     
     void displayColourSquares (bool isVisible)
@@ -238,13 +291,10 @@ public:
     {
         if(m_isQuestionMode || m_isTestMode)
         {
-            //                    resetARButtonsColours();
-            //                    m_arrARCSquares[i]->setColour(Colours::black);
             m_selectedAudibleRange = m_vecARPercents[index];
             
             resetEnabledARButtons();
             m_arrARButtons[index]->setEnabled(false);
-            
         }
     }
                              
@@ -252,12 +302,10 @@ public:
     {
         if(m_isQuestionMode || m_isTestMode)
         {
-            //                    resetWaveButtonsColours();
-            //                    m_arrWavesCSquares[i]->setColour(Colours::black);
             m_selectedWaveTypeID = (index+1);
             
             resetEnabledWavesButtons();
-            m_arrWavesButtons[index]->setEnabled(false);
+            m_arrImgButtons[index]->setEnabled(false);
         }
     }
 
@@ -368,7 +416,7 @@ public:
     
     void resetWaveButtonsColours()
     {
-        for(int i=0;i<m_arrWavesButtons.size();i++)
+        for(int i=0;i<m_arrWavesCSquares.size();i++)
         {
             m_arrWavesCSquares[i]->setColour(Colours::transparentWhite);
         }
@@ -384,9 +432,9 @@ public:
     
     void resetEnabledWavesButtons()
     {
-        for(int i=0;i<m_arrWavesButtons.size();i++)
+        for(int i=0;i<m_arrImgButtons.size();i++)
         {
-            m_arrWavesButtons.getUnchecked(i)->setEnabled(true);
+            m_arrImgButtons[i]->setEnabled(true);
         }
     }
     
@@ -403,22 +451,21 @@ protected:
     Label m_fixedARLabel;
     
     
-//    Image logoImage = ImageCache::getFromMemory (BinaryData::logo_png, BinaryData::logo_pngSize);
-//
+    std::vector<Image> m_arrRatioImages;
+     Image img1 = ImageCache::getFromMemory (BinaryData::_1_png, BinaryData::_1_pngSize);
+     Image img2 = ImageCache::getFromMemory (BinaryData::_2_png, BinaryData::_2_pngSize);
+     Image img3 = ImageCache::getFromMemory (BinaryData::_3_png, BinaryData::_3_pngSize);
+     Image img4 = ImageCache::getFromMemory (BinaryData::_4_png, BinaryData::_4_pngSize);
+     Image img5 = ImageCache::getFromMemory (BinaryData::_5_png, BinaryData::_5_pngSize);
+     Image img6 = ImageCache::getFromMemory (BinaryData::_6_png, BinaryData::_6_pngSize);
+     Image img7 = ImageCache::getFromMemory (BinaryData::_7_png, BinaryData::_7_pngSize);
+     Image img8 = ImageCache::getFromMemory (BinaryData::_8_png, BinaryData::_8_pngSize);
+     Image img9 = ImageCache::getFromMemory (BinaryData::_9_png, BinaryData::_9_pngSize);
+     Image img10 = ImageCache::getFromMemory (BinaryData::_10_png, BinaryData::_10_pngSize);
     
+    
+    OwnedArray<RatioFormula> m_arrRatiosLabels;
+    std::vector<String> m_vecRatioStr = {"", "1.25", "1.5", "1.75", "2"};
 
-//    ImageButton mLogoButton;
-//    Image mLogo;
-//
-//    OwnedArray<Image> m_arrRatioImages;
-    
-//    mLogoButton.setImages (true, true, true,
-//                           logoImage, 0.7f, Colours::transparentBlack,
-//                           logoImage, 1.0f, Colours::transparentBlack,
-//                           logoImage, 1.0f, Colours::lightgrey.withAlpha (0.8f),
-//                           0.5f);
-//
-//    mLogoButton.setTooltip ("Information about the Inner Ear Project");
-//    addAndMakeVisible(mLogoButton);
-//    mLogoButton.addListener(this);
+
 };

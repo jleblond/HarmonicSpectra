@@ -42,7 +42,7 @@ public:
         
         
         auto area = getLocalBounds().toFloat().reduced (0.5f);
-        float cornerSize = 10.f;
+        float cornerSize = 0.f;
         g.setColour (m_colour);
         g.fillRoundedRectangle (area, cornerSize);
         //g.setColour (m_colour);

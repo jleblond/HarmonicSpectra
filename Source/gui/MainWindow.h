@@ -67,9 +67,9 @@ public:
         {
             m_matrixView.m_arrARButtons[i]->addListener(this);
         }
-        for(int i=0;i<m_matrixView.m_arrWavesButtons.size();i++)
+        for(int i=0;i<m_matrixView.m_arrImgButtons.size();i++)
         {
-            m_matrixView.m_arrWavesButtons[i]->addListener(this);
+            m_matrixView.m_arrImgButtons[i]->addListener(this);
         }
     }
     
@@ -94,22 +94,22 @@ public:
         m_matrixView.setBounds (area.removeFromRight( MATRIX_WIDTH*getWidth()));
         
         
-        m_playTestButton.setBounds (0.2*getWidth(), 0.2*getHeight(), 0.06*getWidth(), 0.12*getHeight());
+        m_playTestButton.setBounds (0.13*getWidth(), 0.2*getHeight(), 0.06*getWidth(), 0.12*getHeight());
         
-        m_playTestLabel.setBounds (0.1*getWidth(), 0.1*getHeight(), 0.13*getWidth(), 0.15*getHeight());
+        m_playTestLabel.setBounds (0.05*getWidth(), 0.1*getHeight(), 0.13*getWidth(), 0.15*getHeight());
         
-        m_playTestValuesLabel.setBounds (0.05*getWidth(), 0.21*getHeight(), 0.1*getWidth(), 0.2*getHeight());
+        m_playTestValuesLabel.setBounds (0.025*getWidth(), 0.21*getHeight(), 0.1*getWidth(), 0.2*getHeight());
         
-        m_newQuestionButton.setBounds (0.09*getWidth(), 0.6*getHeight(), 0.125*getWidth(), 0.25*getHeight());
+        m_newQuestionButton.setBounds (0.045*getWidth(), 0.6*getHeight(), 0.125*getWidth(), 0.25*getHeight());
         
         
         
-        m_playQuestionButton.setBounds (0.08*getWidth(), 0.15*getHeight(), 0.16*getWidth(), 0.2*getHeight());
-        m_playSineWaveButton.setBounds (0.11*getWidth(), 0.37*getHeight(), 0.09*getWidth(), 0.1*getHeight());
+        m_playQuestionButton.setBounds (0.04*getWidth(), 0.15*getHeight(), 0.16*getWidth(), 0.2*getHeight());
+        m_playSineWaveButton.setBounds (0.07*getWidth(), 0.37*getHeight(), 0.09*getWidth(), 0.1*getHeight());
         
-        m_answerButton.setBounds (0.09*getWidth(), 0.62*getHeight(), 0.125*getWidth(), 0.2*getHeight());
+        m_answerButton.setBounds (0.047*getWidth(), 0.62*getHeight(), 0.125*getWidth(), 0.2*getHeight());
         
-        m_notAnsweredLabel.setBounds (0.09*getWidth(), 0.83*getHeight(), 0.2*getWidth(), 0.15*getHeight());
+        m_notAnsweredLabel.setBounds (0.045*getWidth(), 0.83*getHeight(), 0.2*getWidth(), 0.15*getHeight());
         
         
     }
@@ -188,9 +188,9 @@ public:
             }
         }
         
-        for(int i=0;i<m_matrixView.m_arrWavesButtons.size();i++)
+        for(int i=0;i<m_matrixView.m_arrImgButtons.size();i++)
         {
-            if(button == m_matrixView.m_arrWavesButtons.getUnchecked(i))
+            if(button == m_matrixView.m_arrImgButtons.getUnchecked(i))
             {
                 m_matrixView.pressWaveButton(i);
                 updatePlayTestValuesLabelText();
