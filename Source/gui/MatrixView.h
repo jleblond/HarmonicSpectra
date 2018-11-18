@@ -98,6 +98,7 @@ public:
             m_arrRatiosLabels.add(ratioLabel);
             addAndMakeVisible(ratioLabel);
             ratioLabel->setBackgroundColour(Colour(0xffefefef));
+            ratioLabel->setVisible(false);
             
         }
         
@@ -143,8 +144,8 @@ public:
         
         // General-Main LABELS
         
-        m_oddLabel.setBounds (0.08*getWidth(), ODD_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
-        m_allLabel.setBounds (0.08*getWidth(), ALL_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+        m_oddLabel.setBounds (0.18*getWidth(), ODD_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+        m_allLabel.setBounds (0.18*getWidth(), ALL_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
         m_arLabel.setBounds (0.08*getWidth(), AR_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
     
         
@@ -181,6 +182,35 @@ public:
         }
         
         
+        //AMPLITUDE RATIOS FORMULA LABELS
+        
+        int nbAmpRatios = Config::nbAmplitudeRatios;
+        int j = 0;
+        int formulaIndex = j;
+        
+        for( int i=0;i<nbAmpRatios;i++)
+        {
+            
+            m_arrRatiosLabels[formulaIndex]->setBounds ( (0.335*getWidth()+j*0.12*getWidth()), FORMULAS_HEIGHT*getHeight(), 0.1*getWidth(), 0.09*getHeight());
+            m_arrRatiosLabels[formulaIndex]->setVisible(true);
+ 
+            j++;
+            
+            if(nbAmpRatios == 2)
+            {
+                formulaIndex += 4;
+            }
+            else if(nbAmpRatios == 3)
+            {
+                formulaIndex += 2;
+            }
+            else if(nbAmpRatios == 5)
+            {
+                formulaIndex += 1;
+            }
+        
+        }
+        
         
         // WAVETYPES: Buttons OR Labels 'N/A'
         
@@ -188,12 +218,6 @@ public:
         int indexALLPartials = 0;
         
         displayWaveTypeButtons(false, false);
-        
-        
-        for( int i=0;i<5;i++)
-        {
-            m_arrRatiosLabels[i]->setBounds ( (0.335*getWidth()+i*0.12*getWidth()), FORMULAS_HEIGHT*getHeight(), 0.1*getWidth(), 0.09*getHeight());
-        }
         
         
         for (int j=0;j<vecWaves.size();j++)
@@ -419,6 +443,14 @@ public:
         for(int i=0;i<m_arrWavesCSquares.size();i++)
         {
             m_arrWavesCSquares[i]->setColour(Colours::transparentWhite);
+        }
+    }
+    
+    void resetFormulasDisplayed()
+    {
+        for(int i=0;i<m_arrRatiosLabels.size();i++)
+        {
+            m_arrRatiosLabels[i]->setVisible(false);
         }
     }
     

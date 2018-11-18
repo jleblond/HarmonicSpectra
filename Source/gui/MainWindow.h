@@ -111,6 +111,7 @@ public:
         
         m_notAnsweredLabel.setBounds (0.045*getWidth(), 0.83*getHeight(), 0.2*getWidth(), 0.15*getHeight());
         
+        m_playTestButton.setEnabled(false);
         
     }
     
@@ -342,6 +343,8 @@ public:
     void updatePlayTestValuesLabelText()
     {
         String labelText = "Current  values";
+        bool waveSelected = false;
+        bool arSelected = false;
         
         int waveTypeID = m_matrixView.getSelectedWaveTypeID();
         labelText = "\nWave: \n";
@@ -353,10 +356,12 @@ public:
         else if(waveTypeID <= 5)
         {
             labelText += "ODD #"+static_cast<String>(waveTypeID);
+            waveSelected = true;
         }
         else
         {
             labelText += "ALL #"+static_cast<String>(waveTypeID-5);
+            waveSelected = true;
         }
         
         
@@ -370,16 +375,23 @@ public:
         else
         {
             labelText += static_cast<String>(audibleRange)+"%";
+            arSelected = true;
         }
     
+        if (waveSelected && arSelected)
+        {
+            m_playTestButton.setEnabled(true);
+        }
                                                               
         m_playTestValuesLabel.setText(labelText, dontSendNotification);
     }
+    
 
     void resetAll()
     {
         resetMatrixButtonsColours();
         resetMatrixButtonsEnabled();
+        resetMatrixFormulasDisplayed();
         m_notAnsweredLabel.setText("", dontSendNotification);
         
         m_matrixView.resetSelectedValues();
@@ -397,6 +409,10 @@ public:
         m_matrixView.resetEnabledWavesButtons();
     }
     
+    void  resetMatrixFormulasDisplayed()
+    {
+        m_matrixView.resetFormulasDisplayed();
+    }
     void compileStats()
     {
         auto stats = &Config::user->getLastSession()->getStats();
