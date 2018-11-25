@@ -9,7 +9,7 @@
 namespace BinaryData
 {
     extern const char*   _1_png;
-    const int            _1_pngSize = 10716;
+    const int            _1_pngSize = 15272;
 
     extern const char*   _2_png;
     const int            _2_pngSize = 10557;
@@ -21,10 +21,10 @@ namespace BinaryData
     const int            _4_pngSize = 10539;
 
     extern const char*   _5_png;
-    const int            _5_pngSize = 10625;
+    const int            _5_pngSize = 12147;
 
     extern const char*   _6_png;
-    const int            _6_pngSize = 11084;
+    const int            _6_pngSize = 15437;
 
     extern const char*   _7_png;
     const int            _7_pngSize = 11166;

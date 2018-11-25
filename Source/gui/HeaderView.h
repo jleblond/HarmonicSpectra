@@ -180,7 +180,7 @@ public:
     void infoDialogBox()
     {
         String creditsStr = String(CharPointer_UTF8 (
-                                                     "Ear Training software implemented by Jasmine Leblond-Chartrand     \nfor Concordia's Music Department, Montreal, 2018  \n\nThe Inner Ear Project is supervised by:\n  Dr. Eldad Tsabary at Concordia University\nin collaboration with:\n  Dr. David Ogborn at McMaster University\n  Dr. Andrea Szigetvári at Liszt Academy of Music  \n")
+                                                     "Ear Training software implemented by Jasmine Leblond-Chartrand     \nfor Concordia's Music Department, Montreal, 2018  \n\nThe Inner Ear Project is supervised by:\n  Dr. Eldad Tsabary at Concordia University\nin collaboration with:\n  Dr. David Ogborn at McMaster University\n  Dr. Andrea Szigetvári at Liszt Academy of Music  \n\nThe Inner Ear team: Eldad Tsabary, David Ogborn, Andrea Szigetvári, \nJasmine Leblond-Chartrand, Luis Navarro Del Angel, Jamie Beverley, \nSpencer Park, Danielle Savage, Farkas Soma Szakál ")
                                    );
         
         

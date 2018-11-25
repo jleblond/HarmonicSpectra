@@ -158,9 +158,9 @@ public:
         {
             for (int i=0;i<sizeVecAR;i++)
             {
-                m_arrARCSquares.getUnchecked(i)->setBounds( (0.3*getWidth()+i*0.12*getWidth()),
-                                                           AR_HEIGHT*getHeight(),
-                                                           0.11*getWidth(), 0.16*getHeight());
+                m_arrARCSquares.getUnchecked(i)->setBounds( (0.295*getWidth()+i*0.12*getWidth()),
+                                                           AR_HEIGHT*0.99*getHeight(),
+                                                           0.11*getWidth(), 0.17*getHeight());
                 
                 m_arrARButtons.getUnchecked(i)->setBounds( (0.3*getWidth()+i*0.12*getWidth()),
                                                           AR_HEIGHT*getHeight(),
@@ -226,9 +226,9 @@ public:
             
             if (waveID <=5) //odd partials waves
             {
-                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
-                                                                      ODD_HEIGHT*getHeight(),
-                                                                      0.11*getWidth(), 0.16*getHeight());
+                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.295*getWidth()+j*0.12*getWidth()),
+                                                                      ODD_HEIGHT*0.985*getHeight(),
+                                                                      0.11*getWidth(), 0.17*getHeight());
                 
 
                 m_arrImgButtons[waveID-1]->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
@@ -239,8 +239,8 @@ public:
             }
             else if(waveID > 5) //all partials waves
             {
-                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.3*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*getHeight(),
-                                                    0.11*getWidth(), 0.16*getHeight());
+                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.295*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*0.985*getHeight(),
+                                                    0.11*getWidth(), 0.17*getHeight());
                 
                 m_arrImgButtons[waveID-1]->setBounds (
                                                          (0.3*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*getHeight(),0.1*getWidth(), 0.15*getHeight()

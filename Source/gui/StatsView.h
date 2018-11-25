@@ -163,19 +163,20 @@ public:
         m_nbQuestions.setText("# of questions: "+static_cast<String>(nbQuestions), dontSendNotification);
         
         int maxScore = Config::user->getLastSession()->getStats().maxScore;
-       // int score = Config::user->getLastSession()->getStats()
-        m_scoreLabel.setText("[/"+static_cast<String>(maxScore)+"]", dontSendNotification);
+        float score = Config::user->getLastSession()->getStats().getScoring();
+        float nearestScore = floor( (score) * 5 + 0.5) / 5;
+        m_scoreLabel.setText("["+static_cast<String>(nearestScore)+"/"+static_cast<String>(maxScore)+"]", dontSendNotification);
       
     }
 
     void resized() override
     {
-        m_title.setBounds(0.05*getWidth(), 0.05*getHeight(), 150, 30);
-        m_nbQuestions.setBounds(0.05*getWidth(), 0.1*getHeight(), 150, 50);
+        m_title.setBounds(0.04*getWidth(), 0.05*getHeight(), 150, 30);
+        m_nbQuestions.setBounds(0.04*getWidth(), 0.1*getHeight(), 150, 50);
         
-        m_scoreTitleLabel.setBounds(0.08*getWidth(), 0.345*getHeight(), 130, 30);
-        m_scoreLabel.setBounds(0.08*getWidth(), 0.37*getHeight(), 150, 60);
-        m_percentScoreLabel.setBounds(0.08*getWidth(), 0.55*getHeight(), 130, 75);
+        m_scoreTitleLabel.setBounds(0.05*getWidth(), 0.345*getHeight(), 130, 30);
+        m_scoreLabel.setBounds(0.05*getWidth(), 0.37*getHeight(), 150, 60);
+        m_percentScoreLabel.setBounds(0.05*getWidth(), 0.55*getHeight(), 130, 75);
         
         m_countsTitle.setBounds(0.2*getWidth(), 0.07*getHeight(), 70, 30);
         m_percentsTitle.setBounds(0.2*getWidth(), 0.44*getHeight(), 70, 30);

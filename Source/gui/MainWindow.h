@@ -443,7 +443,6 @@ public:
             stats->vecWaves[waveTypeAnswered-1].correctanswer += 0.5;
             stats->vecWaves[waveTypeAnswered-1].count += 1;
             
-            stats->vecWaves[waveTypeCorrectAnswer-1].correctanswer += 0.5;
             stats->vecWaves[waveTypeCorrectAnswer-1].count += 1;
         }
         else

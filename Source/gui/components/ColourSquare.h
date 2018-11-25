@@ -41,12 +41,18 @@ public:
 //        g.setFont (14.0f);
         
         
-        auto area = getLocalBounds().toFloat().reduced (0.5f);
-        float cornerSize = 0.f;
-        g.setColour (m_colour);
-        g.fillRoundedRectangle (area, cornerSize);
-        //g.setColour (m_colour);
-        g.drawRoundedRectangle (area, cornerSize, 200.f);
+//        auto area = getLocalBounds().toFloat().reduced (0.5f);
+//        float cornerSize = 0.f;
+//        g.setColour (m_colour);
+//        g.fillRoundedRectangle (area, cornerSize);
+//        //g.setColour (m_colour);
+//        g.drawRoundedRectangle (area, cornerSize, 200.f);
+        
+        
+                g.setColour (m_colour);
+                g.drawRect (getLocalBounds(), 0.05*getWidth());   // draw an outline around the component
+        
+        
 
     }
 
