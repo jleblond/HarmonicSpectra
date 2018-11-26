@@ -37,6 +37,12 @@ MainApplication::MainApplication()
     addAndMakeVisible(m_mainWindow.m_statsView);
     m_mainWindow.m_statsView.setVisible(false);
     
+    addAndMakeVisible(m_settingsButton);
+    m_settingsButton.setColour(TextButton::buttonColourId, Colour (0xff003F5F));
+    m_settingsButton.setColour(TextButton::textColourOffId, Colours::white);
+    m_settingsButton.addListener(this);
+    m_settingsButton.setVisible(true);
+    
     addAndMakeVisible(m_endSessionButton);
     m_endSessionButton.setColour(TextButton::buttonColourId, Colour (0xff003F5F));
     m_endSessionButton.setColour(TextButton::textColourOffId, Colours::white);
@@ -63,6 +69,8 @@ void MainApplication::paint (Graphics& g)
     
 void MainApplication::resized()
 {
+    m_settingsButton.setBounds (getWidth() - 0.08 -  2*ENDSESSIONBUTTON_WIDTH*getWidth(), 0, ENDSESSIONBUTTON_WIDTH*getWidth(), 0.03*getHeight());
+    
     m_endSessionButton.setBounds (getWidth() - 0.05 -  ENDSESSIONBUTTON_WIDTH*getWidth(), 0, ENDSESSIONBUTTON_WIDTH*getWidth(), 0.03*getHeight());
     
     Rectangle<int> area (getLocalBounds());
@@ -118,6 +126,11 @@ void MainApplication::buttonClicked(Button* button)
         displayPanel(3);
     }
 
+    if(button == &m_settingsButton)
+    {
+        
+        DialogWindow::showModalDialog ("Audio Settings", &m_audioSettings, nullptr, Colours::white, true, false, false);
+    }
     
 }
 

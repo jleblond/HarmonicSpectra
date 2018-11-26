@@ -11,6 +11,8 @@
           file="Source/AudioTestComponent.h"/>
     <GROUP id="{C025B8A0-7621-C485-CA70-BC03D60D70FA}" name="core">
       <GROUP id="{3EE168FC-1A2A-6193-9F38-453780809CEE}" name="audio">
+        <FILE id="bVz8gl" name="AudioDev.h" compile="0" resource="0" file="Source/core/audio/AudioDev.h"/>
+        <FILE id="St7Wgo" name="AudioDev.cpp" compile="1" resource="0" file="Source/core/audio/AudioDev.cpp"/>
         <FILE id="KM9rfI" name="Synthesis.h" compile="0" resource="0" file="Source/core/audio/Synthesis.h"/>
         <FILE id="XDztiC" name="Synthesis.cpp" compile="1" resource="0" file="Source/core/audio/Synthesis.cpp"/>
       </GROUP>
@@ -38,11 +40,6 @@
       <FILE id="XLz2e2" name="Comment.h" compile="0" resource="0" file="Source/core/Comment.h"/>
     </GROUP>
     <GROUP id="{E8254A5C-7149-F172-F8EC-CEFD48AC03B2}" name="gui">
-      <GROUP id="{1ACD8B6B-C60C-9D32-9B16-0AE1BDF1CC87}" name="components">
-        <FILE id="MN8g8P" name="ColourSquare.h" compile="0" resource="0" file="Source/gui/components/ColourSquare.h"/>
-        <FILE id="tWh6bE" name="RatioFormula.h" compile="0" resource="0" file="Source/gui/components/RatioFormula.h"/>
-        <FILE id="D1Pj1F" name="StatsBar.h" compile="0" resource="0" file="Source/gui/components/StatsBar.h"/>
-      </GROUP>
       <GROUP id="{656E2D66-5E62-6228-EEBF-A3E90555CA6F}" name="img">
         <GROUP id="{28809875-34E7-2F08-2DBC-30B834C78164}" name="ratios">
           <FILE id="yJ3FqN" name="1.png" compile="0" resource="1" file="Source/gui/img/ratios/1.png"/>
@@ -57,6 +54,14 @@
           <FILE id="OHAiRM" name="10.png" compile="0" resource="1" file="Source/gui/img/ratios/10.png"/>
         </GROUP>
         <FILE id="nRhQUZ" name="logo.png" compile="0" resource="1" file="Source/gui/img/logo.png"/>
+      </GROUP>
+      <GROUP id="{1ACD8B6B-C60C-9D32-9B16-0AE1BDF1CC87}" name="components">
+        <FILE id="MN8g8P" name="ColourSquare.h" compile="0" resource="0" file="Source/gui/components/ColourSquare.h"/>
+        <FILE id="tWh6bE" name="RatioFormula.h" compile="0" resource="0" file="Source/gui/components/RatioFormula.h"/>
+        <FILE id="D1Pj1F" name="StatsBar.h" compile="0" resource="0" file="Source/gui/components/StatsBar.h"/>
+      </GROUP>
+      <GROUP id="{CD2F5A49-2871-9BFC-17C4-BE0525E9C2A2}" name="menu">
+        <FILE id="fHUrDu" name="AudioSettings.h" compile="0" resource="0" file="Source/gui/menu/AudioSettings.h"/>
       </GROUP>
       <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"
             file="Source/gui/MainApplication.h"/>

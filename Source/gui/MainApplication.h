@@ -19,6 +19,8 @@
 #include "VolumeView.h"
 #include "StatsView.h"
 
+#include "menu/AudioSettings.h"
+
 #include "../core/StatsBuilder.h"
 
 #include "../core/Config.h"
@@ -70,8 +72,11 @@ protected:
     TextButton m_createUserButton;
     TextButton m_startSessionButton;
     TextButton m_endSessionButton{"SESSION [X]"};
+    TextButton m_settingsButton{"Settings"};
    
     MainWindow m_mainWindow;
+    
+    AudioSettings m_audioSettings;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)

@@ -67,6 +67,7 @@ endif
 
 OBJECTS_APP := \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
+  $(JUCE_OBJDIR)/AudioDev_35934589.o \
   $(JUCE_OBJDIR)/Synthesis_d92d58f4.o \
   $(JUCE_OBJDIR)/Config_45934953.o \
   $(JUCE_OBJDIR)/QuestionBuilder_7627902e.o \
@@ -104,6 +105,11 @@ $(JUCE_OUTDIR)/$(JUCE_TARGET_APP) : check-pkg-config $(OBJECTS_APP) $(RESOURCES)
 $(JUCE_OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling Main.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/AudioDev_35934589.o: ../../Source/core/audio/AudioDev.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling AudioDev.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/Synthesis_d92d58f4.o: ../../Source/core/audio/Synthesis.cpp
