@@ -394,9 +394,6 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>Harmonic Spectrum</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\core\audio\AudioDev.cpp">
-      <Filter>Harmonic Spectrum\core\audio</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\core\audio\Synthesis.cpp">
       <Filter>Harmonic Spectrum\core\audio</Filter>
     </ClCompile>
@@ -2187,9 +2184,6 @@
     <ClInclude Include="..\..\Source\AudioTestComponent.h">
       <Filter>Harmonic Spectrum</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\core\audio\AudioDev.h">
-      <Filter>Harmonic Spectrum\core\audio</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\core\audio\Synthesis.h">
       <Filter>Harmonic Spectrum\core\audio</Filter>
     </ClInclude>
@@ -2238,7 +2232,7 @@
     <ClInclude Include="..\..\Source\gui\components\StatsBar.h">
       <Filter>Harmonic Spectrum\gui\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\gui\menu\AudioSettings.h">
+    <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h">
       <Filter>Harmonic Spectrum\gui\menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\MainApplication.h">

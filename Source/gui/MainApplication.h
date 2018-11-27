@@ -19,7 +19,7 @@
 #include "VolumeView.h"
 #include "StatsView.h"
 
-#include "menu/AudioSettings.h"
+#include "menu/SettingsPanel.h"
 
 #include "../core/StatsBuilder.h"
 
@@ -76,7 +76,7 @@ protected:
    
     MainWindow m_mainWindow;
     
-    AudioSettings m_audioSettings;
+    SettingsPanel m_settingsPanel;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)

@@ -129,7 +129,7 @@ void MainApplication::buttonClicked(Button* button)
     if(button == &m_settingsButton)
     {
         
-        DialogWindow::showModalDialog ("Audio Settings", &m_audioSettings, nullptr, Colours::white, true, false, false);
+        DialogWindow::showModalDialog ("Settings", &m_settingsPanel, nullptr, Colours::white, true, false, false);
     }
     
 }

@@ -146,7 +146,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Main.cpp"/>
-    <ClCompile Include="..\..\Source\core\audio\AudioDev.cpp"/>
     <ClCompile Include="..\..\Source\core\audio\Synthesis.cpp"/>
     <ClCompile Include="..\..\Source\core\Config.cpp"/>
     <ClCompile Include="..\..\Source\core\QuestionBuilder.cpp"/>
@@ -1766,7 +1765,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\AudioTestComponent.h"/>
-    <ClInclude Include="..\..\Source\core\audio\AudioDev.h"/>
     <ClInclude Include="..\..\Source\core\audio\Synthesis.h"/>
     <ClInclude Include="..\..\Source\core\Config.h"/>
     <ClInclude Include="..\..\Source\core\User.h"/>
@@ -1783,7 +1781,7 @@
     <ClInclude Include="..\..\Source\gui\components\ColourSquare.h"/>
     <ClInclude Include="..\..\Source\gui\components\RatioFormula.h"/>
     <ClInclude Include="..\..\Source\gui\components\StatsBar.h"/>
-    <ClInclude Include="..\..\Source\gui\menu\AudioSettings.h"/>
+    <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>
