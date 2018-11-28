@@ -1,12 +1,10 @@
 /*
-  ==============================================================================
-
-    MainComponent.h
-    Created: 19 Dec 2017 5:03:16pm
-    Author:  Jasmine Leblond-Chartrand
-
-  ==============================================================================
-*/
+ ==============================================================================
+ MainComponent.h
+ Created: 19 Dec 2017 5:03:16pm
+ Author:  Jasmine Leblond-Chartrand
+ ==============================================================================
+ */
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
@@ -23,7 +21,7 @@ class MainContentComponent   :  public AudioAppComponent
 public:
     MainContentComponent()
     {
-
+        
         setSize (WIDTH, HEIGHT);
         setAudioChannels (0, 2);
         
@@ -43,7 +41,7 @@ public:
     {
         m_mainApp.setBounds (getLocalBounds());
     }
-
+    
     
     void prepareToPlay (int /*samplesPerBlockExpected*/, double sampleRate) override
     {
@@ -61,11 +59,11 @@ public:
         auto* leftBuffer  = bufferToFill.buffer->getWritePointer (0, bufferToFill.startSample);
         auto* rightBuffer = bufferToFill.buffer->getWritePointer (1, bufferToFill.startSample);
         
-//        bufferToFill.buffer->applyGainRamp (0, bufferToFill.startSample, bufferToFill.numSamples, currentLevel, targetLevel);
-//        bufferToFill.buffer->applyGainRamp (1, bufferToFill.startSample, bufferToFill.numSamples, currentLevel, targetLevel);
+        //        bufferToFill.buffer->applyGainRamp (0, bufferToFill.startSample, bufferToFill.numSamples, currentLevel, targetLevel);
+        //        bufferToFill.buffer->applyGainRamp (1, bufferToFill.startSample, bufferToFill.numSamples, currentLevel, targetLevel);
         
         
-//        bufferToFill.clearActiveBufferRegion();
+        //        bufferToFill.clearActiveBufferRegion();
         
         if(Config::hasStartedPlaying)
         {
@@ -91,7 +89,7 @@ public:
                 m_audioTimer.resetTimer();
                 
             }
-
+            
         }
         
         
@@ -112,10 +110,8 @@ private:
     
     CustomTimer m_audioTimer;
     
-//    float currentLevel=0.0f;
-//    float targetLevel=1.0f;
+    //    float currentLevel=0.0f;
+    //    float targetLevel=1.0f;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
-
-

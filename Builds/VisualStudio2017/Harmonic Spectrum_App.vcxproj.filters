@@ -8,14 +8,17 @@
     <Filter Include="Harmonic Spectrum\core">
       <UniqueIdentifier>{61820829-9045-517D-9FAD-A6490FCA08BB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Harmonic Spectrum\gui\components">
-      <UniqueIdentifier>{FD771584-334E-BAC3-2750-0E7BCBF82383}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Harmonic Spectrum\gui\img\ratios">
       <UniqueIdentifier>{2DEAEA77-C7A1-4B3C-DECC-E146992D8A46}</UniqueIdentifier>
     </Filter>
     <Filter Include="Harmonic Spectrum\gui\img">
       <UniqueIdentifier>{C0D85C88-91F9-17A2-B98F-A70D317D5420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Harmonic Spectrum\gui\components">
+      <UniqueIdentifier>{FD771584-334E-BAC3-2750-0E7BCBF82383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Harmonic Spectrum\gui\menu">
+      <UniqueIdentifier>{2E8A53BD-9D6E-E4BD-89E7-963C1CA8A189}</UniqueIdentifier>
     </Filter>
     <Filter Include="Harmonic Spectrum\gui">
       <UniqueIdentifier>{8FA66222-329C-B14D-FD62-2D965C682F3C}</UniqueIdentifier>
@@ -2228,6 +2231,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\components\StatsBar.h">
       <Filter>Harmonic Spectrum\gui\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h">
+      <Filter>Harmonic Spectrum\gui\menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\MainApplication.h">
       <Filter>Harmonic Spectrum\gui</Filter>
