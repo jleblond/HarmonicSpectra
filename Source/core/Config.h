@@ -47,6 +47,9 @@ public:
     static double sampleRate;
     
     
+    static File reportDirectory;
+    
+    
 private:
     
     Config(){}

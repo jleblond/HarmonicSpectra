@@ -42,3 +42,6 @@ bool Config::hasStartedPlaying = false;
 
 double Config::soundDuration = 1000;
 
+
+File Config::reportDirectory = File::getSpecialLocation(File::userDesktopDirectory);
+

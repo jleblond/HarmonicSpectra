@@ -128,8 +128,6 @@ public:
             }
             
             updatePlayTestValuesLabelText();
-           
-            
         }
         if(button == &m_newQuestionButton)
         {
