@@ -147,6 +147,7 @@ void MainApplication::displayPanel(int panelNb)
             showMainWindow(true);
             m_endSessionButton.setVisible(true);
             m_mainWindow.updateMatrixView();
+            m_mainWindow.m_statsView.updateBarsVisibility();
             m_mainWindow.displayPanel(1);
             break;
         case 3: //Pressing 'end session' -> ExerciseConfig view

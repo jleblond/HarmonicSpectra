@@ -13,6 +13,7 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "../core/Config.h"
+#include "../core/QuestionBuilder.h"
 #include "components/StatsBar.h"
 #include "components/RatioFormula.h"
 #include <stdlib.h>
@@ -201,6 +202,36 @@ public:
         m_ARBar.setBounds(0.94*getWidth(), 0.2*getHeight(), m_barSize, 0.6*getHeight() );
         m_ARLabel.setBounds(0.93*getWidth(), 0.72*getHeight(), m_barSize*2, m_barSize*2 );
 
+    }
+    
+    void updateBarsVisibility()
+    {
+        //HIDE ALL THE BARS
+        for(int i=0;i<m_arrBars.size();i++)
+        {
+            m_arrCountsLabels[i]->setVisible(false);
+            m_arrBars[i]->setVisible(false);
+        }
+        m_ARBar.setVisible(false);
+        m_ARLabel.setVisible(false);
+        
+        
+        //SHOW TESTED WAVES
+        std::vector<int> vecWaves = QuestionBuilder::Instance().getVecWaves();
+        
+        for(int i=0; i<vecWaves.size();i++)
+        {
+            int waveID = vecWaves[i];
+            m_arrCountsLabels[waveID-1]->setVisible(true);
+            m_arrBars[waveID-1]->setVisible(true);
+        }
+        
+       //POSSIBLY SHOW AUDIBLERANGE BAR
+        if (Config::vecAudibleRanges.size() > 1)
+        {
+            m_ARBar.setVisible(true);
+            m_ARLabel.setVisible(true);
+        }
     }
 
 private:
