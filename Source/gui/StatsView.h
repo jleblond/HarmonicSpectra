@@ -137,7 +137,6 @@ public:
         Rectangle<int> area (0.28*getWidth(), 0.82*getHeight(), 0.65*getWidth(), m_barSize*1.1);
         g.fillRect (area);
     
-
         
         g.setColour (Colours::grey);
         g.setFont (14.0f);
@@ -145,8 +144,9 @@ public:
         
         assert(Config::user != nullptr);
         assert(Config::user->getLastSession() != nullptr);
+        auto lastSession = Config::user->getLastSession();
         
-        StatsSheet& stats = Config::user->getLastSession()->getStats();
+        StatsSheet& stats = lastSession->getStats();
         
         for(int i=0;i<m_arrBars.size();i++)
         {
@@ -160,13 +160,16 @@ public:
         }
         
 
-        int nbQuestions = Config::user->getLastSession()->getVecQuestions().size();
+        int nbQuestions = lastSession->getVecQuestions().size();
         m_nbQuestions.setText("# of questions: "+static_cast<String>(nbQuestions), dontSendNotification);
         
-        int maxScore = Config::user->getLastSession()->getStats().maxScore;
-        float score = Config::user->getLastSession()->getStats().getScoring();
+        int maxScore = lastSession->getStats().maxScore;
+        float score = lastSession->getStats().getScoring();
         float nearestScore = floor( (score) * 5 + 0.5) / 5;
+        int percentScore = lastSession->getStats().percentScore * 100;
         m_scoreLabel.setText("["+static_cast<String>(nearestScore)+"/"+static_cast<String>(maxScore)+"]", dontSendNotification);
+        m_percentScoreLabel.setText(static_cast<String>(percentScore)+"% at the present level", dontSendNotification);
+        lastSession->getStats().questionsCount = lastSession->getVecQuestions().size();
       
     }
 
@@ -177,7 +180,7 @@ public:
         
         m_scoreTitleLabel.setBounds(0.05*getWidth(), 0.345*getHeight(), 130, 30);
         m_scoreLabel.setBounds(0.05*getWidth(), 0.37*getHeight(), 150, 60);
-        m_percentScoreLabel.setBounds(0.05*getWidth(), 0.55*getHeight(), 130, 75);
+        m_percentScoreLabel.setBounds(0.05*getWidth(), 0.5*getHeight(), 130, 75);
         
         m_countsTitle.setBounds(0.2*getWidth(), 0.07*getHeight(), 70, 30);
         m_percentsTitle.setBounds(0.2*getWidth(), 0.44*getHeight(), 70, 30);

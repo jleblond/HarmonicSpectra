@@ -11,3 +11,4 @@
 #pragma once
 
 enum class Partials {odd, all, both};
+

@@ -33,7 +33,7 @@ struct StatsSheet
     StatsValue audibleRange;
     
     float score = -1;
-    float percentTotalScore = 0;
+    float percentScore = 0;
     int maxScore = 100;
     int countInvolvedValues = 0;
     int questionsCount = 0 ;
@@ -57,12 +57,12 @@ struct StatsSheet
             weight += vecWaves[i].count;
         }
         
-        this->percentTotalScore = scoreWaves/weight;
+        this->percentScore = scoreWaves/weight;
         if(weight == 0)
         {
-            this->percentTotalScore = 0;
+            this->percentScore = 0;
         }
-        this->score = percentTotalScore * maxScore;
+        this->score = percentScore * maxScore;
         
         
         //in case audible range is being tested
@@ -71,6 +71,7 @@ struct StatsSheet
             this->score = (this->score)/2;
             this->score += this->audibleRange.getPercent() * (this->maxScore/2);
         }
+        
     }
     
     float getScoring()

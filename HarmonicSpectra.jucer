@@ -59,6 +59,7 @@
         <FILE id="D1Pj1F" name="StatsBar.h" compile="0" resource="0" file="Source/gui/components/StatsBar.h"/>
       </GROUP>
       <GROUP id="{CD2F5A49-2871-9BFC-17C4-BE0525E9C2A2}" name="menu">
+        <FILE id="GldzOm" name="Notepad.h" compile="0" resource="0" file="Source/gui/menu/Notepad.h"/>
         <FILE id="sP807Q" name="SettingsPanel.h" compile="0" resource="0" file="Source/gui/menu/SettingsPanel.h"/>
       </GROUP>
       <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"

@@ -12,7 +12,7 @@
 #include "Question.h"
 #include "Partials.h"
 #include "StatsSheet.h"
-
+#include "Report.h"
 
 class Session
 {
@@ -60,6 +60,15 @@ public:
         return m_stats;
     }
     
+    std::shared_ptr<Report> getReport()
+    {
+        return m_report;
+    }
+    
+    void attachReport(std::shared_ptr<Report> r)
+    {
+        m_report = r;
+    }
     
 protected:
     std::vector<std::shared_ptr<Question>> m_vecQuestions;
@@ -70,5 +79,6 @@ protected:
     int m_baseFreq = 200;
     std::vector<int> m_vecAudibleRanges;
     
-    StatsSheet m_stats; 
+    StatsSheet m_stats;
+    std::shared_ptr<Report> m_report;
 };

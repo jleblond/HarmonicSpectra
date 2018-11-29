@@ -9,3 +9,16 @@
 */
 
 #pragma once
+
+
+struct Comment
+{
+    String text = "";
+    String date = "";
+    
+    void print()
+    {
+        std::cout<<"--Comment-- ["<<date<<"]"<<std::endl;
+        std::cout<<text<<std::endl;
+    }
+};

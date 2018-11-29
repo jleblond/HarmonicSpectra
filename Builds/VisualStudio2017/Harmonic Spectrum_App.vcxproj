@@ -1781,6 +1781,7 @@
     <ClInclude Include="..\..\Source\gui\components\ColourSquare.h"/>
     <ClInclude Include="..\..\Source\gui\components\RatioFormula.h"/>
     <ClInclude Include="..\..\Source\gui\components\StatsBar.h"/>
+    <ClInclude Include="..\..\Source\gui\menu\Notepad.h"/>
     <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>

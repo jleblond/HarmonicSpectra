@@ -43,6 +43,12 @@ MainApplication::MainApplication()
     m_settingsButton.addListener(this);
     m_settingsButton.setVisible(true);
     
+    addAndMakeVisible(m_notepadButton);
+    m_notepadButton.setColour(TextButton::buttonColourId, Colour (0xff003F5F));
+    m_notepadButton.setColour(TextButton::textColourOffId, Colours::white);
+    m_notepadButton.addListener(this);
+    m_notepadButton.setVisible(false);
+    
     addAndMakeVisible(m_endSessionButton);
     m_endSessionButton.setColour(TextButton::buttonColourId, Colour (0xff003F5F));
     m_endSessionButton.setColour(TextButton::textColourOffId, Colours::white);
@@ -69,6 +75,7 @@ void MainApplication::paint (Graphics& g)
     
 void MainApplication::resized()
 {
+    m_notepadButton.setBounds (getWidth() - 0.1 -  3*ENDSESSIONBUTTON_WIDTH*getWidth(), 0, ENDSESSIONBUTTON_WIDTH*getWidth(), 0.03*getHeight());
     m_settingsButton.setBounds (getWidth() - 0.08 -  2*ENDSESSIONBUTTON_WIDTH*getWidth(), 0, ENDSESSIONBUTTON_WIDTH*getWidth(), 0.03*getHeight());
     
     m_endSessionButton.setBounds (getWidth() - 0.05 -  ENDSESSIONBUTTON_WIDTH*getWidth(), 0, ENDSESSIONBUTTON_WIDTH*getWidth(), 0.03*getHeight());
@@ -109,16 +116,21 @@ void MainApplication::buttonClicked(Button* button)
         Config::baseFreq = m_exerciseConfigView.getBaseFreq();
         Synthesis::Instance().setCurrentFundFrequency(Config::baseFreq);
         
+        assert(Config::user != nullptr);
         Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
         
-        Config::user->getLastSession()->getStats().maxScore = StatsBuilder::Instance().calculateMaxScore();
+        assert(Config::user->getLastSession() != nullptr);
+        auto lastSession = Config::user->getLastSession();
+        lastSession->getStats().maxScore = StatsBuilder::Instance().calculateMaxScore();
+        
+        lastSession->attachReport(ReportBuilder::createReport());
+        
         
         displayPanel(2);
     }
     
     if(button == &m_endSessionButton)
     {
-        //hide curr windows
         
         //report generation options
 
@@ -128,8 +140,12 @@ void MainApplication::buttonClicked(Button* button)
 
     if(button == &m_settingsButton)
     {
-        
         DialogWindow::showModalDialog ("Settings", &m_settingsPanel, nullptr, Colours::white, true, false, false);
+    }
+    
+    if(button == &m_notepadButton)
+    {
+        DialogWindow::showModalDialog ("Notepad", &m_notepadPanel, nullptr, Colours::white, true, false, false);
     }
     
 }
@@ -145,6 +161,7 @@ void MainApplication::displayPanel(int panelNb)
         case 2: //Pressing 'new session' -> Main Window
             showExerciseConfig(false);
             showMainWindow(true);
+            m_notepadButton.setVisible(true);
             m_endSessionButton.setVisible(true);
             m_mainWindow.updateMatrixView();
             m_mainWindow.m_statsView.updateBarsVisibility();
@@ -153,6 +170,7 @@ void MainApplication::displayPanel(int panelNb)
         case 3: //Pressing 'end session' -> ExerciseConfig view
             showMainWindow(false);
             showExerciseConfig(true);
+            m_notepadButton.setVisible(false);
             m_endSessionButton.setVisible(false);
             break;
     };

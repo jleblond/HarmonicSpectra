@@ -20,8 +20,10 @@
 #include "StatsView.h"
 
 #include "menu/SettingsPanel.h"
+#include "menu/Notepad.h"
 
 #include "../core/StatsBuilder.h"
+#include "../core/ReportBuilder.h"
 
 #include "../core/Config.h"
 
@@ -73,10 +75,12 @@ protected:
     TextButton m_startSessionButton;
     TextButton m_endSessionButton{"SESSION [X]"};
     TextButton m_settingsButton{"Settings"};
+    TextButton m_notepadButton{"Notepad"};
    
     MainWindow m_mainWindow;
     
     SettingsPanel m_settingsPanel;
+    Notepad m_notepadPanel;
     
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)

@@ -2232,6 +2232,9 @@
     <ClInclude Include="..\..\Source\gui\components\StatsBar.h">
       <Filter>Harmonic Spectrum\gui\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\gui\menu\Notepad.h">
+      <Filter>Harmonic Spectrum\gui\menu</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h">
       <Filter>Harmonic Spectrum\gui\menu</Filter>
     </ClInclude>

@@ -10,3 +10,19 @@
 
 #include "ReportBuilder.h"
 
+
+std::shared_ptr<Report> ReportBuilder::createReport()
+{
+    std::shared_ptr<Report> r = std::make_shared<Report>();
+    
+    
+    r->username = Config::user->getUsername();
+    
+    
+    return r;
+}
+
+void ReportBuilder::saveReport()
+{
+    
+}
