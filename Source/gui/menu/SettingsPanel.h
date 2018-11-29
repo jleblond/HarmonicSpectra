@@ -14,6 +14,8 @@
 
 #include "../../core/Config.h"
 
+#include "Volume.h"
+
 //==============================================================================
 /*
 */
@@ -65,6 +67,7 @@ public:
         addAndMakeVisible (m_changeDirectoryButton);
         m_changeDirectoryButton.addListener(this);
         
+        addAndMakeVisible (m_volumeComponent);
     }
 
     ~SettingsPanel()
@@ -93,6 +96,8 @@ public:
         m_saveReportDirectoryLabel.setBounds (0.05*getWidth(), 0.3*getHeight(), 0.6*getWidth(), 0.07*getHeight());
         m_directoryPath.setBounds (0.05*getWidth(), 0.4*getHeight(), 0.8*getWidth(), 0.07*getHeight());
         m_changeDirectoryButton.setBounds (0.85*getWidth(), 0.4*getHeight(), 0.1*getWidth(), 0.07*getHeight());
+        
+        m_volumeComponent.setBounds (0.05*getWidth(), 0.6*getHeight(), 0.9*getWidth(), 0.3*getHeight());
 
     }
     
@@ -149,6 +154,8 @@ private:
     Label m_saveReportDirectoryLabel {{}, "Save report to directory..."};
     TextEditor m_directoryPath;
     TextButton m_changeDirectoryButton {"..."};
+    
+    Volume m_volumeComponent;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingsPanel)
 };

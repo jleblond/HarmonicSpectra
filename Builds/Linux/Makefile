@@ -74,6 +74,7 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/StatsBuilder_606e460d.o \
   $(JUCE_OBJDIR)/ReportBuilder_9688b320.o \
   $(JUCE_OBJDIR)/MainApplication_378365e4.o \
+  $(JUCE_OBJDIR)/CustomDate_d7b1eee6.o \
   $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
   $(JUCE_OBJDIR)/include_juce_audio_basics_8a4e984a.o \
   $(JUCE_OBJDIR)/include_juce_audio_devices_63111d02.o \
@@ -139,6 +140,11 @@ $(JUCE_OBJDIR)/ReportBuilder_9688b320.o: ../../Source/core/ReportBuilder.cpp
 $(JUCE_OBJDIR)/MainApplication_378365e4.o: ../../Source/gui/MainApplication.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling MainApplication.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/CustomDate_d7b1eee6.o: ../../Source/utils/CustomDate.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling CustomDate.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp

@@ -59,8 +59,9 @@
         <FILE id="D1Pj1F" name="StatsBar.h" compile="0" resource="0" file="Source/gui/components/StatsBar.h"/>
       </GROUP>
       <GROUP id="{CD2F5A49-2871-9BFC-17C4-BE0525E9C2A2}" name="menu">
-        <FILE id="GldzOm" name="Notepad.h" compile="0" resource="0" file="Source/gui/menu/Notepad.h"/>
         <FILE id="sP807Q" name="SettingsPanel.h" compile="0" resource="0" file="Source/gui/menu/SettingsPanel.h"/>
+        <FILE id="GldzOm" name="Notepad.h" compile="0" resource="0" file="Source/gui/menu/Notepad.h"/>
+        <FILE id="jCYO6y" name="Volume.h" compile="0" resource="0" file="Source/gui/menu/Volume.h"/>
       </GROUP>
       <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"
             file="Source/gui/MainApplication.h"/>
@@ -73,11 +74,12 @@
       <FILE id="SSfgJm" name="HeaderView.h" compile="0" resource="0" file="Source/gui/HeaderView.h"/>
       <FILE id="WLvkwk" name="MainWindow.h" compile="0" resource="0" file="Source/gui/MainWindow.h"/>
       <FILE id="fpWraY" name="MatrixView.h" compile="0" resource="0" file="Source/gui/MatrixView.h"/>
-      <FILE id="rdpbXC" name="VolumeView.h" compile="0" resource="0" file="Source/gui/VolumeView.h"/>
       <FILE id="ng1Scn" name="StatsView.h" compile="0" resource="0" file="Source/gui/StatsView.h"/>
     </GROUP>
     <GROUP id="{9C9932EF-5DD7-0C4C-9FFA-BD6A3A93627C}" name="utils">
       <FILE id="AM8WNA" name="CustomTimer.h" compile="0" resource="0" file="Source/utils/CustomTimer.h"/>
+      <FILE id="pMb3ai" name="CustomDate.h" compile="0" resource="0" file="Source/utils/CustomDate.h"/>
+      <FILE id="QqNKgy" name="CustomDate.cpp" compile="1" resource="0" file="Source/utils/CustomDate.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\Source\core\StatsBuilder.cpp"/>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp"/>
     <ClCompile Include="..\..\Source\gui\MainApplication.cpp"/>
+    <ClCompile Include="..\..\Source\utils\CustomDate.cpp"/>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -1781,17 +1782,18 @@
     <ClInclude Include="..\..\Source\gui\components\ColourSquare.h"/>
     <ClInclude Include="..\..\Source\gui\components\RatioFormula.h"/>
     <ClInclude Include="..\..\Source\gui\components\StatsBar.h"/>
-    <ClInclude Include="..\..\Source\gui\menu\Notepad.h"/>
     <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h"/>
+    <ClInclude Include="..\..\Source\gui\menu\Notepad.h"/>
+    <ClInclude Include="..\..\Source\gui\menu\Volume.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\HeaderView.h"/>
     <ClInclude Include="..\..\Source\gui\MainWindow.h"/>
     <ClInclude Include="..\..\Source\gui\MatrixView.h"/>
-    <ClInclude Include="..\..\Source\gui\VolumeView.h"/>
     <ClInclude Include="..\..\Source\gui\StatsView.h"/>
     <ClInclude Include="..\..\Source\utils\CustomTimer.h"/>
+    <ClInclude Include="..\..\Source\utils\CustomDate.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

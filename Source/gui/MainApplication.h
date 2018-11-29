@@ -16,7 +16,6 @@
 #include "UserConfigView.h"
 #include "ExerciseConfigView.h"
 #include "MainWindow.h"
-#include "VolumeView.h"
 #include "StatsView.h"
 
 #include "menu/SettingsPanel.h"

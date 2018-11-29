@@ -12,6 +12,7 @@
 
 #include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../../core/Config.h"
+#include "../../utils/CustomDate.h"
 //==============================================================================
 /*
 */
@@ -65,7 +66,7 @@ public:
         {
             std::shared_ptr<Comment> c = std::make_shared<Comment>();
             c->text = m_textEditor.getText();
-           // c->date
+            c->date = CustomDate::getStrCurrentTime();
             
             assert(Config::user != nullptr);
             assert(Config::user->getLastSession() != nullptr);
