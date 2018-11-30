@@ -17,6 +17,8 @@
 #include "Report.h"
 #include "../utils/CustomDate.h"
 
+const int MAX_DIFFICULTY = 1000;
+
 class ReportBuilder
 {
 public:
@@ -25,9 +27,9 @@ public:
     
     static std::shared_ptr<Report> createReport();
     
-    static String getReportStr();
-    
     static void saveReport();
+    
+    static String getReportStr();
     
 
   

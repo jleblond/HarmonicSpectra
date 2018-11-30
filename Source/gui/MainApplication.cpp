@@ -140,7 +140,6 @@ void MainApplication::buttonClicked(Button* button)
         auto lastSession = Config::user->getLastSession();
         
         lastSession->getReport()->timePractised = CustomDate::convertTimeStr(m_sessionTimer.durationInS());
-        
         ReportBuilder::saveReport();
         
         

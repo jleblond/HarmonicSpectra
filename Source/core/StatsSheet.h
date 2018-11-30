@@ -36,7 +36,7 @@ struct StatsSheet
     float percentScore = 0;
     int maxScore = 100;
     int countInvolvedValues = 0;
-    int questionsCount = 0 ;
+    int questionsCount = 0 ;  //updated in StatsView
     
     
     StatsSheet()
