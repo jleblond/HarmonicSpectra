@@ -15,6 +15,7 @@
 #include "Config.h"
 //#include "Session.h"
 #include "Report.h"
+#include "../utils/CustomDate.h"
 
 class ReportBuilder
 {
@@ -23,6 +24,8 @@ public:
     ~ReportBuilder();
     
     static std::shared_ptr<Report> createReport();
+    
+    static String getReportStr();
     
     static void saveReport();
     

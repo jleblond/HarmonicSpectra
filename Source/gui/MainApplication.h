@@ -26,6 +26,9 @@
 
 #include "../core/Config.h"
 
+#include "../utils/CustomTimer.h"
+#include "../utils/CustomDate.h"
+
 
 //const int HEIGHT = 700;
 //const int WIDTH = 900;
@@ -81,6 +84,7 @@ protected:
     SettingsPanel m_settingsPanel;
     Notepad m_notepadPanel;
     
+    CustomTimer m_sessionTimer;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)
 };

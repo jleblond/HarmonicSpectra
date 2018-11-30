@@ -127,12 +127,24 @@ void MainApplication::buttonClicked(Button* button)
         
         
         displayPanel(2);
+        
+        m_sessionTimer.startTimer();
     }
     
     if(button == &m_endSessionButton)
     {
+        m_sessionTimer.stopTimer();
         
-        //report generation options
+        assert(Config::user != nullptr);
+        assert(Config::user->getLastSession() != nullptr);
+        auto lastSession = Config::user->getLastSession();
+        
+        lastSession->getReport()->timePractised = CustomDate::convertTimeStr(m_sessionTimer.durationInS());
+        
+        ReportBuilder::saveReport();
+        
+        
+        m_sessionTimer.resetTimer();
 
         m_mainWindow.resetAll(); //includes both GUI and model m_ values (for waveType and audibleRange)
         displayPanel(3);

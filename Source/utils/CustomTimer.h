@@ -50,11 +50,16 @@ public:
         return eT;
     }
     
-    double durationMS()
+    double durationInMS()
     {
         double dur = 0;
         dur = std::chrono::duration_cast<std::chrono::milliseconds>(m_timeStopped - m_timeStarted).count();
         return dur;
+    }
+    
+    int durationInS()
+    {
+        return (durationInMS()/1000);
     }
     
     bool isRunning()
