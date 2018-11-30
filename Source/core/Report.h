@@ -23,12 +23,13 @@ struct Report
     
     //Current session parameters
     int baseFreq = 0;
-    Partials partials;
+    Partials::Options partials;
     int nbAmplitudeRatios = 0;
     std::vector<int> vecAudibleRanges;
 
     //Stats
     StatsSheet stats;
+    Image statsImg;
     
     
     void print()
@@ -40,6 +41,7 @@ struct Report
         std::cout<<"Time practised: "<<timePractised<<std::endl;
         
         std::cout<<"\n\n[Session settings]"<<std::endl;
+        //SESSION SETTINGS ToBeAdded
         
         std::cout<<"\n\n[Stats]"<<std::endl;
         std::cout<<"# of questions:"<<stats.questionsCount<<std::endl;

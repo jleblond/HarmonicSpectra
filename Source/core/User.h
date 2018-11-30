@@ -34,7 +34,7 @@ public:
         return m_username;
     }
     
-    void createSession(Partials partialsOption, int nbAmpRatios, int baseFreq, std::vector<int> vecAudRanges)
+    void createSession(Partials::Options partialsOption, int nbAmpRatios, int baseFreq, std::vector<int> vecAudRanges)
     {
         m_vecSessions.push_back(
                                 std::make_shared<Session>(partialsOption, nbAmpRatios, baseFreq, vecAudRanges));

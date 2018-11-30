@@ -109,22 +109,7 @@ void MainApplication::buttonClicked(Button* button)
     }
     if(button == &m_startSessionButton)
     {
-        Config::partials = m_exerciseConfigView.getPartials();
-        Config::nbAmplitudeRatios = m_exerciseConfigView.getNbAmplitudeRatios();
-        Config::vecAudibleRanges = m_exerciseConfigView.getVecAudibleRange();
-        
-        Config::baseFreq = m_exerciseConfigView.getBaseFreq();
-        Synthesis::Instance().setCurrentFundFrequency(Config::baseFreq);
-        
-        assert(Config::user != nullptr);
-        Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
-        
-        assert(Config::user->getLastSession() != nullptr);
-        auto lastSession = Config::user->getLastSession();
-        lastSession->getStats().maxScore = StatsBuilder::Instance().calculateMaxScore();
-        
-        lastSession->attachReport(ReportBuilder::createReport());
-        
+        initSession();
         
         displayPanel(2);
         
@@ -140,8 +125,17 @@ void MainApplication::buttonClicked(Button* button)
         auto lastSession = Config::user->getLastSession();
         
         lastSession->getReport()->timePractised = CustomDate::convertTimeStr(m_sessionTimer.durationInS());
-        ReportBuilder::saveReport();
         
+        if(lastSession->getStats().questionsCount>0)
+        {
+            lastSession->getReport()->statsImg = m_mainWindow.m_statsView.createComponentSnapshot(m_mainWindow.m_statsView.getLocalBounds(), false);
+            FileOutputStream stream (File ( Config::reportDirectory.getFullPathName()+"/stats_"+CustomDate::getStrFormatCurrentTime()+".png"));
+            PNGImageFormat pngWriter;
+            pngWriter.writeImageToStream(lastSession->getReport()->statsImg, stream);
+            
+            
+            ReportBuilder::saveReport();
+        }
         
         m_sessionTimer.resetTimer();
 
@@ -205,3 +199,21 @@ void MainApplication::showMainWindow(bool isVisible)
     m_mainWindow.m_statsView.setVisible(isVisible);
 }
 
+
+void MainApplication::initSession()
+{
+    Config::partials = m_exerciseConfigView.getPartials();
+    Config::nbAmplitudeRatios = m_exerciseConfigView.getNbAmplitudeRatios();
+    Config::vecAudibleRanges = m_exerciseConfigView.getVecAudibleRange();
+    Config::baseFreq = m_exerciseConfigView.getBaseFreq();
+        Synthesis::Instance().setCurrentFundFrequency(Config::baseFreq);
+    
+    assert(Config::user != nullptr);
+    Config::user->createSession(Config::partials, Config::nbAmplitudeRatios, Config::baseFreq, Config::vecAudibleRanges);
+    
+    assert(Config::user->getLastSession() != nullptr);
+    auto lastSession = Config::user->getLastSession();
+    lastSession->getStats().maxScore = StatsBuilder::Instance().calculateMaxScore();
+    
+    lastSession->attachReport(ReportBuilder::createReport());
+}

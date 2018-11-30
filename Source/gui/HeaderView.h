@@ -21,25 +21,6 @@ class HeaderView : public Component,
 public:
     HeaderView()
     {
-        menu1.setButtonText(MENU_1);
-        menu1.addListener(this);
-        addAndMakeVisible(menu1);
-        menu1.setColour(TextButton::buttonColourId, juce::Colours::white);
-        menu1.setVisible(false);
-        
-        menu2.setButtonText(MENU_2);
-        menu2.addListener(this);
-        addAndMakeVisible(menu2);
-        menu2.setColour(TextButton::buttonColourId, juce::Colours::white);
-        
-//        g_EndSessionButton.setButtonText(MENU_3);
-//        // g_EndSessionButton.addListener(this);
-//        addAndMakeVisible(g_EndSessionButton);
-//        g_EndSessionButton.setColour(TextButton::buttonColourId, juce::Colours::white);
-//        g_EndSessionButton.setVisible(false);
-//        // g_EndSessionButton.setEnabled(false);
-        
-        
         addAndMakeVisible(mUserLabel);
         mUserLabel.setJustificationType(juce::Justification::right);
         mUserLabel.setColour(juce::Label::textColourId, juce::Colours::white);
@@ -64,7 +45,6 @@ public:
     
     ~HeaderView()
     {
-        delete mTextEditor;
     }
     
     void paint(Graphics& g)override
@@ -92,14 +72,6 @@ public:
         
         //USERNAME
         mUserLabel.setBounds(menuxoffset-10, 3*elementheight, 3*elementwidth, elementheight);
-        //INFO
-        // menu2.setBounds(menuxoffset-45, 0, elementwidth, elementheight);
-        //ADD COMMENT
-        menu1.setBounds(menuxoffset+elementwidth-5, 0, elementwidth, elementheight);
-        //END SESSION
-       // g_EndSessionButton.setBounds(menuxoffset+2*elementwidth, 0, elementwidth, elementheight);
-        
-
     }
     
     void buttonClicked(Button* button) override
@@ -108,34 +80,7 @@ public:
         {
             infoDialogBox();
         }
-        
-        if(button== &menu1)
-        {
-            std::cout<<"menu1"<<std::endl;
-            commentDialogBox();
-            
-            
-        }
-        else if(button == &menu2)
-        {
-            std::cout<<"menu2"<<std::endl;
-            infoDialogBox();
-            
-        }
-    
-        
     }
-    
-    void displayCommentButton(bool b)
-    {
-        menu1.setVisible(b);
-    }
-    
-    void displayEndSessionButton(bool b)
-    {
-        //g_EndSessionButton.setVisible(b);
-    }
-    
     
     void setUserLabel(String user)
     {
@@ -147,35 +92,6 @@ public:
             mUserLabel.setText("user: "+user, dontSendNotification);
     }
     
-    void commentDialogBox()
-    {
-        juce::AlertWindow *alert = new juce::AlertWindow ("Comments","Comments will be added to your session report.", juce::AlertWindow::NoIcon );
-        alert->setColour(AlertWindow::backgroundColourId, Colours::black);
-        
-        alert->addCustomComponent(mTextEditor);
-        mTextEditor->setSize(350,300);
-        mTextEditor->setMultiLine(true);
-        mTextEditor->setReturnKeyStartsNewLine (true);
-        
-        alert->addButton ("OK",     1, KeyPress (KeyPress::returnKey, 0, 0));
-        alert->addButton ("Cancel", 0, KeyPress (KeyPress::escapeKey, 0, 0));
-        
-        alert->setBounds(430,200,425, 500);
-        
-        int returnValue = alert->runModalLoop();
-        delete alert;
-        
-        if(returnValue)
-        {
-            String commentText = mTextEditor->getText();
-//            (g_User.getLastSession())->addComment(commentText);
-//            (g_User.getLastSession())->printAllComments();
-        }
-        
-        mTextEditor->clear();
-        
-       
-    }
     
     void infoDialogBox()
     {
@@ -203,18 +119,7 @@ private:
     const String TITLE=" HARMONIC SPECTRUM ";
     const String SUBTITLE="INNER EAR";
     
-    TextButton menu1;
-    const String MENU_1="Add Comment";
-    
-    TextButton menu2;
-    const String MENU_2="ABOUT";
-    
-    //string for g_EndSessionButton
-    const String MENU_3="END SESSION";
-    
     Label mUserLabel;
-    
-    TextEditor* mTextEditor = new TextEditor("Enter your comment here: ");
     
     ImageButton mLogoButton;
     Image mLogo;

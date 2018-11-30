@@ -17,7 +17,7 @@
 class Session
 {
 public:
-    Session(Partials partialsOption, int nbAmpRatios, int baseFreq, std::vector<int> vecAudRanges)
+    Session(Partials::Options partialsOption, int nbAmpRatios, int baseFreq, std::vector<int> vecAudRanges)
         : m_partials(partialsOption), m_nbAmplitudeRatios(nbAmpRatios), m_baseFreq(baseFreq), m_vecAudibleRanges(vecAudRanges)
     {
  
@@ -74,7 +74,7 @@ protected:
     std::vector<std::shared_ptr<Question>> m_vecQuestions;
     
     //default init
-    Partials m_partials = Partials::all;
+    Partials::Options m_partials = Partials::Options::all;
     int m_nbAmplitudeRatios = 2;
     int m_baseFreq = 200;
     std::vector<int> m_vecAudibleRanges;

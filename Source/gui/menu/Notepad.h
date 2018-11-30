@@ -13,6 +13,8 @@
 #include "../../../JuceLibraryCode/JuceHeader.h"
 #include "../../core/Config.h"
 #include "../../utils/CustomDate.h"
+
+#include "NotepadComments.h"
 //==============================================================================
 /*
 */
@@ -22,8 +24,9 @@ class Notepad    : public Component,
 public:
     Notepad()
     {
-        setSize(0.4*getParentWidth(), 0.5*getParentHeight());
+        setSize(0.4*getParentWidth(), 0.7*getParentHeight());
         
+        addAndMakeVisible(m_label);
         
         addAndMakeVisible(m_textEditor);
       //  m_textEditor.setSize(350,300);
@@ -32,6 +35,10 @@ public:
         
         addAndMakeVisible(m_saveCommentButton);
         m_saveCommentButton.addListener(this);
+        
+        addAndMakeVisible(m_commentsViewport);
+        addAndMakeVisible(m_npComments);
+        m_commentsViewport.setViewedComponent (&m_npComments);
 
     }
 
@@ -55,8 +62,11 @@ public:
 
     void resized() override
     {
-        m_textEditor.setBounds (0.15*getWidth(), 0.2*getHeight(), 0.7*getWidth(), 0.3*getHeight());
-        m_saveCommentButton.setBounds (0.4*getWidth(), 0.51*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+        m_label.setBounds (0.15*getWidth(), 0.05*getHeight(), 0.7*getWidth(), 0.1*getHeight());
+        m_textEditor.setBounds (0.15*getWidth(), 0.15*getHeight(), 0.7*getWidth(), 0.25*getHeight());
+        m_saveCommentButton.setBounds (0.4*getWidth(), 0.4*getHeight(), 0.2*getWidth(), 0.1*getHeight());
+        
+        m_commentsViewport.setBounds (0.15*getWidth(), 0.6*getHeight(), 0.7*getWidth(), 0.3*getHeight());
 
     }
     
@@ -83,8 +93,11 @@ public:
     }
 
 private:
-    //Label
+    Label m_label{{}, "Your notes will be added to your session report."};
     TextEditor m_textEditor;
     TextButton m_saveCommentButton{"Save!"};
+    
+    Viewport m_commentsViewport;
+    NotepadComments m_npComments;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Notepad)
 };

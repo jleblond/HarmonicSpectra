@@ -87,17 +87,10 @@ String ReportBuilder::getReportStr()
     s+="Exercise settings\n";
     s+="\tBase frequency ["+static_cast<String>(report->baseFreq)+"Hz]\n";
     s+="\t# of amplitude ratios ["+static_cast<String>(report->nbAmplitudeRatios)+"]\n";
-//    s+="\n";
-//    s+="\n";
-//    s+="Name(s) of audio file(s) played\n";
-//
-//    for(int i=0;i<(report.audioFiles).size();i++)
-//    {
-//        s+="\t["+report.audioFiles[i]+"]\n";
-//    }
-//    s+="\n";
-//    s+="\n";
-//    s+="Total number of questions asked ["+ static_cast<String>(lastSession->getStats().questionsCount) +"]\n";
+    s+="\tPartials ["+Partials::partialsToString(report->partials)+"]";
+    s+="\n";
+    s+="\n";
+    s+="Total number of questions asked ["+ static_cast<String>(lastSession->getStats().questionsCount) +"]\n";
 //    s+="\n";
 //    s+="\n";
 //    s+="\n";

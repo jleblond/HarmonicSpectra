@@ -412,6 +412,9 @@
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp">
       <Filter>Harmonic Spectrum\core</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\core\Partials.cpp">
+      <Filter>Harmonic Spectrum\core</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\gui\MainApplication.cpp">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClCompile>
@@ -2238,10 +2241,13 @@
     <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h">
       <Filter>Harmonic Spectrum\gui\menu</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\gui\menu\Volume.h">
+      <Filter>Harmonic Spectrum\gui\menu</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\gui\menu\Notepad.h">
       <Filter>Harmonic Spectrum\gui\menu</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\gui\menu\Volume.h">
+    <ClInclude Include="..\..\Source\gui\menu\NotepadComments.h">
       <Filter>Harmonic Spectrum\gui\menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\gui\MainApplication.h">

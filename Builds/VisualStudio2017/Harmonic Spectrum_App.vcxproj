@@ -152,6 +152,7 @@
     <ClCompile Include="..\..\Source\core\AnswerChecker.cpp"/>
     <ClCompile Include="..\..\Source\core\StatsBuilder.cpp"/>
     <ClCompile Include="..\..\Source\core\ReportBuilder.cpp"/>
+    <ClCompile Include="..\..\Source\core\Partials.cpp"/>
     <ClCompile Include="..\..\Source\gui\MainApplication.cpp"/>
     <ClCompile Include="..\..\Source\utils\CustomDate.cpp"/>
     <ClCompile Include="..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
@@ -1783,8 +1784,9 @@
     <ClInclude Include="..\..\Source\gui\components\RatioFormula.h"/>
     <ClInclude Include="..\..\Source\gui\components\StatsBar.h"/>
     <ClInclude Include="..\..\Source\gui\menu\SettingsPanel.h"/>
-    <ClInclude Include="..\..\Source\gui\menu\Notepad.h"/>
     <ClInclude Include="..\..\Source\gui\menu\Volume.h"/>
+    <ClInclude Include="..\..\Source\gui\menu\Notepad.h"/>
+    <ClInclude Include="..\..\Source\gui\menu\NotepadComments.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>

@@ -73,6 +73,7 @@ OBJECTS_APP := \
   $(JUCE_OBJDIR)/AnswerChecker_c150f170.o \
   $(JUCE_OBJDIR)/StatsBuilder_606e460d.o \
   $(JUCE_OBJDIR)/ReportBuilder_9688b320.o \
+  $(JUCE_OBJDIR)/Partials_87781e23.o \
   $(JUCE_OBJDIR)/MainApplication_378365e4.o \
   $(JUCE_OBJDIR)/CustomDate_d7b1eee6.o \
   $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
@@ -135,6 +136,11 @@ $(JUCE_OBJDIR)/StatsBuilder_606e460d.o: ../../Source/core/StatsBuilder.cpp
 $(JUCE_OBJDIR)/ReportBuilder_9688b320.o: ../../Source/core/ReportBuilder.cpp
 	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling ReportBuilder.cpp"
+	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Partials_87781e23.o: ../../Source/core/Partials.cpp
+	-$(V_AT)mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Partials.cpp"
 	$(V_AT)$(CXX) $(JUCE_CXXFLAGS) $(JUCE_CPPFLAGS_APP) $(JUCE_CFLAGS_APP) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/MainApplication_378365e4.o: ../../Source/gui/MainApplication.cpp

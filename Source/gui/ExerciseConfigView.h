@@ -185,20 +185,20 @@ public:
     }
    
     
-    Partials getPartials()
+    Partials::Options getPartials()
     {
         if(m_oddPartialsButton.getToggleState() == true)
         {
-            return Partials::odd;
+            return Partials::Options::odd;
         }
         
         if(m_oddorallPartialsButton.getToggleState() == true)
         {
-            return Partials::both;
+            return Partials::Options::both;
         }
         
         //else default
-        return Partials::all;
+        return Partials::Options::all;
     }
     
     

@@ -13,7 +13,7 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "Config.h"
-//#include "Session.h"
+#include "Partials.h"
 #include "Report.h"
 #include "../utils/CustomDate.h"
 

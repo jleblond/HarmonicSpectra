@@ -9,6 +9,15 @@
 */
 
 #pragma once
+#include "../../JuceLibraryCode/JuceHeader.h"
 
-enum class Partials {odd, all, both};
+//enum class Partials {odd, all, both};
 
+class Partials
+{
+public:
+    enum Options{ odd, all, both };
+    static Options options;
+    
+    static String partialsToString(Partials::Options po);
+};

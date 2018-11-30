@@ -23,7 +23,7 @@
 
 
 
-typedef std::pair<Partials, int> keys;
+typedef std::pair<Partials::Options, int> keys;
 
 class QuestionBuilder
 {
@@ -104,17 +104,17 @@ private:
     QuestionBuilder()
     {
         //note: insert and emplace are equivalent fcts
-        m_tableOfWaves.insert(std::make_pair(keys(Partials::odd, 2), odd2));
-        m_tableOfWaves.insert(std::make_pair(keys(Partials::odd, 3), odd3));
-        m_tableOfWaves.insert(std::make_pair(keys(Partials::odd, 5), odd5));
+        m_tableOfWaves.insert(std::make_pair(keys(Partials::Options::odd, 2), odd2));
+        m_tableOfWaves.insert(std::make_pair(keys(Partials::Options::odd, 3), odd3));
+        m_tableOfWaves.insert(std::make_pair(keys(Partials::Options::odd, 5), odd5));
         
-        m_tableOfWaves.emplace(keys(Partials::all, 2), all2);
-        m_tableOfWaves.emplace(keys(Partials::all, 3), all3);
-        m_tableOfWaves.emplace(keys(Partials::all, 5), all5);
+        m_tableOfWaves.emplace(keys(Partials::Options::all, 2), all2);
+        m_tableOfWaves.emplace(keys(Partials::Options::all, 3), all3);
+        m_tableOfWaves.emplace(keys(Partials::Options::all, 5), all5);
         
-        m_tableOfWaves.emplace(keys(Partials::both, 2), both2);
-        m_tableOfWaves.emplace(keys(Partials::both, 3), both3);
-        m_tableOfWaves.emplace(keys(Partials::both, 5), both5);
+        m_tableOfWaves.emplace(keys(Partials::Options::both, 2), both2);
+        m_tableOfWaves.emplace(keys(Partials::Options::both, 3), both3);
+        m_tableOfWaves.emplace(keys(Partials::Options::both, 5), both5);
 
     }
     

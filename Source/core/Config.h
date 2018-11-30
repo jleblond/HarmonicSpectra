@@ -18,12 +18,11 @@ class Config
 {
 public:
     
-    static Config& Instance();
     static std::shared_ptr<User> user;
     
     
     //Current session parameters
-    static Partials partials;
+    static Partials::Options partials;
     static int nbAmplitudeRatios;
     static std::vector<int> vecAudibleRanges;
     
@@ -55,8 +54,7 @@ private:
     Config(){}
     
     ~Config(){}
-    
-    static Config globalConfig;
+
     
 
     

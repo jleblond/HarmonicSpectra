@@ -64,11 +64,12 @@ public:
     void showExerciseConfig(bool isVisible);
     
     void showMainWindow(bool isVisible);
+    
+    void initSession();
 
 protected:
    // LookAndFeel *m_LF = new LookAndFeel_V4( (LookAndFeel_V4::getLightColourScheme() ) );
 
-    
     HeaderView m_headerView;
     UserConfigView m_userConfigView;
     ExerciseConfigView m_exerciseConfigView;

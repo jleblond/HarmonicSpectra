@@ -11,17 +11,10 @@
 #include "Config.h"
 
 
-Config Config::globalConfig = Config();
-
-Config& Config::Instance()
-{
-    return globalConfig;
-}
-
 std::shared_ptr<User> Config::user = nullptr;
 
 //Current session parameters (Default init)
-Partials Config::partials = Partials::all;
+Partials::Options Config::partials = Partials::Options::all;
 int Config::nbAmplitudeRatios = 2;
 std::vector<int> Config::vecAudibleRanges {100};
 

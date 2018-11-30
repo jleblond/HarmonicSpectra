@@ -35,6 +35,7 @@
       <FILE id="mhYUw1" name="ReportBuilder.cpp" compile="1" resource="0"
             file="Source/core/ReportBuilder.cpp"/>
       <FILE id="r6hhUn" name="Partials.h" compile="0" resource="0" file="Source/core/Partials.h"/>
+      <FILE id="HHR45q" name="Partials.cpp" compile="1" resource="0" file="Source/core/Partials.cpp"/>
       <FILE id="XLz2e2" name="Comment.h" compile="0" resource="0" file="Source/core/Comment.h"/>
     </GROUP>
     <GROUP id="{E8254A5C-7149-F172-F8EC-CEFD48AC03B2}" name="gui">
@@ -60,8 +61,10 @@
       </GROUP>
       <GROUP id="{CD2F5A49-2871-9BFC-17C4-BE0525E9C2A2}" name="menu">
         <FILE id="sP807Q" name="SettingsPanel.h" compile="0" resource="0" file="Source/gui/menu/SettingsPanel.h"/>
-        <FILE id="GldzOm" name="Notepad.h" compile="0" resource="0" file="Source/gui/menu/Notepad.h"/>
         <FILE id="jCYO6y" name="Volume.h" compile="0" resource="0" file="Source/gui/menu/Volume.h"/>
+        <FILE id="GldzOm" name="Notepad.h" compile="0" resource="0" file="Source/gui/menu/Notepad.h"/>
+        <FILE id="JAAU2V" name="NotepadComments.h" compile="0" resource="0"
+              file="Source/gui/menu/NotepadComments.h"/>
       </GROUP>
       <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"
             file="Source/gui/MainApplication.h"/>
