@@ -65,7 +65,11 @@ public:
     
     void showMainWindow(bool isVisible);
     
+    void initUser();
+    
     void initSession();
+    
+    void createSnapshotFromStats();
 
 protected:
    // LookAndFeel *m_LF = new LookAndFeel_V4( (LookAndFeel_V4::getLightColourScheme() ) );

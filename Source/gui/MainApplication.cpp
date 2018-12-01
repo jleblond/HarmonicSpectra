@@ -101,9 +101,7 @@ void MainApplication::buttonClicked(Button* button)
 {
     if(button == &m_createUserButton)
     {
-        String username = m_userConfigView.getTextFieldValue();
-        Config::user = std::make_shared<User>(username);
-        m_headerView.setUserLabel(username);
+        initUser();
         
         displayPanel(1);
     }
@@ -128,11 +126,7 @@ void MainApplication::buttonClicked(Button* button)
         
         if(lastSession->getStats().questionsCount>0)
         {
-            lastSession->getReport()->statsImg = m_mainWindow.m_statsView.createComponentSnapshot(m_mainWindow.m_statsView.getLocalBounds(), false);
-            FileOutputStream stream (File ( Config::reportDirectory.getFullPathName()+"/stats_"+CustomDate::getStrFormatCurrentTime()+".png"));
-            PNGImageFormat pngWriter;
-            pngWriter.writeImageToStream(lastSession->getReport()->statsImg, stream);
-            
+            //createSnapshotFromStats();
             
             ReportBuilder::saveReport();
         }
@@ -199,6 +193,12 @@ void MainApplication::showMainWindow(bool isVisible)
     m_mainWindow.m_statsView.setVisible(isVisible);
 }
 
+void MainApplication::initUser()
+{
+    String username = m_userConfigView.getTextFieldValue();
+    Config::user = std::make_shared<User>(username);
+    m_headerView.setUserLabel(username);
+}
 
 void MainApplication::initSession()
 {
@@ -216,4 +216,16 @@ void MainApplication::initSession()
     lastSession->getStats().maxScore = StatsBuilder::Instance().calculateMaxScore();
     
     lastSession->attachReport(ReportBuilder::createReport());
+}
+
+void MainApplication::createSnapshotFromStats()
+{
+    assert(Config::user != nullptr);
+    assert(Config::user->getLastSession() != nullptr);
+    auto lastSession = Config::user->getLastSession();
+    
+        lastSession->getReport()->statsImg = m_mainWindow.m_statsView.createComponentSnapshot(m_mainWindow.m_statsView.getLocalBounds(), false);
+        FileOutputStream stream (File ( Config::reportDirectory.getFullPathName()+"/stats_"+CustomDate::getStrFormatCurrentTime()+".png"));
+        PNGImageFormat pngWriter;
+        pngWriter.writeImageToStream(lastSession->getReport()->statsImg, stream);
 }

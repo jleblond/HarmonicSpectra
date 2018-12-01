@@ -15,6 +15,9 @@
 #include "Config.h"
 #include "Partials.h"
 #include "Report.h"
+
+#include "QuestionBuilder.h"
+
 #include "../utils/CustomDate.h"
 
 const int MAX_DIFFICULTY = 1000;
@@ -30,11 +33,13 @@ public:
     static void saveReport();
     
     static String getReportStr();
-    
 
   
 private:
-   
+    static String chartContent();
+    static String getChartLine(int waveID);
+    static String getLinesPercent(float percent);
+    static std::vector<String> m_vecRatioStr;
 
    
 };

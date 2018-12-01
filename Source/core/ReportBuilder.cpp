@@ -91,18 +91,19 @@ String ReportBuilder::getReportStr()
     s+="\n";
     s+="\n";
     s+="Total number of questions asked ["+ static_cast<String>(lastSession->getStats().questionsCount) +"]\n";
-//    s+="\n";
-//    s+="\n";
-//    s+="\n";
-//    s+="\n";
-//    s+="\n";
-//    s+="\t***GRAPH***\n";
-//    s+="\n";
-//    s+="center\     #times  \n";
-//    s+="freq        involved         score (%)\n";
-//    s+="————————————————————————--------------\n";
-//    s+=freqChartStr(report);
-//
+    s+="\n";
+    s+="\n";
+    s+="\n";
+    s+="\n";
+    s+="\n";
+    s+="\t***GRAPH***\n";
+    s+="\n";
+    s+="partials    #times  \n";
+    s+="ratio       involved         score (%)\n";
+    s+="————————————————————————--------------\n";
+    s+= chartContent();
+    s+="\n";
+    s+="\n";
 
         s+="\n";
         s+="Your score at the present level ["+ static_cast<String>((int)(100 * stats.score/stats.maxScore)) +"%]\n";
@@ -135,3 +136,79 @@ String ReportBuilder::getReportStr()
     
     return s;
 }
+
+String ReportBuilder::chartContent()
+{
+    String s = "";
+    
+    assert(Config::user != nullptr);
+    assert(Config::user->getLastSession() != nullptr);
+    auto lastSession = Config::user->getLastSession();
+    auto stats = lastSession->getStats();
+    
+    //SHOW TESTED WAVES
+    std::vector<int> vecWaves = QuestionBuilder::Instance().getVecWaves();
+    
+    for(int i=0; i<vecWaves.size();i++)
+    {
+        int waveID = vecWaves[i];
+        s += getChartLine(waveID);
+        
+    }
+    
+    //POSSIBLY SHOW AUDIBLERANGE BAR
+    if (Config::vecAudibleRanges.size() > 1)
+    {
+        float percentAR = stats.audibleRange.getPercent();
+        int countAR = stats.audibleRange.count;
+        s+="\n";
+        s+="Audible Range \t["+static_cast<String>(countAR)+"]\t\t"+getLinesPercent(percentAR);
+    }
+    
+    return s;
+}
+
+std::vector<String> ReportBuilder::m_vecRatioStr = {"  ", "^1.25", "^1.5", "^1.75", "^2"};
+
+String ReportBuilder::getChartLine(int waveID)
+{
+    String s = "";
+    
+    assert(Config::user != nullptr);
+    assert(Config::user->getLastSession() != nullptr);
+    auto lastSession = Config::user->getLastSession();
+    auto stats = lastSession->getStats();
+    
+    float percent = stats.vecWaves[waveID-1].getPercent();
+    int count = stats.vecWaves[waveID-1].count;
+    
+    if(waveID <= 5)
+    {
+        
+        s = "ODD 1/x"+m_vecRatioStr[waveID-1]+"\t["+static_cast<String>(count)+"]\t\t"+getLinesPercent(percent)+"\n";
+    }
+    else
+    {
+        s = "ALL 1/x"+m_vecRatioStr[waveID-6]+"\t["+static_cast<String>(count)+"]\t\t"+getLinesPercent(percent)+"\n";
+    }
+    
+    return s;
+}
+
+String ReportBuilder::getLinesPercent(float percent)
+{
+    String lineStr = "|";
+    
+    int nblines = static_cast<int>(percent*100)/2;
+    
+    for(int i=0;i<nblines;i++)
+    {
+        lineStr +="-";
+    }
+    
+    lineStr += static_cast<String>(percent*100)+"%";
+    
+    return lineStr;
+}
+
+
