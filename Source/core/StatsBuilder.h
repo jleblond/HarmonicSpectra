@@ -40,11 +40,11 @@ public:
     int maxPartialsScore()
     {
         //ODD, ALL or Both partials
-        if(Config::partials == Partials::both)
+        if(Config::partials == Partials::Options::both)
         {
             return 125;
         }
-        else if(Config::partials == Partials::odd || Config::partials == Partials::all)
+        else if(Config::partials == Partials::Options::odd || Config::partials == Partials::Options::all)
         {
             return 25;
         }

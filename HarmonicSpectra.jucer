@@ -65,6 +65,7 @@
         <FILE id="GldzOm" name="Notepad.h" compile="0" resource="0" file="Source/gui/menu/Notepad.h"/>
         <FILE id="JAAU2V" name="NotepadComments.h" compile="0" resource="0"
               file="Source/gui/menu/NotepadComments.h"/>
+        <FILE id="Q1HCO3" name="Note.h" compile="0" resource="0" file="Source/gui/menu/Note.h"/>
       </GROUP>
       <FILE id="ll9uEG" name="MainApplication.h" compile="0" resource="0"
             file="Source/gui/MainApplication.h"/>

@@ -39,6 +39,7 @@ public:
         addAndMakeVisible(m_commentsViewport);
         addAndMakeVisible(m_npComments);
         m_commentsViewport.setViewedComponent (&m_npComments);
+        m_commentsViewport.setScrollBarsShown(true, false);
 
     }
 
@@ -88,6 +89,7 @@ public:
             c->print();
             
             m_textEditor.clear();
+            m_npComments.loadNotes();
             
         }
     }

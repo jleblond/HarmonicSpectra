@@ -18,7 +18,7 @@ struct Comment
     
     void print()
     {
-        std::cout<<"--Comment-- "<<date<<std::endl;
+        std::cout<<"--Comment-- "<<date;
         std::cout<<text<<std::endl;
     }
 };

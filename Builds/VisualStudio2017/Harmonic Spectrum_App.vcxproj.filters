@@ -2250,6 +2250,9 @@
     <ClInclude Include="..\..\Source\gui\menu\NotepadComments.h">
       <Filter>Harmonic Spectrum\gui\menu</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\gui\menu\Note.h">
+      <Filter>Harmonic Spectrum\gui\menu</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\gui\MainApplication.h">
       <Filter>Harmonic Spectrum\gui</Filter>
     </ClInclude>

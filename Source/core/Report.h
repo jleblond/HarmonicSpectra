@@ -29,7 +29,7 @@ struct Report
 
     //Stats
     StatsSheet stats;
-    Image statsImg;
+    //Image statsImg;
     
     
     void print()

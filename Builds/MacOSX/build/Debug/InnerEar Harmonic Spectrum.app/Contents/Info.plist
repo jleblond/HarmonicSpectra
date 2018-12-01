@@ -8,6 +8,8 @@
 	<string>Harmonic Spectrum</string>
 	<key>CFBundleExecutable</key>
 	<string>InnerEar Harmonic Spectrum</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.juce.HarmonicSpectrum</string>
 	<key>CFBundleName</key>

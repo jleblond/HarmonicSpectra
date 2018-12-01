@@ -24,6 +24,7 @@ MainApplication::MainApplication()
     addAndMakeVisible(m_createUserButton);
     m_createUserButton.setButtonText("NEXT");
     m_createUserButton.addListener(this);
+    
         
     addAndMakeVisible(m_exerciseConfigView);
     m_exerciseConfigView.setVisible(false);
@@ -54,7 +55,7 @@ MainApplication::MainApplication()
     m_endSessionButton.setColour(TextButton::textColourOffId, Colours::white);
     m_endSessionButton.addListener(this);
     m_endSessionButton.setVisible(false);
-    
+
 }
     
 MainApplication::~MainApplication()
@@ -149,6 +150,7 @@ void MainApplication::buttonClicked(Button* button)
     
 }
 
+
 void MainApplication::displayPanel(int panelNb)
 {
     switch(panelNb)
@@ -220,12 +222,12 @@ void MainApplication::initSession()
 
 void MainApplication::createSnapshotFromStats()
 {
-    assert(Config::user != nullptr);
-    assert(Config::user->getLastSession() != nullptr);
-    auto lastSession = Config::user->getLastSession();
-    
-        lastSession->getReport()->statsImg = m_mainWindow.m_statsView.createComponentSnapshot(m_mainWindow.m_statsView.getLocalBounds(), false);
-        FileOutputStream stream (File ( Config::reportDirectory.getFullPathName()+"/stats_"+CustomDate::getStrFormatCurrentTime()+".png"));
-        PNGImageFormat pngWriter;
-        pngWriter.writeImageToStream(lastSession->getReport()->statsImg, stream);
+//    assert(Config::user != nullptr);
+//    assert(Config::user->getLastSession() != nullptr);
+//    auto lastSession = Config::user->getLastSession();
+//
+//        lastSession->getReport()->statsImg = m_mainWindow.m_statsView.createComponentSnapshot(m_mainWindow.m_statsView.getLocalBounds(), false);
+//        FileOutputStream stream (File ( Config::reportDirectory.getFullPathName()+"/stats_"+CustomDate::getStrFormatCurrentTime()+".png"));
+//        PNGImageFormat pngWriter;
+//        pngWriter.writeImageToStream(lastSession->getReport()->statsImg, stream);
 }

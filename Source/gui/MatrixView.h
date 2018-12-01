@@ -253,19 +253,19 @@ public:
             }
         }
         
-        if (Config::partials == Partials::odd)
+        if (Config::partials == Partials::Options::odd)
         {
              m_NALabel.setBounds(0.3*getWidth(),ALL_HEIGHT*0.97*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
              m_NALabel.setVisible(true);
         }
-        else if (Config::partials == Partials::all)
+        else if (Config::partials == Partials::Options::all)
         {
             m_NALabel.setBounds(0.3*getWidth(),ODD_HEIGHT*0.8*getHeight(),
                                 0.3*getWidth(), 0.15*getHeight());
             m_NALabel.setVisible(true);
         }
-        else if (Config::partials == Partials::both)
+        else if (Config::partials == Partials::Options::both)
         {
             m_NALabel.setVisible(false);
         }

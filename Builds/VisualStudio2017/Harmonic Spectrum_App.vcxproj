@@ -1787,6 +1787,7 @@
     <ClInclude Include="..\..\Source\gui\menu\Volume.h"/>
     <ClInclude Include="..\..\Source\gui\menu\Notepad.h"/>
     <ClInclude Include="..\..\Source\gui\menu\NotepadComments.h"/>
+    <ClInclude Include="..\..\Source\gui\menu\Note.h"/>
     <ClInclude Include="..\..\Source\gui\MainApplication.h"/>
     <ClInclude Include="..\..\Source\gui\UserConfigView.h"/>
     <ClInclude Include="..\..\Source\gui\ExerciseConfigView.h"/>

@@ -105,7 +105,7 @@ public:
         
         
         AlertWindow::showMessageBoxAsync (icon,
-                                          "Inner Ear [Harmonic Spectrum] 1.0 (MacOSX version)",
+                                          "Inner Ear [Harmonic Spectrum] 1.1 (MacOSX version)",
                                           creditsStr,
                                           "OK");
         

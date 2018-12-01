@@ -37,7 +37,6 @@ std::shared_ptr<Report> ReportBuilder::createReport()
 }
 
 
-
 void ReportBuilder::saveReport()
 {
     String reportFilePath =
@@ -63,10 +62,8 @@ String ReportBuilder::getReportStr()
 {
     assert(Config::user != nullptr);
     assert(Config::user->getLastSession() != nullptr);
-    auto lastSession = Config::user->getLastSession();
-    std::shared_ptr<Report> report = lastSession->getReport();
-    
-    auto stats = lastSession->getStats();
+    std::shared_ptr<Report> report = Config::user->getLastSession()->getReport();
+    auto stats = Config::user->getLastSession()->getStats();
     
     String s = "";
     s+= "\t\t \n";
@@ -90,7 +87,7 @@ String ReportBuilder::getReportStr()
     s+="\tPartials ["+Partials::partialsToString(report->partials)+"]";
     s+="\n";
     s+="\n";
-    s+="Total number of questions asked ["+ static_cast<String>(lastSession->getStats().questionsCount) +"]\n";
+    s+="Total number of questions asked ["+ static_cast<String>(stats.questionsCount) +"]\n";
     s+="\n";
     s+="\n";
     s+="\n";
@@ -137,6 +134,7 @@ String ReportBuilder::getReportStr()
     return s;
 }
 
+
 String ReportBuilder::chartContent()
 {
     String s = "";
@@ -153,7 +151,6 @@ String ReportBuilder::chartContent()
     {
         int waveID = vecWaves[i];
         s += getChartLine(waveID);
-        
     }
     
     //POSSIBLY SHOW AUDIBLERANGE BAR
@@ -168,7 +165,9 @@ String ReportBuilder::chartContent()
     return s;
 }
 
+
 std::vector<String> ReportBuilder::m_vecRatioStr = {"  ", "^1.25", "^1.5", "^1.75", "^2"};
+
 
 String ReportBuilder::getChartLine(int waveID)
 {
@@ -184,7 +183,6 @@ String ReportBuilder::getChartLine(int waveID)
     
     if(waveID <= 5)
     {
-        
         s = "ODD 1/x"+m_vecRatioStr[waveID-1]+"\t["+static_cast<String>(count)+"]\t\t"+getLinesPercent(percent)+"\n";
     }
     else
@@ -194,6 +192,7 @@ String ReportBuilder::getChartLine(int waveID)
     
     return s;
 }
+
 
 String ReportBuilder::getLinesPercent(float percent)
 {

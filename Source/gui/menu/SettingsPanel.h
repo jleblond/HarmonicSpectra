@@ -33,7 +33,7 @@ public:
     {
         setSize(400, 400);
         
-        
+
         // SOUND DURATION
         
         addAndMakeVisible (m_soundDurationLabel);
@@ -67,6 +67,7 @@ public:
         addAndMakeVisible (m_changeDirectoryButton);
         m_changeDirectoryButton.addListener(this);
         
+        
         addAndMakeVisible (m_volumeComponent);
     }
 
@@ -77,10 +78,10 @@ public:
     void paint (Graphics& g) override
     {
 
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
 
         g.setColour (Colours::grey);
-        g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+        g.drawRect (getLocalBounds(), 1);
 
         g.setColour (Colours::white);
         g.setFont (14.0f);
