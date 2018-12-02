@@ -11,20 +11,17 @@
 #include "MainApplication.h"
 
 
-
 MainApplication::MainApplication()
 {
     //setSize (WIDTH, HEIGHT);
     //setLookAndFeel( m_LF );
     
-        
     addAndMakeVisible(m_headerView);
     
     addAndMakeVisible(m_userConfigView);
     addAndMakeVisible(m_createUserButton);
     m_createUserButton.setButtonText("NEXT");
     m_createUserButton.addListener(this);
-    
         
     addAndMakeVisible(m_exerciseConfigView);
     m_exerciseConfigView.setVisible(false);
@@ -57,12 +54,14 @@ MainApplication::MainApplication()
     m_endSessionButton.setVisible(false);
 
 }
-    
+
+
 MainApplication::~MainApplication()
 {
     //delete m_LF;
 }
-    
+
+
 void MainApplication::paint (Graphics& g)
 {
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
@@ -73,7 +72,8 @@ void MainApplication::paint (Graphics& g)
     g.drawText ("MainApplication", getLocalBounds(),
                 Justification::centred, true);   // draw some placeholder text
 }
-    
+
+
 void MainApplication::resized()
 {
     m_notepadButton.setBounds (getWidth() - 0.1 -  3*ENDSESSIONBUTTON_WIDTH*getWidth(), 0, ENDSESSIONBUTTON_WIDTH*getWidth(), 0.03*getHeight());
@@ -97,7 +97,8 @@ void MainApplication::resized()
     m_mainWindow.setBounds(area3);
         
 }
-    
+
+
 void MainApplication::buttonClicked(Button* button)
 {
     if(button == &m_createUserButton)
@@ -106,6 +107,7 @@ void MainApplication::buttonClicked(Button* button)
         
         displayPanel(1);
     }
+    
     if(button == &m_startSessionButton)
     {
         initSession();
@@ -176,18 +178,21 @@ void MainApplication::displayPanel(int panelNb)
             break;
     };
 }
-    
+
+
 void MainApplication::showUserConfig(bool isVisible)
 {
     m_userConfigView.setVisible(isVisible);
     m_createUserButton.setVisible(isVisible);
 }
-    
+
+
 void MainApplication::showExerciseConfig(bool isVisible)
 {
     m_exerciseConfigView.setVisible(isVisible);
     m_startSessionButton.setVisible(isVisible);
 }
+
 
 void MainApplication::showMainWindow(bool isVisible)
 {
@@ -196,12 +201,14 @@ void MainApplication::showMainWindow(bool isVisible)
     m_mainWindow.setEnabledPlayTestButton(false);
 }
 
+
 void MainApplication::initUser()
 {
     String username = m_userConfigView.getTextFieldValue();
     Config::user = std::make_shared<User>(username);
     m_headerView.setUserLabel(username);
 }
+
 
 void MainApplication::initSession()
 {
@@ -216,10 +223,11 @@ void MainApplication::initSession()
     
     assert(Config::user->getLastSession() != nullptr);
     auto lastSession = Config::user->getLastSession();
-    lastSession->getStats().maxScore = StatsBuilder::Instance().calculateMaxScore();
+    lastSession->getStats().maxScore = StatsBuilder::calculateMaxScore();
     
     lastSession->attachReport(ReportBuilder::createReport());
 }
+
 
 void MainApplication::createSnapshotFromStats()
 {

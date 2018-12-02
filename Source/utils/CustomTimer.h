@@ -9,8 +9,10 @@
 */
 
 #pragma once
+
 #include <chrono>
 #include<iostream>
+
 
 typedef std::chrono::high_resolution_clock Clock;
 
@@ -22,6 +24,7 @@ public:
     {
         resetTimer();
     }
+    
     
     ~CustomTimer()
     {
@@ -73,5 +76,4 @@ protected:
     Clock::time_point m_timeStarted;
     Clock::time_point m_timeStopped;
     
-
 };

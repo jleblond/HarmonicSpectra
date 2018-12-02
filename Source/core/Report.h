@@ -9,9 +9,11 @@
 */
 
 #pragma once
+
+#include "StatsSheet.h"
 #include "Partials.h"
 #include "Comment.h"
-#include "StatsSheet.h"
+
 
 struct Report
 {
@@ -31,32 +33,32 @@ struct Report
     StatsSheet stats;
     //Image statsImg;
     
-    
     void print()
     {
-        std::cout<<"--Report::print()"<<std::endl;
-        std::cout<<"***PRINT SESSION REPORT***"<<std::endl;
-        std::cout<<username<<std::endl;
-        std::cout<<date<<std::endl;
-        std::cout<<"Time practised: "<<timePractised<<std::endl;
+        std::cout<<"--Report::print()"<<"\n"
+                 <<"***PRINT SESSION REPORT***"<<"\n"
+                 <<username<<"\n"
+                 <<date<<"\n"
+                 <<"Time practised: "<<timePractised<<"\n"
         
-        std::cout<<"\n\n[Session settings]"<<std::endl;
-        //SESSION SETTINGS ToBeAdded
+                 <<"\n\n[Session settings]"<<"\n"
+                 <<"Base freq: "<<static_cast<String>(baseFreq)<<"Hz"<<"\n"
+                 <<"Partials: "<<Partials::partialsToString(partials)<<"\n"
+                 <<"# of amplitude ratios: "<<static_cast<String>(nbAmplitudeRatios)<<"\n"
         
-        std::cout<<"\n\n[Stats]"<<std::endl;
-        std::cout<<"# of questions:"<<stats.questionsCount<<std::endl;
-        std::cout<<"Score:"<<stats.score<<std::endl;
-        std::cout<<"Max score:"<<stats.maxScore<<std::endl;
-        std::cout<<"Score (%):"<<stats.percentScore<<std::endl;
+                 <<"\n\n[Stats]"<<"\n"
+                 <<"# of questions:"<<stats.questionsCount<<"\n"
+                 <<"Score:"<<stats.score<<"\n"
+                 <<"Max score:"<<stats.maxScore<<"\n"
+                 <<"Score (%):"<<stats.percentScore<<"\n"
         
-        std::cout<<"\n\n[Comments]"<<std::endl;
-        for(int i=0;i<comments.size();i++)
-        {
-            std::cout<<"Comment "<<(i+1)<<" - "<<comments[i]->date;
-            std::cout<<comments[i]->text<<"\n"<<std::endl;
-        }
+                 <<"\n\n[Comments]"<<std::endl;
+            for(int i=0;i<comments.size();i++)
+            {
+                std::cout<<"Comment "<<(i+1)<<" - "<<comments[i]->date<<"\n"
+                         <<comments[i]->text<<"\n"<<std::endl;
+            }
     }
  
-    
     
 };

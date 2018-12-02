@@ -19,6 +19,7 @@ String CustomDate::getStrCurrentTime()
     return dt;
 }
 
+
 String CustomDate::getStrFormatCurrentTime()
 {
     auto t = std::time(nullptr);
@@ -30,6 +31,7 @@ String CustomDate::getStrFormatCurrentTime()
     
     return str;
 }
+
 
 String CustomDate::convertTimeStr(int timeInSeconds)
 {
@@ -53,7 +55,6 @@ String CustomDate::convertTimeStr(int timeInSeconds)
     {
         durationStr += static_cast<String>(seconds) + "s";
     }
-    
     
     return durationStr;
 }

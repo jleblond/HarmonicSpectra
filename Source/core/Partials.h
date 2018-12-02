@@ -9,9 +9,12 @@
 */
 
 #pragma once
+
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+
 //enum class Partials {odd, all, both};
+
 
 class Partials
 {

@@ -10,14 +10,14 @@
 
 #pragma once
 
-#pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
+
 #include "core/audio/Synthesis.h"
 
 
 class AudioTestComponent   :  public AudioAppComponent,
-public Slider::Listener,
-public ComboBox::Listener
+                              public Slider::Listener,
+                              public ComboBox::Listener
 {
 public:
     AudioTestComponent()
@@ -140,9 +140,7 @@ public:
         //        for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
         //        {
         //            buffer[sample] = Synthesis::Instance().getCurrentBufferSample();
-        //
         //        }
-        
         
         auto* leftBuffer  = bufferToFill.buffer->getWritePointer (0, bufferToFill.startSample);
         auto* rightBuffer = bufferToFill.buffer->getWritePointer (1, bufferToFill.startSample);
@@ -155,7 +153,6 @@ public:
         }
         
     }
-    
     
     
     

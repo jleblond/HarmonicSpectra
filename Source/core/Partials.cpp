@@ -10,7 +10,9 @@
 
 #include "Partials.h"
 
+
 Partials::Options Partials::options;
+
 
 String Partials::partialsToString(Partials::Options po)
 {
@@ -27,7 +29,6 @@ String Partials::partialsToString(Partials::Options po)
         case Partials::Options::both:
             return "BOTH";
             break;
-            
     };
     
     return "";

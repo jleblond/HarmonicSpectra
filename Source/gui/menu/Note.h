@@ -15,7 +15,9 @@
 //==============================================================================
 /*
 */
+
 const float LINE_HEIGHT = 30;
+
 
 class Note    : public Component
 {
@@ -28,10 +30,13 @@ public:
        // m_noteLabel.setColour(juce::Label::textColourId, juce::Colours::black);
     }
 
+    
     ~Note()
     {
+        
     }
 
+    
     void paint (Graphics& g) override
     {
         g.fillAll (Colours::black);
@@ -41,12 +46,13 @@ public:
 
     }
 
+    
     void resized() override
     {
         m_dateLabel.setBounds(0, 0, getWidth(), LINE_HEIGHT);
         m_noteLabel.setBounds(0, (LINE_HEIGHT+5), getWidth(), getHeight()-(LINE_HEIGHT+5));
-
     }
+    
     
     void setNote(String date, String comment)
     {
@@ -56,6 +62,7 @@ public:
         repaint();
     }
 
+    
 private:
     Label m_dateLabel{{}, ""};
     Label m_noteLabel{{}, ""};

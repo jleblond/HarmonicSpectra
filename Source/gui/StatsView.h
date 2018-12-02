@@ -14,12 +14,16 @@
 
 #include "../core/Config.h"
 #include "../core/QuestionBuilder.h"
+
 #include "components/StatsBar.h"
 #include "components/RatioFormula.h"
+
 #include <stdlib.h>
+
 //==============================================================================
 /*
 */
+
 class StatsView    : public Component
 {
 public:
@@ -65,8 +69,7 @@ public:
         m_ratiosTitle.setFont(14);
         m_ratiosTitle.setJustificationType(juce::Justification::right);
         
-        
-        
+
         
         for(int i=0;i<5;i++)
         {
@@ -122,11 +125,13 @@ public:
 
     }
 
+    
     ~StatsView()
     {
       
     }
 
+    
     void paint (Graphics& g) override
     {
         g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
@@ -137,7 +142,6 @@ public:
         Rectangle<int> area (0.28*getWidth(), 0.82*getHeight(), 0.65*getWidth(), m_barSize*1.1);
         g.fillRect (area);
     
-        
         g.setColour (Colours::grey);
         g.setFont (14.0f);
         
@@ -173,6 +177,7 @@ public:
       
     }
 
+    
     void resized() override
     {
         m_title.setBounds(0.04*getWidth(), 0.05*getHeight(), 150, 30);
@@ -207,6 +212,7 @@ public:
 
     }
     
+    
     void updateBarsVisibility()
     {
         //HIDE ALL THE BARS
@@ -237,6 +243,7 @@ public:
         }
     }
 
+    
 private:
     Label m_title{{}, "STATISTICS"};
     
@@ -246,12 +253,9 @@ private:
     
     Label m_nbQuestions{{}, "# of questions: 0"};
     
-    
-    
     Label m_countsTitle{{}, "Count:"};
     Label m_percentsTitle{{}, "Score:"};
     Label m_ratiosTitle{{}, "Amplitude ratios"};
-    
     
     float m_barSize = 40; //0.05*getWidth(); //35
     
@@ -263,6 +267,7 @@ private:
     StatsBar m_ARBar;
     Label m_ARLabel{{}, "Audible\nRange"};
     std::vector<double> m_vecXPos = {0.3, 0.36, 0.42, 0.48, 0.54, 0.6, 0.66, 0.72, 0.78, 0.84};
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StatsView)
 };

@@ -19,6 +19,7 @@
 //==============================================================================
 /*
 */
+
 class SettingsPanel    : public Component,
                          public Button::Listener
 {
@@ -69,12 +70,16 @@ public:
         
         
         addAndMakeVisible (m_volumeComponent);
+        
     }
 
+    
     ~SettingsPanel()
     {
+        
     }
 
+    
     void paint (Graphics& g) override
     {
         g.fillAll (Colour(0xff00011B));
@@ -86,6 +91,7 @@ public:
         g.setFont (14.0f);
     }
 
+    
     void resized() override
     {
         m_soundDurationLabel.setBounds(0.05*getWidth(), 0.1*getHeight(), 0.6*getWidth(), 0.07*getHeight());
@@ -100,6 +106,7 @@ public:
         m_volumeComponent.setBounds (0.05*getWidth(), 0.6*getHeight(), 0.9*getWidth(), 0.3*getHeight());
 
     }
+    
     
     void buttonClicked(Button* button) override
     {
@@ -127,6 +134,7 @@ public:
         
     }
     
+    
     void changeDirectory()
     {
         FileChooser fc ("Save the report in folder..",
@@ -138,13 +146,11 @@ public:
         {
             File chosenDirectory = fc.getResult();
             Config::reportDirectory = chosenDirectory;
-            //reportDirectoryPath = chosenDirectory.getFullPathName();
         }
         
     }
     
     
-
 private:
     Label m_soundDurationLabel { {}, "Sound duration (s): "};
     TextButton m_dur05Button {"0.5"};

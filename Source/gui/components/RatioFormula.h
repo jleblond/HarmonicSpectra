@@ -15,10 +15,10 @@
 //==============================================================================
 /*
 */
+
 class RatioFormula    : public Component
 {
 public:
-    
     RatioFormula(String exp) : m_expStr(exp)
     {
         m_numStr = "1";
@@ -49,15 +49,14 @@ public:
 
     ~RatioFormula()
     {
+        
     }
 
     void paint (Graphics& g) override
     {
         g.fillAll (m_backgroundColour);   // clear the background
-
         g.setColour (Colours::black);
 
-        
         // g.drawHorizontalLine(<#int y#>, <#float left#>, <#float right#>)
         
         g.drawLine (0, 0.5*getHeight(), 0.3*getWidth(), 0.5*getHeight(), 0.02*getHeight()) ;
@@ -69,10 +68,7 @@ public:
         
         m_base.setBounds (0, 0.6*getHeight(), 0.6*getWidth(), 0.3*getHeight());
         m_exponent.setBounds(0.15*getWidth(), 0.55*getHeight(), 0.5*getWidth(), 0.3*getHeight());
-
     }
-    
-    
     
     void setExp(String exp)
     {
@@ -87,6 +83,7 @@ public:
         repaint();
     }
 
+    
 private:
     Label m_numerator;
     Label m_base;

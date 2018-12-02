@@ -7,21 +7,26 @@
  */
 
 #pragma once
+
 #include "../JuceLibraryCode/JuceHeader.h"
+
 #include "core/audio/Synthesis.h"
-#include "gui/MainApplication.h"
 #include "core/Config.h"
+
+#include "gui/MainApplication.h"
+
 #include "utils/CustomTimer.h"
+
 
 const int HEIGHT = 700;
 const int WIDTH = 900;
+
 
 class MainContentComponent   :  public AudioAppComponent
 {
 public:
     MainContentComponent()
     {
-        
         setSize (WIDTH, HEIGHT);
         setAudioChannels (0, 2);
         
@@ -46,16 +51,15 @@ public:
     void prepareToPlay (int /*samplesPerBlockExpected*/, double sampleRate) override
     {
         setSamplingRate(sampleRate);
-        
     }
     
     void releaseResources() override
     {
+        
     }
     
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
     {
-        
         auto* leftBuffer  = bufferToFill.buffer->getWritePointer (0, bufferToFill.startSample);
         auto* rightBuffer = bufferToFill.buffer->getWritePointer (1, bufferToFill.startSample);
         

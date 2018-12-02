@@ -15,6 +15,7 @@
 //==============================================================================
 /*
  */
+
 class StatsBar    : public Component
 {
 public:
@@ -25,11 +26,11 @@ public:
     
     ~StatsBar()
     {
+        
     }
     
     void paint (Graphics& g) override
     {
-        
         //        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
         
         float startY = std::abs(getHeight() - m_percent*getHeight());
@@ -65,14 +66,11 @@ public:
     void resized() override
     {
         
-        
     }
     
     void paintRectangle (Graphics& g, Colour c,
                          float startX, float widthX, float startY, float heightY)
     {
-        
-        
         Rectangle<float> rect( startX, startY, widthX, heightY );
         
         g.setColour (c);
@@ -95,11 +93,11 @@ public:
     }
 
     
-
 private:
     float m_percent = 0;
     int m_count = 0;
     
     juce::Colour m_colour = Colours::darkred;
+    
 };
 

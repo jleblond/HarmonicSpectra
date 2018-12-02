@@ -15,6 +15,7 @@
 //==============================================================================
 /*
 */
+
 class ColourSquare    : public Component
 {
 public:
@@ -25,22 +26,11 @@ public:
 
     ~ColourSquare()
     {
+        
     }
 
     void paint (Graphics& g) override
     {
-
-//        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-//
-//        g.fillAll(m_colour);
-//
-//        g.setColour (Colours::grey);
-//        g.drawRect (getLocalBounds(), 200);   // draw an outline around the component
-//
-//        g.setColour (Colours::white);
-//        g.setFont (14.0f);
-        
-        
 //        auto area = getLocalBounds().toFloat().reduced (0.5f);
 //        float cornerSize = 0.f;
 //        g.setColour (m_colour);
@@ -49,16 +39,13 @@ public:
 //        g.drawRoundedRectangle (area, cornerSize, 200.f);
         
         
-                g.setColour (m_colour);
-                g.drawRect (getLocalBounds(), 0.05*getWidth());   // draw an outline around the component
-        
-        
+        g.setColour (m_colour);
+        g.drawRect (getLocalBounds(), 0.05*getWidth());   // draw an outline around the component
 
     }
 
     void resized() override
     {
-
 
     }
     
@@ -68,6 +55,8 @@ public:
         this->repaint();
     }
 
+    
 private:
     juce::Colour m_colour = Colours::transparentWhite;
+    
 };

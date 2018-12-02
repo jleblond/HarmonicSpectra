@@ -11,11 +11,14 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include <assert.h>
 
 #include "../Config.h"
 
+#include <assert.h>
+
+
 const double NORMALIZE_FACTOR = 0.75;
+
 
 struct Partial
 {
@@ -87,4 +90,5 @@ private:
     void normalizePartialsAmp(std::vector<Partial>& vec);
     
     float secondNormalization();
+    
 };

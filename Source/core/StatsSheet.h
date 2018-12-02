@@ -10,6 +10,7 @@
 
 #pragma once
 
+
 struct StatsValue
 {
     int count = 0;
@@ -27,6 +28,7 @@ struct StatsValue
 };
 
 
+
 struct StatsSheet
 {
     std::vector<StatsValue> vecWaves;
@@ -37,7 +39,6 @@ struct StatsSheet
     int maxScore = 100;
     int countInvolvedValues = 0;
     int questionsCount = 0 ;  //updated in StatsView
-    
     
     StatsSheet()
     {
@@ -65,12 +66,12 @@ struct StatsSheet
         this->score = percentScore * maxScore;
         
         
-        //in case audible range is being tested
-        if(this->audibleRange.count > 0)
-        {
-            this->score = (this->score)/2;
-            this->score += this->audibleRange.getPercent() * (this->maxScore/2);
-        }
+            //in case audible range is being tested
+            if(this->audibleRange.count > 0)
+            {
+                this->score = (this->score)/2;
+                this->score += this->audibleRange.getPercent() * (this->maxScore/2);
+            }
         
     }
     
@@ -82,12 +83,14 @@ struct StatsSheet
     
     void print()
     {
-        std::cout<<"--StatsSheet::print()"<<std::endl;
-        std::cout<<"AudibleRange: count "<<audibleRange.count<<", correctanswer "<<audibleRange.correctanswer<<", percent "<<audibleRange.getPercent()<<std::endl;
+        std::cout<<"--StatsSheet::print()"<<"\n"
+                 <<"AudibleRange: count "<<audibleRange.count<<", correctanswer "<<audibleRange.correctanswer<<", percent "<<audibleRange.getPercent()<<std::endl;
         
         for(int i=0;i<vecWaves.size();i++)
         {
             std::cout<<"vecWaves["<<i<<"]: count "<<vecWaves[i].count<<", correctanswer "<<vecWaves[i].correctanswer<<", percent "<<vecWaves[i].getPercent()<<std::endl;
         }
     }
+    
+    
 };

@@ -12,6 +12,10 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
+#include "../core/Config.h"
+#include "../core/StatsBuilder.h"
+#include "../core/ReportBuilder.h"
+
 #include "HeaderView.h"
 #include "UserConfigView.h"
 #include "ExerciseConfigView.h"
@@ -20,11 +24,6 @@
 
 #include "menu/SettingsPanel.h"
 #include "menu/Notepad.h"
-
-#include "../core/StatsBuilder.h"
-#include "../core/ReportBuilder.h"
-
-#include "../core/Config.h"
 
 #include "../utils/CustomTimer.h"
 #include "../utils/CustomDate.h"
@@ -71,6 +70,7 @@ public:
     
     void createSnapshotFromStats();
 
+    
 protected:
    // LookAndFeel *m_LF = new LookAndFeel_V4( (LookAndFeel_V4::getLightColourScheme() ) );
 
@@ -90,6 +90,7 @@ protected:
     Notepad m_notepadPanel;
     
     CustomTimer m_sessionTimer;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainApplication)
 };

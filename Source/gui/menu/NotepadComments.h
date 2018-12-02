@@ -11,16 +11,22 @@
 #pragma once
 
 #include "../../../JuceLibraryCode/JuceHeader.h"
+
 #include "../../core/Config.h"
+
 #include "Note.h"
+
 #include <algorithm> /*std::count*/
+
 //==============================================================================
 /*
 */
 
+
 //const float LINE_HEIGHT = 30;  in Note.h
 const float LINE_WORDS_LENGTH = 40;
 const float NOTES_SPACING = 5;
+
 
 class NotepadComments    : public Component
 {
@@ -31,10 +37,13 @@ public:
         addAndMakeVisible(m_label);
     }
 
+    
     ~NotepadComments()
     {
+        
     }
 
+    
     void paint (Graphics& g) override
     {
         g.fillAll (Colour(0xff00011B));
@@ -42,6 +51,7 @@ public:
         loadNotes();
     }
 
+    
     void resized() override
     {
         int nbNotes = m_notes.size();
@@ -63,6 +73,7 @@ public:
         }
        
     }
+    
     
     void loadNotes()
     {
@@ -99,7 +110,9 @@ public:
         }
         
         resized();
+        
     }
+    
     
     float getNoteHeight(const String& txt)
     {
@@ -119,6 +132,7 @@ public:
         return linesQt*LINE_HEIGHT;
     }
 
+    
 private:
     OwnedArray<Note> m_notes;
     std::vector<float> m_notesStartY;

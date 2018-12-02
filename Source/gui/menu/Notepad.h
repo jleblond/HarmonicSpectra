@@ -11,13 +11,17 @@
 #pragma once
 
 #include "../../../JuceLibraryCode/JuceHeader.h"
+
 #include "../../core/Config.h"
-#include "../../utils/CustomDate.h"
 
 #include "NotepadComments.h"
+
+#include "../../utils/CustomDate.h"
+
 //==============================================================================
 /*
 */
+
 class Notepad    : public Component,
                    public Button::Listener
 {
@@ -43,10 +47,13 @@ public:
 
     }
 
+    
     ~Notepad()
     {
+        
     }
 
+    
     void paint (Graphics& g) override
     {
         g.fillAll (Colour(0xff00011B));
@@ -58,6 +65,7 @@ public:
         g.setFont (14.0f);
     }
 
+    
     void resized() override
     {
         m_label.setBounds (0.15*getWidth(), 0.05*getHeight(), 0.7*getWidth(), 0.1*getHeight());
@@ -65,8 +73,8 @@ public:
         m_saveCommentButton.setBounds (0.4*getWidth(), 0.4*getHeight(), 0.2*getWidth(), 0.1*getHeight());
         
         m_commentsViewport.setBounds (0.15*getWidth(), 0.6*getHeight(), 0.7*getWidth(), 0.3*getHeight());
-
     }
+    
     
     void buttonClicked(Button* button) override
     {
@@ -87,10 +95,11 @@ public:
             
             m_textEditor.clear();
             m_npComments.loadNotes();
-            
         }
+        
     }
 
+    
 private:
     Label m_label{{}, "Your notes will be added to your session report."};
     TextEditor m_textEditor;
@@ -98,5 +107,6 @@ private:
     
     Viewport m_commentsViewport;
     NotepadComments m_npComments;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Notepad)
 };

@@ -50,6 +50,7 @@ public:
         m_answeredAudibleRange = answeredAudibleRange;
     }
     
+    
 protected:
     int m_waveTypeID = 1; //default ToBeMOdified
     int m_audibleRange = 100;

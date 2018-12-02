@@ -12,14 +12,14 @@
 
 #include "../../JuceLibraryCode/JuceHeader.h"
 
-#include "../core/QuestionBuilder.h"
-#include "../core/Config.h"
 #include "../core/audio/Synthesis.h"
-
+#include "../core/Config.h"
+#include "../core/QuestionBuilder.h"
 #include "../core/AnswerChecker.h"
 
 #include "MatrixView.h"
 #include "StatsView.h"
+
 
 const float QUESTIONS_WIDTH = 0.25;
 const float MATRIX_WIDTH = 1-QUESTIONS_WIDTH;
@@ -70,11 +70,15 @@ public:
         {
             m_matrixView.m_arrImgButtons[i]->addListener(this);
         }
+        
     }
+    
     
     ~MainWindow()
     {
+        
     }
+    
     
     void paint (Graphics& g) override
     {
@@ -87,21 +91,16 @@ public:
         g.setFont (12.0f);
     }
     
+    
     void resized() override
     {
         Rectangle<int> area (getLocalBounds());
         m_matrixView.setBounds (area.removeFromRight( MATRIX_WIDTH*getWidth()));
         
-        
         m_playTestButton.setBounds (0.13*getWidth(), 0.2*getHeight(), 0.06*getWidth(), 0.12*getHeight());
-        
         m_playTestLabel.setBounds (0.05*getWidth(), 0.1*getHeight(), 0.13*getWidth(), 0.15*getHeight());
-        
         m_playTestValuesLabel.setBounds (0.025*getWidth(), 0.21*getHeight(), 0.1*getWidth(), 0.2*getHeight());
-        
         m_newQuestionButton.setBounds (0.045*getWidth(), 0.6*getHeight(), 0.125*getWidth(), 0.25*getHeight());
-        
-        
         
         m_playQuestionButton.setBounds (0.04*getWidth(), 0.15*getHeight(), 0.16*getWidth(), 0.2*getHeight());
         m_playSineWaveButton.setBounds (0.07*getWidth(), 0.37*getHeight(), 0.09*getWidth(), 0.1*getHeight());
@@ -111,6 +110,7 @@ public:
         m_notAnsweredLabel.setBounds (0.045*getWidth(), 0.83*getHeight(), 0.2*getWidth(), 0.15*getHeight());
         
     }
+    
     
     void buttonClicked(Button* button) override
     {
@@ -123,9 +123,10 @@ public:
             {
                 playSound(waveTypeID, nbPartials);
             }
-            
+        
             updatePlayTestValuesLabelText();
         }
+        
         if(button == &m_newQuestionButton)
         {
             //MODEL
@@ -184,6 +185,7 @@ public:
             }
         }
         
+        
         for(int i=0;i<m_matrixView.m_arrImgButtons.size();i++)
         {
             if(button == m_matrixView.m_arrImgButtons.getUnchecked(i))
@@ -195,6 +197,7 @@ public:
         
     }
     
+    
     void playSound(int waveTypeID, int audibleRange)
     {
         Config::waveTypeID = waveTypeID;
@@ -203,6 +206,7 @@ public:
         Config::hasStartedPlaying = true;
     }
     
+    
     void playSine()
     {
         Config::waveTypeID = 11;
@@ -210,6 +214,7 @@ public:
         Synthesis::Instance().updateSynthesisValues();
         Config::hasStartedPlaying = true;
     }
+    
     
     void displayPanel(int panelNb)
     {
@@ -243,6 +248,7 @@ public:
     {
         m_matrixView.resized();
     }
+    
     
     void correctAnswers()
     {
@@ -288,7 +294,6 @@ public:
          m_notAnsweredLabel.setText(message, dontSendNotification);
     }
     
-
     
     int getValidNbPartialsFromMatrix()
     {
@@ -334,6 +339,7 @@ public:
         
         return audibleRange;
     }
+    
     
     void updatePlayTestValuesLabelText()
     {
@@ -391,12 +397,14 @@ public:
         
         m_matrixView.resetSelectedValues();
     }
-        
+    
+    
     void resetMatrixButtonsColours()
     {
         m_matrixView.resetARButtonsColours();
         m_matrixView.resetWaveButtonsColours();
     }
+    
     
     void resetMatrixButtonsEnabled()
     {
@@ -404,26 +412,27 @@ public:
         m_matrixView.resetEnabledWavesButtons();
     }
     
+    
     void  resetMatrixFormulasDisplayed()
     {
         m_matrixView.resetFormulasDisplayed();
     }
+    
+    
     void compileStats()
     {
         auto stats = &Config::user->getLastSession()->getStats();
         auto lastQuestion = Config::user->getLastSession()->getLastQuestion();
         
-        
         //AUDIBLE RANGE
         if(Config::vecAudibleRanges.size() > 1)
         {
             stats->audibleRange.count += 1;
-            stats->audibleRange.correctanswer += AnswerChecker::Instance().scoreAudibleRange();
+            stats->audibleRange.correctanswer += AnswerChecker::scoreAudibleRange();
         }
         
-        
         //WAVE TYPE
-        float waveTypeScore = AnswerChecker::Instance().scoreWaveTypeID();
+        float waveTypeScore = AnswerChecker::scoreWaveTypeID();
         
         int waveTypeCorrectAnswer = lastQuestion->getWaveTypeID();
         int waveTypeAnswered = lastQuestion->getAnsweredWaveTypeID();
@@ -449,14 +458,17 @@ public:
             stats->vecWaves[waveTypeCorrectAnswer-1].count += 1;
         }
         
+        
         stats->print();
     }
+    
     
     void setEnabledPlayTestButton(bool isEnabled)
     {
         m_playTestButton.setEnabled(isEnabled);
     }
 
+    
 private:
     MatrixView m_matrixView;
     

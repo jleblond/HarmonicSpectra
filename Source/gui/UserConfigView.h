@@ -15,6 +15,7 @@
 //==============================================================================
 /*
 */
+
 class UserConfigView : public Component,
                        private TextEditor::Listener
 {
@@ -35,9 +36,12 @@ public:
         
     }
     
+    
     ~UserConfigView()
     {
+        
     }
+    
     
     void paint (Graphics& g) override
     {
@@ -51,11 +55,13 @@ public:
                     Justification::centred, true);
     }
     
+    
     void resized() override
     {
         Rectangle<int> area (getLocalBounds());
         // m_TextField.setBounds(area.removeFromBottom(0.4*getHeight()));
     }
+    
     
     String getTextFieldValue()
     {
@@ -68,6 +74,7 @@ public:
 private:
     TextEditor m_TextField;
     Label m_TxtFieldLabel;
+    
     //JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GUIStartSession)
 };
 

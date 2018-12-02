@@ -15,6 +15,7 @@
 //==============================================================================
 /*
 */
+
 class HeaderView : public Component,
                    public Button::Listener
 {
@@ -25,10 +26,7 @@ public:
         mUserLabel.setJustificationType(juce::Justification::right);
         mUserLabel.setColour(juce::Label::textColourId, juce::Colours::white);
         
-    
-        
-        
-        
+
         Image logoImage = ImageCache::getFromMemory (BinaryData::logo_png, BinaryData::logo_pngSize);
         
         mLogoButton.setImages (true, true, true,
@@ -40,12 +38,14 @@ public:
         mLogoButton.setTooltip ("Information about the Inner Ear Project");
         addAndMakeVisible(mLogoButton);
         mLogoButton.addListener(this);
-        
     }
+    
     
     ~HeaderView()
     {
+        
     }
+    
     
     void paint(Graphics& g)override
     {
@@ -56,8 +56,8 @@ public:
         g.setFont (26.0f);
         g.drawText (TITLE, 0.4*getWidth()+15, getHeight()/2, getWidth(), getHeight()/2,
                     Justification::left, true);
-    
     }
+    
     
     void resized() override
     {
@@ -66,13 +66,10 @@ public:
         float elementwidth=getWidth()/12;
         
         Rectangle<int> area = getLocalBounds();
-        
-     
         mLogoButton.setBounds(0.08*getWidth(), 0*getHeight()-20, 120, 140);
-        
-        //USERNAME
-        mUserLabel.setBounds(menuxoffset-10, 3*elementheight, 3*elementwidth, elementheight);
+        mUserLabel.setBounds(menuxoffset-10, 3*elementheight, 3*elementwidth, elementheight); //username
     }
+    
     
     void buttonClicked(Button* button) override
     {
@@ -82,6 +79,7 @@ public:
         }
     }
     
+    
     void setUserLabel(String user)
     {
         if( user.toStdString().size() == 0 )
@@ -89,7 +87,9 @@ public:
             mUserLabel.setText("user: [  ]     ", dontSendNotification);
         }
         else
+        {
             mUserLabel.setText("user: "+user, dontSendNotification);
+        }
     }
     
     
@@ -99,23 +99,18 @@ public:
                                                      "Ear Training software implemented by Jasmine Leblond-Chartrand     \nfor Concordia's Music Department, Montreal, 2018  \n\nThe Inner Ear Project is supervised by:\n  Dr. Eldad Tsabary at Concordia University\nin collaboration with:\n  Dr. David Ogborn at McMaster University\n  Dr. Andrea Szigetvári at Liszt Academy of Music  \n\nThe Inner Ear team: Eldad Tsabary, David Ogborn, Andrea Szigetvári, \nJasmine Leblond-Chartrand, Luis Navarro Del Angel, Jamie Beverley, \nSpencer Park, Danielle Savage, Farkas Soma Szakál ")
                                    );
         
-        
         AlertWindow::AlertIconType icon = AlertWindow::InfoIcon;
         setColour(AlertWindow::backgroundColourId, Colours::black);
-        
         
         AlertWindow::showMessageBoxAsync (icon,
                                           "Inner Ear [Harmonic Spectrum] 1.1 (MacOSX version)",
                                           creditsStr,
                                           "OK");
         
-       
     }
     
     
-    
 private:
-    
     const String TITLE=" HARMONIC SPECTRUM ";
     const String SUBTITLE="INNER EAR";
     
@@ -124,4 +119,5 @@ private:
     ImageButton mLogoButton;
     Image mLogo;
     ImageComponent mLogoImageComponent;
+    
 };

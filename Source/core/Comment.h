@@ -21,4 +21,5 @@ struct Comment
         std::cout<<"--Comment-- "<<date;
         std::cout<<text<<std::endl;
     }
+    
 };

@@ -9,6 +9,9 @@
 */
 
 #pragma once
+
+#include "../../JuceLibraryCode/JuceHeader.h"
+
 #include "../core/Config.h"
 #include "../core/QuestionBuilder.h"
 #include "../core/AnswerChecker.h"
@@ -16,15 +19,15 @@
 #include "components/ColourSquare.h"
 #include "components/RatioFormula.h"
 
-#include "../../JuceLibraryCode/JuceHeader.h"
 
 const float ODD_HEIGHT = 0.1;
 const float FORMULAS_HEIGHT = 0.29;
 const float ALL_HEIGHT = 0.4;
 const float AR_HEIGHT = 0.8;
 
+
 class MatrixView : public Component,
-public Button::Listener
+                   public Button::Listener
 {
 public:
     OwnedArray<ImageButton> m_arrImgButtons;
@@ -42,7 +45,6 @@ public:
         
         addAndMakeVisible(m_NALabel);
         addAndMakeVisible(m_fixedARLabel);
-        
         
         m_arrRatioImages.push_back(img1);
         m_arrRatioImages.push_back(img2);
@@ -122,9 +124,6 @@ public:
         }
         
         
-        
-        
-        
     }
     
     ~MatrixView()
@@ -136,18 +135,15 @@ public:
     {
         g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
         g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-        
     }
     
     void resized() override
     {
-        
         // General-Main LABELS
         
         m_oddLabel.setBounds (0.18*getWidth(), ODD_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
         m_allLabel.setBounds (0.18*getWidth(), ALL_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
         m_arLabel.setBounds (0.08*getWidth(), AR_HEIGHT*getHeight(), 0.2*getWidth(), 0.1*getHeight());
-    
         
         
         //AUDIBLE RANGE : Buttons OR Label with fixed AR text
@@ -169,6 +165,7 @@ public:
                 m_fixedARLabel.setVisible(false);
             }
             displayAudioRangeButtons(true);
+            
         }
         else if (sizeVecAR == 1)
         {
@@ -190,7 +187,6 @@ public:
         
         for( int i=0;i<nbAmpRatios;i++)
         {
-            
             m_arrRatiosLabels[formulaIndex]->setBounds ( (0.335*getWidth()+j*0.12*getWidth()), FORMULAS_HEIGHT*getHeight(), 0.1*getWidth(), 0.09*getHeight());
             m_arrRatiosLabels[formulaIndex]->setVisible(true);
  
@@ -219,7 +215,6 @@ public:
         
         displayWaveTypeButtons(false, false);
         
-        
         for (int j=0;j<vecWaves.size();j++)
         {
             int waveID = vecWaves[j];
@@ -229,7 +224,6 @@ public:
                 m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.295*getWidth()+j*0.12*getWidth()),
                                                                       ODD_HEIGHT*0.985*getHeight(),
                                                                       0.11*getWidth(), 0.17*getHeight());
-                
 
                 m_arrImgButtons[waveID-1]->setBounds ((0.3*getWidth()+j*0.12*getWidth()),
                                                      ODD_HEIGHT*getHeight(),
@@ -239,8 +233,7 @@ public:
             }
             else if(waveID > 5) //all partials waves
             {
-                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.295*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*0.985*getHeight(),
-                                                    0.11*getWidth(), 0.17*getHeight());
+                m_arrWavesCSquares.getUnchecked(waveID-1)->setBounds ((0.295*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*0.985*getHeight(),0.11*getWidth(), 0.17*getHeight());
                 
                 m_arrImgButtons[waveID-1]->setBounds (
                                                          (0.3*getWidth()+indexALLPartials*0.12*getWidth()), ALL_HEIGHT*getHeight(),0.1*getWidth(), 0.15*getHeight()
@@ -248,10 +241,10 @@ public:
                 
                 m_arrImgButtons[waveID-1]->setVisible(true);
                 
-                
                 indexALLPartials++;
             }
         }
+        
         
         if (Config::partials == Partials::Options::odd)
         {
@@ -336,7 +329,7 @@ public:
     
     void displayCorrectWaveTypeID(int selectedWaveTypeID, int correctWaveTypeID)
     {
-        float score = AnswerChecker::Instance().scoreWaveTypeID();
+        float score = AnswerChecker::scoreWaveTypeID();
         
         if(score == 1)
         {
@@ -374,7 +367,7 @@ public:
             
         }
         
-        float score = AnswerChecker::Instance().scoreAudibleRange();
+        float score = AnswerChecker::scoreAudibleRange();
         
         if(score == 1)
         {
@@ -390,7 +383,6 @@ public:
         }
         
         
-    
         //must be separed loop to guarantee green color identifed
         for(int i=0;i<m_arrARCSquares.size();i++)
         {
@@ -400,9 +392,9 @@ public:
             }
         }
         
-      
 
     }
+    
     
     void setQuestionMode (bool isQuestionMode)
     {
@@ -470,6 +462,7 @@ public:
         }
     }
     
+    
 protected:
     bool m_isQuestionMode = false;
     bool m_isTestMode = true; //default value at init
@@ -481,7 +474,6 @@ protected:
     Label m_allLabel{{}, "ALL:"}, m_oddLabel{{}, "ODD:"}, m_arLabel{{}, "AUDIBLE RANGE:"};
     Label m_NALabel{{}, "N/A"};
     Label m_fixedARLabel;
-    
     
     std::vector<Image> m_arrRatioImages;
      Image img1 = ImageCache::getFromMemory (BinaryData::_1_png, BinaryData::_1_pngSize);
@@ -495,9 +487,7 @@ protected:
      Image img9 = ImageCache::getFromMemory (BinaryData::_9_png, BinaryData::_9_pngSize);
      Image img10 = ImageCache::getFromMemory (BinaryData::_10_png, BinaryData::_10_pngSize);
     
-    
     OwnedArray<RatioFormula> m_arrRatiosLabels;
     std::vector<String> m_vecRatioStr = {"", "1.25", "1.5", "1.75", "2"};
-
 
 };

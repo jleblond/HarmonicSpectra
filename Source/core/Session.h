@@ -9,10 +9,12 @@
 */
 
 #pragma once
+
 #include "Question.h"
-#include "Partials.h"
 #include "StatsSheet.h"
 #include "Report.h"
+#include "Partials.h"
+
 
 class Session
 {
@@ -70,6 +72,7 @@ public:
         m_report = r;
     }
     
+    
 protected:
     std::vector<std::shared_ptr<Question>> m_vecQuestions;
     
@@ -81,4 +84,5 @@ protected:
     
     StatsSheet m_stats;
     std::shared_ptr<Report> m_report;
+    
 };

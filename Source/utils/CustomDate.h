@@ -9,20 +9,22 @@
 */
 
 #pragma once
+
+#include "../../JuceLibraryCode/JuceHeader.h"
+
 #include <ctime>
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include "../../JuceLibraryCode/JuceHeader.h"
+
 
 class CustomDate
 {
 public:
     static String getStrCurrentTime();
-    
     static String getStrFormatCurrentTime();
-    
     static String convertTimeStr(int timeInSeconds);
+    
     
 private:
     CustomDate()
@@ -33,4 +35,5 @@ private:
     {
         
     }
+    
 };

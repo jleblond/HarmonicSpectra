@@ -13,6 +13,7 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 
 #include "../core/Partials.h"
+
 //==============================================================================
 /*
 */
@@ -22,12 +23,12 @@ class ExerciseConfigView :  public Component,
                             public ComboBox::Listener
 {
 public:
-    
     enum RadioButtonIds
     {
         PartialsButtons = 1001,
         NbAmplitudeRatiosButtons = 1002
     };
+    
     
     ExerciseConfigView()
     {
@@ -101,15 +102,18 @@ public:
         addAndMakeVisible(m_baseFreqTextLabel);
     }
     
+    
     ~ExerciseConfigView()
     {
         
     }
     
+    
     void paint(Graphics& g) override
     {
        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     }
+    
     
     void resized() override
     {
@@ -134,10 +138,10 @@ public:
         
     }
     
+    
     void buttonClicked(Button* button) override
     {
     
-        
     }
     
     void sliderValueChanged (Slider* slider) override
@@ -148,6 +152,7 @@ public:
             m_baseFreqTextLabel.setText(text, dontSendNotification);
         }
     }
+    
     
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override
     {
@@ -180,6 +185,7 @@ public:
                 baseFreq = 1600;
                  break;
         };
+        
         
         return baseFreq;
     }
@@ -218,6 +224,7 @@ public:
         return 2;
     }
     
+    
     std::vector<int> getVecAudibleRange()
     {
         std::vector<int> vecAudibleRanges;
@@ -253,7 +260,6 @@ public:
     
     
 private:
-    
     Label m_titleLabel { {}, "EXERCISE CONFIGURATION"};
     
     Label m_partialsLabel { {}, "Partials"};
@@ -272,5 +278,6 @@ private:
     Label m_baseFreqLabel { {}, "Base Frequency (1st partial)"};
     Slider m_baseFreqSlider;
     Label m_baseFreqTextLabel { {}," (Hz)"};
+    
 };
 
