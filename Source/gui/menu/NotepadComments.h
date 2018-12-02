@@ -27,7 +27,8 @@ class NotepadComments    : public Component
 public:
     NotepadComments()
     {
-        setSize (0.27*getParentWidth(), LINE_HEIGHT/4);
+        setSize (0.27*getParentWidth(), LINE_HEIGHT);
+        addAndMakeVisible(m_label);
     }
 
     ~NotepadComments()
@@ -36,13 +37,7 @@ public:
 
     void paint (Graphics& g) override
     {
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));  
-
-        g.setColour (Colours::grey);
-       // g.drawRect (getLocalBounds(), 1);
-
-        g.setColour (Colours::white);
-        g.setFont (14.0f);
+        g.fillAll (Colour(0xff00011B));
         
         loadNotes();
     }
@@ -57,11 +52,14 @@ public:
             assert(Config::user->getLastSession() != nullptr);
             auto comments = Config::user->getLastSession()->getReport()->comments;
             
-            
-            for (int i=0; i<nbNotes; i++)
+            for (int i=(nbNotes-1); i>=0; i--)
             {
                 m_notes[i]->setBounds(0, m_notesStartY[i]+i*NOTES_SPACING, getWidth(), getNoteHeight(comments[i]->text));
             }
+        }
+        else
+        {
+            m_label.setBounds (0.3*getWidth(), 0.3*getHeight(), 0.5*getWidth(), 0.4*getHeight());
         }
        
     }
@@ -90,7 +88,16 @@ public:
         }
         
         int nbComments = comments.size();
-        setSize(getWidth(), height+(nbComments*NOTES_SPACING));
+        
+        if(nbComments == 0)
+        {
+            setSize(getWidth(), LINE_HEIGHT*2);
+        }
+        else
+        {
+            setSize(getWidth(), height+(nbComments*NOTES_SPACING));
+        }
+        
         resized();
     }
     
@@ -115,6 +122,7 @@ public:
 private:
     OwnedArray<Note> m_notes;
     std::vector<float> m_notesStartY;
+    Label m_label{{}, "[No user notes found]"};
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NotepadComments)
 };

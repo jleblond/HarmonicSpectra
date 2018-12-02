@@ -35,7 +35,6 @@ public:
     {
         addAndMakeVisible(m_matrixView);
         
-        
         addAndMakeVisible(m_playTestButton);
         m_playTestButton.addListener(this);
         
@@ -110,8 +109,6 @@ public:
         m_answerButton.setBounds (0.047*getWidth(), 0.62*getHeight(), 0.125*getWidth(), 0.2*getHeight());
         
         m_notAnsweredLabel.setBounds (0.045*getWidth(), 0.83*getHeight(), 0.2*getWidth(), 0.15*getHeight());
-        
-        m_playTestButton.setEnabled(false);
         
     }
     
@@ -453,6 +450,11 @@ public:
         }
         
         stats->print();
+    }
+    
+    void setEnabledPlayTestButton(bool isEnabled)
+    {
+        m_playTestButton.setEnabled(isEnabled);
     }
 
 private:

@@ -23,7 +23,9 @@ public:
     Note()
     {
         addAndMakeVisible(m_dateLabel);
+       // m_dateLabel.setColour(juce::Label::textColourId, juce::Colours::black);
         addAndMakeVisible(m_noteLabel);
+       // m_noteLabel.setColour(juce::Label::textColourId, juce::Colours::black);
     }
 
     ~Note()
@@ -32,13 +34,10 @@ public:
 
     void paint (Graphics& g) override
     {
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+        g.fillAll (Colours::black);
 
         g.setColour (Colours::grey);
         g.drawRect (getLocalBounds(), 1);
-
-        g.setColour (Colours::white);
-        g.setFont (14.0f);
 
     }
 

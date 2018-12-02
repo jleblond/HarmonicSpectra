@@ -77,8 +77,7 @@ public:
 
     void paint (Graphics& g) override
     {
-
-        g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+        g.fillAll (Colour(0xff00011B));
 
         g.setColour (Colours::grey);
         g.drawRect (getLocalBounds(), 1);
