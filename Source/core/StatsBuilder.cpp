@@ -10,6 +10,8 @@
 
 #include "StatsBuilder.h"
 
+#include <assert.h>
+
 
 int StatsBuilder::calculateMaxScore()
 {

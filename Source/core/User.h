@@ -14,6 +14,8 @@
 
 #include "Session.h"
 
+#include <assert.h>
+
 
 class User
 {

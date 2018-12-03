@@ -10,6 +10,8 @@
 
 #include "QuestionBuilder.h"
 
+#include <assert.h>
+
 
 QuestionBuilder QuestionBuilder::m_exerciseBuilder = QuestionBuilder();
 

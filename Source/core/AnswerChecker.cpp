@@ -10,6 +10,8 @@
 
 #include "AnswerChecker.h"
 
+#include <assert.h>
+
 
 float AnswerChecker::scoreWaveTypeID()
 {

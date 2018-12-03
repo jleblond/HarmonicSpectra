@@ -15,6 +15,8 @@
 #include "Report.h"
 #include "Partials.h"
 
+#include <assert.h>
+
 
 class Session
 {

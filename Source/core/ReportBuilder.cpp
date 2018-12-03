@@ -10,6 +10,8 @@
 
 #include "ReportBuilder.h"
 
+#include <assert.h>
+
 
 std::shared_ptr<Report> ReportBuilder::createReport()
 {
